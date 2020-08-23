@@ -17,8 +17,6 @@ title: Mods List
 		{%- for mod in site.data.mods -%}
 			<tr>
 				<td>{{ mod.name }}</td>
-			</tr>
-			<tr>
 				{%- for version in mod.versions -%}
 					<td>{{ version | replace: "-", "." }}</td>
 				{%- endfor -%}
