@@ -7,6 +7,19 @@ title: Mods List
 
 <br>
 
+<style>
+	#SearchBar {
+	  background-image: url('/css/searchicon.png');
+	  background-position: 10px 10px;
+	  background-repeat: no-repeat;
+	  width: 100%;
+	  font-size: 16px;
+	  padding: 12px 20px 12px 40px;
+	  border: 1px solid #ddd;
+	  margin-bottom: 12px;
+	}
+</style>
+
 <table id="ModsTable" class="table table-dark">
 	<tr>
 		<th>Name</th>
@@ -25,9 +38,9 @@ title: Mods List
 <script>
 function Search() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("idSearchBar");
+  input = document.getElementById("SearchBar");
   filter = input.value.toUpperCase();
-  table = document.getElementById("idTable");
+  table = document.getElementById("ModsTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
