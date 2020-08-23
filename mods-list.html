@@ -19,9 +19,9 @@ title: Mods List
 		<td>
 			{{ mod.name[0] }}
 			{%- for version in mod.versions -%}
-			  {{ space }}
-			  <label class="badge badge-light">
-			  	<input onchange="Selection('{{ mod.name[1] | append: "_" | append: version }}')" type="checkbox" id="{{ mod.name[1] | append: "_" | append: version }}" name="{{ mod.name[1] | append: "_" | append: version }}">
+				{{ space }}
+				<label class="badge badge-light">
+					<input onchange="Selection('{{ mod.name[1] | append: "_" | append: version }}')" type="checkbox" id="{{ mod.name[1] | append: "_" | append: version }}" name="{{ mod.name[1] | append: "_" | append: version }}">
 					{{ version | replace: "-", "." }}
 				</label>
 			{%- endfor -%}
@@ -33,41 +33,44 @@ title: Mods List
 <p id="Result"></p>
 
 <script>
-	function Download(ModsSelection) {
-		if (ModsSelection.length > 0){
-			// Only one mod is selected:
-			if (ModsSelection.length == 1){
-				var modver = ModsSelection.split('_');
-				var mod = modver[0];
-				var ver = modver[1].replace(new RegExp('-', 'g'), ".");
-
-				var result = document.getElementById("Result");
-				result.innerHTML = mod + ver;
-
-				window.open('https://github.com/Faithful-Mods/' + mod + '/archive/' + ver + '.zip', '_blank');
-			} else {
-				alert('WIP');
+	function Download() {
+		var ModsCount = ModsSelection.length;
+		var result = document.getElementById("Result");
+		
+		var btn = document.getElementById("ResultBtn");
+		var asClass = btn.classList.contains('disabled');
+		
+		if (ModsCount > 0 && asClass == false) {
+			if (ModsCount == 1) {
+					var modver = ModsSelection[0].split('_');
+						var mod = modver[0];
+						var ver = modver[1].replace(new RegExp('-', 'g'), '.');
+						
+						window.open('https://github.com/Faithful-Mods/' + mod + '/archive/' + ver + '.zip', '_blank');
+				}
+			else {
+				result.innerHTML = "not defined yet"
 			}
 		}
 	}
 
 	function Search() {
-	  var input, filter, table, tr, td, i, txtValue;
-	  input = document.getElementById("SearchBar");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("ModsTable");
-	  tr = table.getElementsByTagName("tr");
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      txtValue = td.textContent || td.innerText;
-	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    }
-	  }
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("SearchBar");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("ModsTable");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
 	}
 
 	var ModsSelection = new Array()
