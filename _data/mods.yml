@@ -1,11 +1,10 @@
-mods:
-  abyssalcraft:
-    - name: "Abyssalcraft"
-    - versions:
-      - 1-12-2
-  actuallyadditions:
-    - name: "Actually Additions"
-    - versions:
-      - 1-12-2
-      - 1-11-2
-      - 1-10-2
+- abyssalcraft:
+  name: "Abyssalcraft"
+  versions:
+    - 1-12-2
+- actuallyadditions:
+  name: "Actually Additions"
+  versions:
+    - 1-12-2
+    - 1-11-2
+    - 1-10-2
