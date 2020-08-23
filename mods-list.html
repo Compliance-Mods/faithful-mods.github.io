@@ -35,7 +35,16 @@ title: Mods List
 <script>
 	function Download(ModsSelection) {
 		if (ModsSelection.lenght > 0){
-			alert('yes');
+			// Only one mod is selected:
+			if (ModsSelection.lenght == 1){
+				var modver = ModsSelection.split('_');
+				var mod = modver[0];
+				var ver = modver[1].replace(new RegExp('-', 'g'), ".");
+
+				window.open('https://github.com/Faithful-Mods/' + mod + '/archive/' + ver + '.zip', '_blank');
+			} else {
+				alert('WIP');
+			}
 		}
 	}
 
