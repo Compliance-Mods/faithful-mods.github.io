@@ -41,6 +41,9 @@ title: Mods List
 				var mod = modver[0];
 				var ver = modver[1].replace(new RegExp('-', 'g'), ".");
 
+				var result = document.getElementById("Result");
+				result.innerHTML = mod + ver;
+
 				window.open('https://github.com/Faithful-Mods/' + mod + '/archive/' + ver + '.zip', '_blank');
 			} else {
 				alert('WIP');
