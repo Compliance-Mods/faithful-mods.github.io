@@ -3,8 +3,6 @@ layout: default
 title: Mods List
 ---
 
-<p id="Result"></p>
-
 <button id="ResultBtn" onclick="Download(ModsSelection)" class="btn btn-block btn-light disabled">Download Resource Pack</button>
 
 <br>
@@ -23,7 +21,7 @@ title: Mods List
 			{%- for version in mod.versions -%}
 			  {{ space }}
 			  <label class="badge badge-light">
-			  	<input onchange="Selection('{{ mod.name[1] | appnd: "_" | append: version }}')" type="checkbox" id="{{ mod.name[1] | appnd: "_" | append: version }}" name="{{ mod.name[1] | appnd: "_" | append: version }}">
+			  	<input onchange="Selection('{{ mod.name[1] | appnd: "_" | append: version }}')" type="button" id="{{ mod.name[1] | appnd: "_" | append: version }}" name="{{ mod.name[1] | appnd: "_" | append: version }}">
 					{{ version | replace: "-", "." }}
 				</label>
 			{%- endfor -%}
@@ -31,6 +29,8 @@ title: Mods List
 	</tr>
 	{%- endfor -%}
 </table>
+
+<p id="Result"></p>
 
 <script>
 	function Search() {
