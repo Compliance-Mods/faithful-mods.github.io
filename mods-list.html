@@ -8,23 +8,18 @@ title: Mods List
 <br>
 
 <table id="ModsTable" class="table table-dark">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th colspan="10">Versions</th>
-		</tr>
-	</thead>
-	<tbody>
-		{%- for mod in site.data.mods -%}
-			<tr>
-				<td>{{ mod.name }}</td>
-				{%- for version in mod.versions -%}
-					<td>{{ version | replace: "-", "." }}</td>
-				{%- endfor -%}
-			</tr>
+	<tr>
+		<th>Name</th>
+		<th colspan="10">Versions</th>
+	</tr>
+	{%- for mod in site.data.mods -%}
+	<tr>
+		<td>{{ mod.name }}</td>
+		{%- for version in mod.versions -%}
+		<td>{{ version | replace: "-", "." }}</td>
 		{%- endfor -%}
-	</tbody>
-	
+	</tr>
+	{%- endfor -%}	
 </table>
 
 <script>
