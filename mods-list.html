@@ -12,7 +12,7 @@ title: Mods List
 <table id="ModsTable" class="table table-dark">
 	{%- for mod in site.data.mods -%}
 	<tr>
-		<td>{{ mod.name | append: " " }}
+		<td><a href="https://github.com/Faithful-Mods/{{ mod.name }}">{{ mod.name | append: " " }}</a>
 			{%- for version in mod.versions -%}
 				<a href="https://github.com/Faithful-Mods/{{ mod.name }}/tree/{{ version | replace: "-", "." }}" class="badge badge-light">
 					{{ version | replace: "-", "." }}

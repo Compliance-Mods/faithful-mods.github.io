@@ -76,7 +76,7 @@ h2, h3, h4, h5 {
 }
 
 #SearchBar {
-	background-image: url('/css/searchicon.png');
+	background-image: url(https://github.com/Faithful-Mods/Faithful-Mods.github.io/master/image/css/searchicon.png);
 	background-position: 10px 10px;
 	background-repeat: no-repeat;
 	width: 100%;
