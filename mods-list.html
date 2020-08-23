@@ -9,19 +9,23 @@ title: Mods List
 
 <br>
 
+<button class="btn btn-large btn-light disabled">Download Resource Pack</button>
+
+<br>
+
 {%- assign space = " " -%}
 
 <table id="ModsTable" class="table table-dark">
 	{%- for mod in site.data.mods -%}
 	<tr>
 		<td>
-			<input onchange="Selection('{{ mod.name[1] }}')" type="checkbox" id="{{ mod.name[1] }}" name="{{ mod.name[1] }}">
-			<label for="{{ mod.name[1] }}">{{ mod.name[0] }}</label>
+			{{ mod.name[0] }}
 			{%- for version in mod.versions -%}
 			  {{ space }}
-				<a href="https://github.com/Faithful-Mods/{{ mod.name }}/tree/{{ version | replace: "-", "." }}" class="badge badge-light">
+			  <label class="badge badge-light">
+			  	<input onchange="Selection('{{ mod.name[1] | append: version }}')" type="checkbox" id="{{ mod.name[1] | append: version }}" name="{{ mod.name[1] | append: version }}">
 					{{ version | replace: "-", "." }}
-				</a>
+				</label>
 			{%- endfor -%}
 		</td>
 	</tr>
