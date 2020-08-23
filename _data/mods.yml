@@ -1,9 +1,13 @@
 - abyssalcraft:
-  name: "Abyssalcraft"
+  name: 
+    - Abyssalcraft
+    - abyssalcraft
   versions:
     - 1-12-2
 - actuallyadditions:
-  name: "Actually Additions"
+  name: 
+    - Actually Additions
+    - actuallyadditions
   versions:
     - 1-12-2
     - 1-11-2
