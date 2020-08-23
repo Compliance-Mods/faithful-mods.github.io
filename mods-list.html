@@ -3,11 +3,26 @@ layout: default
 title: Mods List
 ---
 
-{%- for mod in site.data.mods -%}
-	<h1>{{ mod.name }}</h1>
-	<p> Supported versions: 
-		{%- for version in mod.versions -%}
-			{{ version | replace: "-", "."}} 
+<script src="{{ site.baseurl }}/js/Search.js"></script>
+<input id="SearchBar" type="text" onkeyup="Search('SearchBar', 'ModsTable')" placeholder="Search for mods.." title="Type something">
+
+<table id="ModsTable">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Versions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%- for mod in site.data.mods -%}
+			
+			<td>{{ mod.name }}</td>
+			
+			{%- for version in mod.versions -%}
+				<td>{{ version | replace: "-", "." }}</td>
+			{%- endfor -%}
+
 		{%- endfor -%}
-	</p>
-{%- endfor -%}
+	</tbody>
+	
+</table>
