@@ -4,9 +4,9 @@ title: Mods List
 ---
 
 {%- for mod in site.data.mods.mods -%}
-	<h1>{{ mod.name }}</h1>
+	<h1>{{ mod[0].name }}</h1>
 	<p> Supported versions: 
-		{%- for version in mod.versions -%}
+		{%- for version in mod[0].versions -%}
 			{{ version | replace: "-", "."}}
 		{%- endfor -%}
 	</p>
