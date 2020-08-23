@@ -21,7 +21,7 @@ title: Mods List
 			{%- for version in mod.versions -%}
 			  {{ space }}
 			  <label class="badge badge-light">
-			  	<input onchange="Selection('{{ mod.name[1] | appnd: "_" | append: version }}')" type="checkbox" id="{{ mod.name[1] | appnd: "_" | append: version }}" name="{{ mod.name[1] | appnd: "_" | append: version }}">
+			  	<input onchange="Selection('{{ mod.name[1] | append: "_" | append: version }}')" type="checkbox" id="{{ mod.name[1] | append: "_" | append: version }}" name="{{ mod.name[1] | append: "_" | append: version }}">
 					{{ version | replace: "-", "." }}
 				</label>
 			{%- endfor -%}
