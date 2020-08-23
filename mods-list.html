@@ -6,7 +6,7 @@ title: Mods List
 <script src="{{ site.baseurl }}/js/Search.js"></script>
 <input id="SearchBar" type="text" onkeyup="Search('SearchBar', 'ModsTable')" placeholder="Search for mods.." title="Type something">
 
-<table id="ModsTable">
+<table id="ModsTable" class="table-dark table-striped table-hover">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -15,13 +15,13 @@ title: Mods List
 	</thead>
 	<tbody>
 		{%- for mod in site.data.mods -%}
+			<tr>
+				<td>{{ mod.name }}</td>
 			
-			<td>{{ mod.name }}</td>
-			
-			{%- for version in mod.versions -%}
-				<td>{{ version | replace: "-", "." }}</td>
-			{%- endfor -%}
-
+				{%- for version in mod.versions -%}
+					<td>{{ version | replace: "-", "." }}</td>
+				{%- endfor -%}
+			</tr>
 		{%- endfor -%}
 	</tbody>
 	
