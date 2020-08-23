@@ -4,5 +4,10 @@ title: Mods List
 ---
 
 {%- for mod in site.data.mods.mods -%}
-	<p>{{ mod[0] }} - {{ mod[1] }} - {{ mod[2] }} - {{ mod[3] }} - {{ mod[4] }}</p><br>
+	<h1>{{ mod[1] }}</h1>
+	<p>
+		{%- for versions in mod[2] -%}
+			{{versions}}
+		{%- endfor -%}
+	</p>
 {%- endfor -%}
