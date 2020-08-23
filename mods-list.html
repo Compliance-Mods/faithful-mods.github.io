@@ -15,7 +15,7 @@ title: Mods List
 	{%- for mod in site.data.mods -%}
 	<tr>
 		<td>
-			<input type="checkbox" id="{{ mod.name[1] }}" name="{{ mod.name[1] }}">
+			<input onchange="Selection('{{ mod.name[1] }}')" type="checkbox" id="{{ mod.name[1] }}" name="{{ mod.name[1] }}">
 			<label for="{{ mod.name[1] }}">{{ mod.name[0] }}</label>
 			{%- for version in mod.versions -%}
 			  {{ space }}
@@ -29,33 +29,36 @@ title: Mods List
 </table>
 
 <script>
-function Search() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("SearchBar");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("ModsTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+	function Search() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("SearchBar");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ModsTable");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[0];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+	}
 
-<script>
 	var ModsSelection = new Array()
 
-	$("input:checkbox[name=type]:checked").each(function(){
-    ModsSelection.push($(this).val());
-	});
-
-	var result = document.getElementById("Result")
-	result.innerHTML = ModsSelection;
+	function Selection(mod) {
+		var result = document.getElementById("Result");
+		if (ModsSelection.includes(mod)){
+			// Remove from array if already in
+			ModsSelection = ModsSelection.filter(e => e !== mod);
+		} else {
+			// Add it if not found
+			ModsSelection.push(mod);
+		}
+		result.innerHTML = ModsSelection;
+	}
 </script>
