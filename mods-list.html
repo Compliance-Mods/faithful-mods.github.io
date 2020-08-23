@@ -3,6 +3,8 @@ layout: default
 title: Mods List
 ---
 
+<p id="Result"></p>
+
 <input id="SearchBar" type="text" onkeyup="Search()" placeholder="Search for mods or MC version.." title="Type something">
 
 <br>
@@ -45,4 +47,15 @@ function Search() {
     }
   }
 }
+</script>
+
+<script>
+	var ModsSelection = new Array()
+
+	$("input:checkbox[name=type]:checked").each(function(){
+    ModsSelection.push($(this).val());
+	});
+
+	var result = document.getElementById("Result")
+	result.innerHTML = ModsSelection;
 </script>
