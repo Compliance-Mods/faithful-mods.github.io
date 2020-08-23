@@ -7,32 +7,15 @@ title: Mods List
 
 <br>
 
-<style>
-	#SearchBar {
-	  background-image: url('/css/searchicon.png');
-	  background-position: 10px 10px;
-	  background-repeat: no-repeat;
-	  width: 100%;
-	  font-size: 16px;
-	  padding: 12px 20px 12px 40px;
-	  border: 1px solid #ddd;
-	  margin-bottom: 12px;
-	}
-</style>
-
 <table id="ModsTable" class="table table-dark">
 	<tr>
 		<th>Name</th>
-		<th colspan="10">Versions</th>
 	</tr>
 	{%- for mod in site.data.mods -%}
 	<tr>
-		<td>{{ mod.name }}</td>
-		{%- for version in mod.versions -%}
-		<td>{{ version | replace: "-", "." }}</td>
-		{%- endfor -%}
+		<td>{{ mod.name }} {%- for version in mod.versions -%}<span class="badge badge-light">{{ version | replace: "-", "." }}</span>{%- endfor -%}</td>
 	</tr>
-	{%- endfor -%}	
+	{%- endfor -%}
 </table>
 
 <script>
