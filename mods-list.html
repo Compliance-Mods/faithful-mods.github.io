@@ -34,9 +34,9 @@ title: Mods List
 
 <script>
 	function Download(ModsSelection) {
-		if (ModsSelection.lenght > 0){
+		if (ModsSelection.length > 0){
 			// Only one mod is selected:
-			if (ModsSelection.lenght == 1){
+			if (ModsSelection.length == 1){
 				var modver = ModsSelection.split('_');
 				var mod = modver[0];
 				var ver = modver[1].replace(new RegExp('-', 'g'), ".");
