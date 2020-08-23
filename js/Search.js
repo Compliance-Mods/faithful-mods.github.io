@@ -13,6 +13,6 @@ function Search(idSearchBar, idTable) {
       } else {
         tr[i].style.display = "none";
       }
-    }       
+    }
   }
 }
