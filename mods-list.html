@@ -13,7 +13,13 @@ title: Mods List
 	</tr>
 	{%- for mod in site.data.mods -%}
 	<tr>
-		<td>{{ mod.name }} {%- for version in mod.versions -%}<span class="badge badge-light">{{ version | replace: "-", "." }}</span>{%- endfor -%}</td>
+		<td>{{ mod.name | plus: " " }}
+			{%- for version in mod.versions -%}
+				<a href="https://github.com/Faithful-Mods/{{ mod }}/tree/{{ version | replace: "-", "." }}" class="badge badge-light">
+					{{ version | replace: "-", "." }}
+				</a>
+			{%- endfor -%}
+		</td>
 	</tr>
 	{%- endfor -%}
 </table>
