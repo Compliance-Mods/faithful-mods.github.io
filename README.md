@@ -13,3 +13,9 @@ Create a pull request, editing this [file](https://github.com/Faithful-Mods/Fait
     - 1-12-2 #replace dots with '-'
     - 1.7.10 #wrong name convention
 ```
+Don't forget to make a repository inside this organization, ask an admin.
+
+# Add a mod repository:
+Create a repository with the name of the mod, following the name it have in the assets folder, example:
+`assets/minecraft` -> use `minecraft`, not Minecraft or Mine craft,
+Create a branch for eachs versions supported.
