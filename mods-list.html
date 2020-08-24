@@ -3,6 +3,8 @@ layout: default
 title: Mods List
 ---
 
+<script src="https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.js"></script>
+
 <button id="ResultBtn" onclick="Download(ModsSelection)" class="btn btn-block btn-light disabled">Download Resource Pack</button>
 
 <br>
@@ -41,6 +43,7 @@ title: Mods List
 		var asClass = btn.classList.contains('disabled');
 		
 		if (ModsCount > 0 && asClass == false) {
+
 			if (ModsCount == 1) {
 					var modver = ModsSelection[0].split('_');
 						var mod = modver[0];
@@ -49,6 +52,8 @@ title: Mods List
 						window.open('https://github.com/Faithful-Mods/' + mod + '/archive/' + ver + '.zip', '_blank');
 				}
 			else {
+				var urlList = []
+
 				result.innerHTML = "not defined yet"
 			}
 		}
