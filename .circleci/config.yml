@@ -16,6 +16,10 @@ jobs:
       - checkout
 
       - run:
+          name: Uninstall bundler
+          command: gem uninstall bundler
+          
+      - run:
           name: Install bundler
           command: gem install bundler
 
@@ -26,9 +30,10 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v2-dependencies-
 
+
       - run:
           name: Ruby dependencies
-          command: bundle add jekyll
+          command: bundle install
 
       - run:
           name: Node dependencies
