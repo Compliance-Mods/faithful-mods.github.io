@@ -16,8 +16,9 @@ jobs:
       - checkout
 
       - run:
-          name: Install bundle
-          command: gem install bundle
+          name: Install bundler
+          command: 
+            - gem install bundler
 
       # Download and cache dependencies
       - restore_cache:
