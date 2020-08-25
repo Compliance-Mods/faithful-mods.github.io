@@ -1,3 +1,9 @@
+# _site files
+**/_site
+
+# Jekyll build process
+**.jekyll-cache
+
 # Logs
 logs
 *.log
