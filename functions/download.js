@@ -1,48 +1,48 @@
-const fs = require('fs');
-const path = require('path');
-const download = require('download-git-repo');
+/* eslint-disable promise/always-return */
+/* eslint-disable no-loop-func */
+const fs = require('fs')
+const os = require('os')
+const path = require('path')
+const download = require('download-git-repo')
 
 // generate custom named temp folder*
-function generateTempFolderName() {
-  return 'tmp' + new Date().getTime();
+function generateTempFolderName () {
+  return 'tmp' + new Date().getTime()
 }
 
-
-function downloadArchive(rootDestinationFolder, gitRepos) {
+function downloadArchive (rootDestinationFolder, gitRepos) {
   return new Promise((resolve, reject) => {
-    if (!gitRepos || !Array.isArray(gitRepos) || gitRepos.length === 0)
-      reject('Incorrect parameters');
+    if (!gitRepos || !Array.isArray(gitRepos) || gitRepos.length === 0) { reject(new Error('Incorrect parameters')) }
 
     // if we start the program, generate new folder
-    let dest = path.resolve(os.tmpdir() + '/', generateTempFolderName());
+    let dest = path.resolve(os.tmpdir() + '/', generateTempFolderName())
 
     fs.mkdir(dest, { recursive: true }, (err) => {
-      if (err)
-        reject(err);
-      else {
-        const nbOfRepos = gitRepos.length;
-        let reposDownloaded = 0;
+      if (err) { reject(err) } else {
+        const nbOfRepos = gitRepos.length
+        let reposDownloaded = 0
         while (gitRepos.length !== 0) {
-          const repo = gitRepos.pop();
+          const repo = gitRepos.pop()
 
-          downloadRepo(repo, dest).then(function() {
-            ++reposDownloaded;
+          downloadRepo(repo, dest).then(() => {
+            ++reposDownloaded
 
-            if (reposDownloaded === nbOfRepos)
-              resolve(dest);
-          }).catch(function(err) {
-            fs.unlinkSync(dest);
+            if (reposDownloaded === nbOfRepos) {
+              resolve(dest)
+            }
+          }).catch((err) => {
+            fs.unlinkSync(dest)
             reject(err)
           })
         }
       }
-    });
+    })
   })
 }
 
-function downloadRepo(repo, destination) {
+function downloadRepo (repo, destination) {
   return new Promise((resolve, reject) => {
-    download(repo, destination, function(err) {
+    download(repo, destination, (err) => {
       if (err) {
         reject(err)
       } else {
@@ -52,4 +52,4 @@ function downloadRepo(repo, destination) {
   })
 }
 
-module.exports = { downloadArchive: downloadArchive };
+module.exports = { downloadArchive: downloadArchive }
