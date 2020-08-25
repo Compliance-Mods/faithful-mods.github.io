@@ -31,7 +31,7 @@ function downloadArchive (rootDestinationFolder, gitRepos) {
               resolve(dest)
             }
           }).catch((err) => {
-            fs.unlinkSync(dest)
+            fs.rmdirSync(dest)
             reject(err)
           })
         }

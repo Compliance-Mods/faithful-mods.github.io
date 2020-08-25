@@ -14,12 +14,14 @@
   },
   "main": "index.js",
   "dependencies": {
-    "archiver": "^5.0.0",
+    "archiver": "^4.0.2",
     "download-git-repo": "^3.0.2",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1",
     "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "readdir-glob": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^5.12.0",

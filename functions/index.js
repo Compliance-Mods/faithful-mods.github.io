@@ -22,6 +22,7 @@ const FINAL_NAME = 'Faithful Mods Resource Pack'
 
 const BUCKET_FOLDER = 'temp'
 
+/*
 // Delete all the genrated packs every day (ABOUT MIDNIGHT EST)
 exports.deletePacks = functions.pubsub.schedule('0 4 * * *').onRun(async (cxt) => {
   const bucket = admin.storage().bucket() // Storage bucket
@@ -37,6 +38,7 @@ exports.deletePacks = functions.pubsub.schedule('0 4 * * *').onRun(async (cxt) =
     }
   })
 })
+*/
 
 exports.downloadArchive = functions.https.onRequest((req, res) => {
   res.set('Access-Control-Allow-Origin', process.env.NODE_ENV !== 'production' ? '*' : 'https://faithfultweaks.com')
