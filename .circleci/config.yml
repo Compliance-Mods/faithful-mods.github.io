@@ -8,8 +8,8 @@ version: 2
 jobs:
   build:
     machine:
-    node:
-      version: 12.18.3
+      node:
+        version: 12.18.3
 
     working_directory: ~/repo
 
