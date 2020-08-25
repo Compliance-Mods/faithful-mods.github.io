@@ -61,7 +61,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  jekyll
+  jekyll (~> 4.1)
 
 BUNDLED WITH
    2.1.4
