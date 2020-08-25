@@ -10,7 +10,7 @@ jobs:
     docker:
       - image: starefossen/ruby-node:2-8
 
-    working_directory: ~/
+    working_directory: ~/repo
 
     steps:
       - checkout
