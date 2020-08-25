@@ -10,7 +10,7 @@ function generateTempFolderName() {
 
 function downloadArchive(rootDestinationFolder, gitRepos) {
   return new Promise((resolve, reject) => {
-    if (!gitRepos || !Array.isArray(gitRepos) || gitRepos.length == 0)
+    if (!gitRepos || !Array.isArray(gitRepos) || gitRepos.length === 0)
       reject('Incorrect parameters');
 
     // if we start the program, generate new folder
@@ -22,13 +22,13 @@ function downloadArchive(rootDestinationFolder, gitRepos) {
       else {
         const nbOfRepos = gitRepos.length;
         let reposDownloaded = 0;
-        while (gitRepos.length != 0) {
+        while (gitRepos.length !== 0) {
           const repo = gitRepos.pop();
 
           downloadRepo(repo, dest).then(function() {
             ++reposDownloaded;
 
-            if (reposDownloaded == nbOfRepos)
+            if (reposDownloaded === nbOfRepos)
               resolve(dest);
           }).catch(function(err) {
             fs.unlinkSync(dest);
