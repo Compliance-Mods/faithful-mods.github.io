@@ -27,6 +27,10 @@ jobs:
           - v2-dependencies-
 
       - run:
+          name: Update bundle
+          command: bundler update --bundler
+
+      - run:
           name: Ruby dependencies
           command: bundle install
 
