@@ -14,8 +14,12 @@
   },
   "main": "index.js",
   "dependencies": {
+    "archiver": "^5.0.0",
+    "download-git-repo": "^3.0.2",
     "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.6.1"
+    "firebase-functions": "^3.6.1",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
