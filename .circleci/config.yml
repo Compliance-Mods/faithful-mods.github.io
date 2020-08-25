@@ -23,10 +23,12 @@ jobs:
           - v2-dependencies-
 
       - run:
-        command: gem install bundler -v "~>2.0"
+          name: install 2.0 bundler
+          command: gem install bundler -v "~>2.0"
 
       - run:
-        command: bundle version
+          name: check version
+          command: bundle version
 
       - run:
           name: Ruby dependencies
