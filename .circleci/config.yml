@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: Ruby dependencies
-          command: bundle install
+          command: bundle add jekyll
 
       - run:
           name: Node dependencies
