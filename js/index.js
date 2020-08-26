@@ -84,7 +84,7 @@ let v = new Vue({
         let tmp = this.packageVersion(this.modSelection[i].version)
 
         if(!packageVersionChanged) {
-          result = this.modSelection[i].version
+          result = tmp
         } else {
           packageVersionChanged = true
         }
@@ -92,7 +92,7 @@ let v = new Vue({
         ++i
       }
 
-      return packageVersionChanged ? undefined : result
+      return packageVersionChanged ? result : undefined
     },
     result: function() {
       return ''

@@ -43,7 +43,12 @@
 	},
 	{
 		"name": [
-			"Back"
-		]
+			"Backpacks",
+			"backpack"
+		],
+		"versions": [
+			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
 	}
 ]
