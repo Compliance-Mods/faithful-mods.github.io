@@ -1,8 +1,4 @@
-# _site files
-**/_site
-
-# Jekyll build process
-**.jekyll-cache
+.replit
 
 # Logs
 logs
