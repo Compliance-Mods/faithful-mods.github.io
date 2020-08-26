@@ -19,8 +19,7 @@ let v = new Vue({
     filteredMods: function() {
       if(this.form.search.length >= 3) {
         let name
-        return this.mods.filter((mod) => mod.name[0].toLowerCase().includes(this.form.search.toLowerCase())
-        })
+        return this.mods.filter((mod) => mod.name[0].toLowerCase().includes(this.form.search.toLowerCase()))
       }
       return this.mods;
     },
