@@ -73,18 +73,18 @@ let v = new Vue({
       // (list of package number must not change)
 
       // we need mods and versions to be loaded
-      if(!this.loading || !this.loadingVersions)
-        return false
+      if(this.loading || this.loadingVersions)
+        return undefined
 
       let result = undefined
       let packageVersionChanged = false
 
       let i = 0
-      while(i < modSelection.length && !packageVersionChanged) {
+      while(i < this.modSelection.length && !packageVersionChanged) {
         let tmp = this.packageVersion(modSelection[i].version)
 
         if(!packageVersionChanged) {
-          result = modSelection[i].version
+          result = this.modSelection[i].version
         } else {
           packageVersionChanged = true
         }
