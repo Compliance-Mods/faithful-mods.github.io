@@ -32,7 +32,7 @@ let v = new Vue({
       return ''
     },
     filteredMods: function() {
-      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.search.charAt(0))))
+      if(this.form.search.length >= 1 && !isNaN(parseInt(this.form.search.charAt(0))))
         return this.mods.filter(mod => {
           let versions = mod.versions
           let found = false
@@ -55,8 +55,8 @@ let v = new Vue({
       if(this.loading == true || this.mods.length == 0)
         return ''
 
-      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.search.charAt(0))) && this.filteredMods.length == 0)
-        return 'Cannot find version ' + this.form.search
+      if(this.form.search.length >= 1 && !isNaN(parseInt(this.form.search.charAt(0))) && this.filteredMods.length == 0)
+        return 'Cannot find mods for version ' + this.form.search
 
       if(this.form.search.length < this.form.minSearchLetters)
         return String((this.form.minSearchLetters - this.form.search.length) + ' ' + this.sentences.lettersLeft)

@@ -432,3 +432,7 @@ img[src$=".gif"] {
   right: 25px;
   font-size: 36px;
 }
+
+.modChosen {
+  background-color: #2979ff;
+}
