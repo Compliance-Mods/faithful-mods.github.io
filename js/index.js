@@ -55,7 +55,7 @@ let v = new Vue({
       if(loading == true || this.mods.length == 0)
         return ''
 
-      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0)) && this.filteredMods.length == 0)
+      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0))) && this.filteredMods.length == 0)
         return 'Cannot find version ' + this.form.search
 
       if(this.form.search.length < this.form.minSearchLetters)
