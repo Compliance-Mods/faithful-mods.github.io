@@ -5,8 +5,11 @@ title: Mods List
 
 <div id="app">
 	<button id="ResultBtn" v-on:click="download" class="btn btn-block btn-light disabled">Download Resource Pack</button><br>
+
+  <div>
   <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
-	
+  <div id="advice" v-text="searchAdvice"></div>
+	</div>
 	<hr>
 
   <div v-if='filteredMods.length == 0'>{{ emptyTable }}</div>
@@ -17,9 +20,9 @@ title: Mods List
         <input  :id="mod.name[0]" type="checkbox" v-model="mod.selected"> 
         <label :for="mod.name[0]" v-text="mod.name[0]"></label>
       </div>
-      <div v-show='mod.selected' class='version-radio-select'>
-        <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
-        <input type="radio" :id="modId(mod, version)" :name="mod.name[1]" v-model="mod.versionSelected" :value="version"> 
+      <div class='version-radio-select'>
+        <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light mr-1">
+        <input :disabled="mod.selected" type="radio" :id="modId(mod, version)" :name="mod.name[1]" v-model="mod.versionSelected" :value="version"> 
         <span v-text="version"></span>
       </label>
       </div>
@@ -29,8 +32,8 @@ title: Mods List
   <div id="Result" v-text="result"></div>
 </div>
 
-<script src="https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/polyfill.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/index.js"></script>
 

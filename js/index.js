@@ -5,11 +5,14 @@ let v = new Vue({
     mods: [],
     form: {
       search: '',
+      minSearchLetters: 3
     },
     sentences: {
+      searchAdvice: 'You can search by name or by version',
+      lettersLeft: 'letters to start search...',
       loading: 'Loading mods...',
       failed: 'Failed to load mods. Check console for more informations',
-      noresults: 'No results found for your search'
+      noresults: 'No results found for your search: '
     }
   },
   computed: {
@@ -17,10 +20,23 @@ let v = new Vue({
       return ''
     },
     filteredMods: function() {
-      if(this.form.search.length >= 3) {
-        let name
-        return this.mods.filter((mod) => mod.name[0].toLowerCase().includes(this.form.search.toLowerCase()))
-      }
+      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0)))
+        return this.mods.filter(mod => {
+          let versions = mod.versions
+          let found = false
+
+          let i = 0
+          while(i < versions.length && !found) {
+            found = mos.versions[i].startsWith(this.form.search)
+
+            ++i
+          }
+
+          return found
+        })
+
+      if(this.form.search.length >= this.form.minSearchLetters)
+        return this.mods.filter(mod => mod.name[0].toLowerCase().includes(this.form.search.toLowerCase()))
       return this.mods;
     },
     emptyTable: function() {
@@ -31,9 +47,19 @@ let v = new Vue({
         return this.sentences.failed
       
       if(this.filteredMods.length == 0)
-        return this.sentences.noresults
+        return this.sentences.noresults + this.form.search
       
       return ''
+    },
+    searchAdvice: function() {
+      if(loading == true || this.mods.length == 0)
+        return ''
+
+      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0)) && this.filteredMods.length == 0)
+        return 'Cannot find version ' + this.form.search
+
+      if(this.form.search.length < this.form.minSearchLetters)
+        return String((this.form.minSearchLetters - this.form.search.length) + ' ' + this.sentences.lettersLeft)
     }
   },
   methods: {
