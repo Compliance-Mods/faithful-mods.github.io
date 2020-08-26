@@ -73,7 +73,7 @@ let v = new Vue({
       // (list of package number must not change)
 
       // we need mods and versions to be loaded
-      if(!loading || !loadingVersions)
+      if(!this.loading || !this.loadingVersions)
         return false
 
       let result = undefined
