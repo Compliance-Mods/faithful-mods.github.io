@@ -4,11 +4,11 @@ title: Mods List
 ---
 
 <div id="app">
-  <button id="ResultBtn" v-on:click="download" class="btn btn-block btn-light disabled">Download Resource Pack</button><br><br>
-  <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search"><br><br>
+  <button id="ResultBtn" v-on:click="download" class="btn btn-block btn-light disabled">Download Resource Pack</button><br>
+  <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search"><br>
 
-  <table id="ModsTable" class="table table-dark">
   <div v-if='mods.length == 0'>{{ emptyTable }}</div>
+  <table id="ModsTable" class="table table-dark">
   <tr v-for='mod in mods' :key='mod'>
     <td>
       <span>{{ mod.name[0] }}</span>
