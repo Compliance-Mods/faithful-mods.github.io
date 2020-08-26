@@ -112,7 +112,7 @@ label {
   vertical-align: middle;
 }
 
-.version.modChosen {
+.version > .modChosen {
   background-color: #2979ff;
   color: white;
 }
