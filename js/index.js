@@ -39,7 +39,7 @@ let v = new Vue({
 
           let i = 0
           while(i < versions.length && !found) {
-            found = mos.versions[i].startsWith(this.form.search)
+            found = mod.versions[i].startsWith(this.form.search)
 
             ++i
           }
