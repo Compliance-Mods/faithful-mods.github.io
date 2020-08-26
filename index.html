@@ -1,6 +1,6 @@
---- 
-layout: default 
-title: Mods List 
+---
+layout: default
+title: Mods List
 ---
 
 <div id="app">
@@ -13,12 +13,16 @@ title: Mods List
   <table id="ModsTable" class="table table-dark">
   <tr v-for='mod in mods' :key='mod.name[0]'>
     <td>
-      <span>{{ mod.name[0] }}</span>
-      <input type="checkbox" v-model="mod.selected">
-      <label v-if='mod.selected' v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
+      <div>
+        <input type="checkbox" v-model="mod.selected">
+        <span v-text="mod.name[0]"></span>
+      </div>
+      <div v-if='mod.selected'>
+        <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
         <span>{{ version }}</span>
         <input type="radio" :id="modId(mod, version)" name="mod.name[1]" v-model="mod.versionSelected">
       </label>
+      </div>
     </td>
   </tr>
 </table>
