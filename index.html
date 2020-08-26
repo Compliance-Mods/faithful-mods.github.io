@@ -14,19 +14,19 @@ title: Mods List
   <tr v-for='mod in mods' :key='mod.name[0]'>
     <td>
       <div>
-        <input type="checkbox" v-model="mod.selected">
-        <span v-text="mod.name[0]"></span>
+        <input  :id="mod.name[0]" type="checkbox" v-model="mod.selected"> 
+        <label :for="mod.name[0]" v-text="mod.name[0]"></label>
       </div>
-      <div v-if='mod.selected'>
+      <div v-show='mod.selected'>
         <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
-        <span>{{ version }}</span>
         <input type="radio" :id="modId(mod, version)" name="mod.name[1]" v-model="mod.versionSelected">
+        <span v-text="version"></span>
       </label>
       </div>
     </td>
   </tr>
 </table>
-  <div id="Result">{{ result }}</div>
+  <div id="Result" v-text="result"></div>
 </div>
 
 <script src="https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.js"></script>
