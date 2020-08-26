@@ -433,6 +433,10 @@ img[src$=".gif"] {
   font-size: 36px;
 }
 
+.modNotChosen {
+  opacity: 0.75;
+}
+
 .modChosen {
   background-color: #2979ff;
   color: white;
