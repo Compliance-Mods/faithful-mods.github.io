@@ -19,8 +19,20 @@ let v = new Vue({
     result: function() {
       return ''
     },
+    emptyTable: function() {
+      if(this.loading == true)
+        return this.sentences.loading
+
+      if(this.mods.length == 0)
+        return this.sentences.failed
+      
+      if(this.filteredMods.length == 0)
+        return this.sentences.noresults + this.form.search
+      
+      return ''
+    },
     filteredMods: function() {
-      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0))))
+      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.search.charAt(0))))
         return this.mods.filter(mod => {
           let versions = mod.versions
           let found = false
@@ -38,18 +50,6 @@ let v = new Vue({
       if(this.form.search.length >= this.form.minSearchLetters)
         return this.mods.filter(mod => mod.name[0].toLowerCase().includes(this.form.search.toLowerCase()))
       return this.mods;
-    },
-    emptyTable: function() {
-      if(this.loading == true)
-        return this.sentences.loading
-
-      if(this.mods.length == 0)
-        return this.sentences.failed
-      
-      if(this.filteredMods.length == 0)
-        return this.sentences.noresults + this.form.search
-      
-      return ''
     },
     searchAdvice: function() {
       if(this.loading == true || this.mods.length == 0)
