@@ -22,7 +22,7 @@ let v = new Vue({
   computed: {
     canPackMods: function() {
       return this.modPackageVersion != undefined
-    }
+    },
     emptyTable: function() {
       if(this.loading == true)
         return this.sentences.loading
