@@ -92,7 +92,7 @@ let v = new Vue({
         ++i
       }
 
-      return packageVersionChanged ? undefined : true
+      return packageVersionChanged ? undefined : result
     },
     result: function() {
       return ''
