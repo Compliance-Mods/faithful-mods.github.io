@@ -18,7 +18,7 @@ let v = new Vue({
     }
   },
   mounted: function() {
-    getJSON('data/mods.json', (json) => {
+    getJSON('data/mods.json', (err, json) => {
       this.mods = json
     })
   }
