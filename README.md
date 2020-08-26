@@ -7,18 +7,16 @@ Create a pull request, editing this [file](https://github.com/Faithful-Mods/Fait
 > The repository doesn't need to be in the Faithful-Mods organization, it can be yours.
 
 ```
-[
-	{
-    "name": [
-      "Mod Name",				// name displayed on our website, use capital letters
-      "modname"					// name from '/assets' folder
-    ],
-    "versions": [				// version available for the resource pack
-      "1.12.2",							// -> add version for each branch
-      "1.11.2",
-      "1.10.2"
-    ],
-		"repository": "Faithful-Mods" // take it from the repo url: https://github.com/**Faithful-Mods**/modname
-  }
-]
+[{
+  "name": [
+    "Mod Name",        // name displayed on our website, use capital letters
+    "modname"          // name from '/assets' folder
+  ],
+  "versions": [        // version available for the resource pack
+    "1.12.2",              // -> add version for each branch
+    "1.11.2",
+    "1.10.2"
+  ],
+  "repository": "Faithful-Mods" // take it from the repo url: https://github.com/**Faithful-Mods**/modname
+}]
 ```

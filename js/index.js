@@ -28,6 +28,10 @@ let v = new Vue({
   },
   mounted: function() {
     getJSON('data/mods.json', (err, json) => {
+      if(err) {
+        console.error(err);
+        return;
+      }
       this.mods = json
     })
   }

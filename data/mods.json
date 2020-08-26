@@ -26,6 +26,9 @@
 			"Advanced Rocketry",
 			"advancedrocketry"
 		],
-		"versions"
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
 	}
 ]
