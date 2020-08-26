@@ -13,8 +13,8 @@ title: Mods List
     <td>
       <span>{{ mod.name[0] }}</span>
       <input type="checkbox" v-model="mod.selected">
-      <label for="version in mod.versions" :key="String(mod.name[1] + '-' + version)" :id="mod.name[1] + '-' + version" class="badge badge-light">{{ version }}
-        <input type="radio" :id="mod.name[1] + '-' + version">
+      <label for="modversion in mod.versions" :key="String(mod.name[1] + '-' + modversion)" :id="mod.name[1] + '-' + version" class="badge badge-light">{{ modversion }}
+        <input type="radio" :id="mod.name[1] + '-' + modversion">
       </label>
     </td>
   </tr>
