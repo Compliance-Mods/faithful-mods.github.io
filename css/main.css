@@ -5,7 +5,14 @@ html {
 header, footer {
 	padding: 2rem 1rem;
 	text-align: center;
-	background: #141519
+	background: #232323
+}
+footer {
+	padding-top: 10px;
+	padding-bottom: 0px;
+	position:fixed;
+	bottom:0;
+	width:100%;
 }
 main {
 	margin: 30px 0
@@ -59,7 +66,7 @@ main {
 	background: #2D2E32
 }
 body {
-	background: #141519;
+	background: #171717;
 	color: #fff
 }
 p {
@@ -82,8 +89,9 @@ h2, h3, h4, h5 {
 	width: 100%;
 	font-size: 16px;
 	padding: 12px 20px 12px 40px;
-	border: 1px solid #ddd;
+	border: 1px solid #868686;
 	margin-bottom: 12px;
+	border-radius: 8px
 }
 
 label {
