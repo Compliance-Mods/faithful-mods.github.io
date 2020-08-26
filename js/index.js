@@ -12,7 +12,8 @@ let v = new Vue({
       lettersLeft: 'letters to start search...',
       loading: 'Loading mods...',
       failed: 'Failed to load mods. Check console for more informations',
-      noresults: 'No results found for your search: '
+      noresults: 'No results found for your search: ',
+      typeAnotherVersion: ''
     }
   },
   computed: {
@@ -25,6 +26,9 @@ let v = new Vue({
 
       if(this.mods.length == 0)
         return this.sentences.failed
+
+      if(this.form.search.length >= 1 && !isNaN(parseInt(this.form.search.charAt(0))) && this.filteredMods.length == 0)
+
       
       if(this.filteredMods.length == 0)
         return this.sentences.noresults + this.form.search
@@ -56,7 +60,7 @@ let v = new Vue({
         return ''
 
       if(this.form.search.length >= 1 && !isNaN(parseInt(this.form.search.charAt(0))) && this.filteredMods.length == 0)
-        return 'Cannot find mods for version ' + this.form.search
+        return 'Try to type another version than' + ' ' + this.form.search
 
       if(this.form.search.length < this.form.minSearchLetters)
         return String((this.form.minSearchLetters - this.form.search.length) + ' ' + this.sentences.lettersLeft)
