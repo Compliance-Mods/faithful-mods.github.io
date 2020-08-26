@@ -90,12 +90,31 @@ h2, h3, h4, h5 {
 	font-size: 16px;
 	padding: 12px 20px 12px 40px;
 	border: 1px solid #868686;
-	margin-bottom: 12px;
 	border-radius: 8px
+}
+
+#advice {
+	margin: 1px 0 12px;
+	font-size: 0.75em;
+	opacity: 0.75;
 }
 
 label {
 	display: inline
+}
+
+.modNotChosen {
+  opacity: 0.7;
+}
+
+.version > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.version.modChosen {
+  background-color: #2979ff;
+  color: white;
 }
 
 .btn, .table {
@@ -431,13 +450,4 @@ img[src$=".gif"] {
   top: 0;
   right: 25px;
   font-size: 36px;
-}
-
-.modNotChosen {
-  opacity: 0.75;
-}
-
-.modChosen {
-  background-color: #2979ff;
-  color: white;
 }
