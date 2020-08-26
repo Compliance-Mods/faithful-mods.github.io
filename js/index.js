@@ -18,7 +18,7 @@ let v = new Vue({
     },
     filteredMods: function() {
       if(this.form.search.length >= 3) {
-        return this.mods.map(mod => mod.name[1].toLowerCase().contains(this.form.search.toLowerCase()))
+        return this.mods.map(mod => mod.name[0].toLowerCase().contains(this.form.search.toLowerCase()))
       }
       return this.mods;
     },
@@ -40,7 +40,7 @@ let v = new Vue({
       console.log('Hello World!')
     },
     modId: function(mod, version) {
-      return String(mod.name[1] + '-' + version.replaceAll('.',''))
+      return String(mod.name[1] + '-' + version.replace(/\./g,''))
     }
   },
   mounted: function() {
