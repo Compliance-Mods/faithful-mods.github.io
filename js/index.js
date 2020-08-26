@@ -17,12 +17,13 @@ let v = new Vue({
       noResultsVersion:  'Nor results foud for version',
       typeAnotherVersion: 'Try to type another version than'
     },
-    versions: []
+    versions: {}
   },
   computed: {
-    result: function() {
-      return ''
-    },
+    canPackMods: functions() {
+      // you can pack mods if they have the same package version number
+      // (list of package number must not change)
+    }
     emptyTable: function() {
       if(this.loading == true)
         return this.sentences.loading
@@ -68,6 +69,9 @@ let v = new Vue({
         }
       })
     },
+    result: function() {
+      return ''
+    },
     searchAdvice: function() {
       if(this.loading == true || this.mods.length == 0)
         return ''
@@ -85,6 +89,11 @@ let v = new Vue({
     },
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
+    },
+    packageVersion: function(version) {
+      const numbers = version.split('.')
+
+      
     }
   },
   mounted: function() {
