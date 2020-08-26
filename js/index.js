@@ -1,10 +1,15 @@
 let v = new Vue({
   el: '#app',
   data: {
-    emptyTable: 'Loading mods...',
+    loading: true,
     mods: [],
     form: {
       search: '',
+    },
+    sentences: {
+      loading: 'Loading mods...',
+      failed: 'Failed to load mods. Check console for more informations',
+      noresults: 'No results found for your search'
     }
   },
   computed: {
@@ -13,9 +18,21 @@ let v = new Vue({
     },
     filteredMods: function() {
       if(this.form.search.length >= 3) {
-        return this.mods.map(mod => mod.includes(this.form.search))
+        return this.mods.map(mod => mod.contains(this.form.search))
       }
       return this.mods;
+    },
+    emptyTable: function() {
+      if(loading == true)
+        return this.sentences.loading
+
+      if(this.mods.length == 0)
+        return this.sentences.failed
+      
+      if(this.filteredMods.length == 0)
+        return this.sentences.noresults
+      
+      return ''
     }
   },
   methods: {
@@ -23,7 +40,7 @@ let v = new Vue({
       console.log('Hello World!')
     },
     modId: function(mod, version) {
-      return String(mod.name[1] + '-' + version)
+      return String(mod.name[1] + '-' + version.replaceAll('.',''))
     }
   },
   mounted: function() {
@@ -32,6 +49,7 @@ let v = new Vue({
         console.error(err);
         return;
       }
+      this.loading = false
       this.mods = json
     })
   }

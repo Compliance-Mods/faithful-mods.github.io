@@ -19,7 +19,7 @@ title: Mods List
       </div>
       <div v-show='mod.selected' class='version-radio-select'>
         <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
-        <input type="radio" :id="modId(mod, version)" :name="mod.name[1]" v-model="mod.versionSelected"> 
+        <input type="radio" :id="modId(mod, version)" :name="mod.name[1]" v-model="mod.versionSelected" :value="version"> 
         <span v-text="version"></span>
       </label>
       </div>
