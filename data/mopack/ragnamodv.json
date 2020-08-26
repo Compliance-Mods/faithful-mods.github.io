@@ -134,6 +134,8 @@
 			"NotEnoughIDs",
 			"NuclearCraft",
 			"OpenBlocks",
+			"OpenComputers",
+			"OpenModsLib"
 		]
 	}
 ]
