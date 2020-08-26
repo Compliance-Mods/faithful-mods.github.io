@@ -1,6 +1,7 @@
 let v = new Vue({
   el: '#app',
   data: {
+    emptyTable: 'Loading mods...',
     mods: [],
     form: {
       search: '',
@@ -13,7 +14,12 @@ let v = new Vue({
   },
   methods: {
     download: function() {
-      console.log('Hello World!');
+      console.log('Hello World!')
     }
+  },
+  mounted: function() {
+    getRequest('data/mods.json', (json) => {
+      this.mods = json
+    })
   }
 })

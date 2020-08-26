@@ -11,11 +11,11 @@ Create a pull request, editing this [file](https://github.com/Faithful-Mods/Fait
 [
 	{
     "name": [
-      "Mod Name",					// name displayed on our website, use capital letters
-      "modname"						// name from '/assets' folder
+      "Mod Name",				// name displayed on our website, use capital letters
+      "modname"					// name from '/assets' folder
     ],
-    "versions": [					// version available for the resource pack
-      "1.12.2",								// -> add version for each branch
+    "versions": [				// version available for the resource pack
+      "1.12.2",							// -> add version for each branch
       "1.11.2",
       "1.10.2"
     ],
