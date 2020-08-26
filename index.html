@@ -12,9 +12,9 @@
     <td>
       <span>{{ mod.name[0] }}</span>
       <input type="checkbox" v-model="mod.selected">
-      <label v-if='mod.selected' v-for="version in mod.versions" :key="String(mod.name[1] + '-' + version)" :id="mod.name[1] + '-' + version" class="badge badge-light">
+      <label v-if='mod.selected' v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
         <span>{{ version }}</span>
-        <input type="radio" :id="mod.name[1] + '-' + version" name="mod.name[1]">
+        <input type="radio" :id="modId(mod, version)" name="mod.name[1]" v-model="mod.versionSelected">
       </label>
     </td>
   </tr>

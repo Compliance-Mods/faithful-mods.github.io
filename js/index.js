@@ -15,6 +15,9 @@ let v = new Vue({
   methods: {
     download: function() {
       console.log('Hello World!')
+    },
+    modId: function(mod, version) {
+      return String(mod.name[1] + '-' + version)
     }
   },
   mounted: function() {
