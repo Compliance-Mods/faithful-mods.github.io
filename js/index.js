@@ -40,7 +40,7 @@ let v = new Vue({
       return this.mods;
     },
     emptyTable: function() {
-      if(loading == true)
+      if(this.loading == true)
         return this.sentences.loading
 
       if(this.mods.length == 0)
@@ -52,7 +52,7 @@ let v = new Vue({
       return ''
     },
     searchAdvice: function() {
-      if(loading == true || this.mods.length == 0)
+      if(this.loading == true || this.mods.length == 0)
         return ''
 
       if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0))) && this.filteredMods.length == 0)
