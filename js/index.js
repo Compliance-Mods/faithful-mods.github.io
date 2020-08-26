@@ -10,6 +10,12 @@ let v = new Vue({
   computed: {
     result: function() {
       return ''
+    },
+    filteredMods: function() {
+      if(this.form.search.length >= 3) {
+        return this.mods.map(mod => mod.includes(this.form.search))
+      }
+      return this.mods;
     }
   },
   methods: {

@@ -11,15 +11,15 @@ title: Mods List
 
   <div v-if='mods.length == 0'>{{ emptyTable }}</div>
   <table id="ModsTable" class="table table-dark">
-  <tr v-for='mod in mods' :key='mod.name[0]'>
+  <tr v-for='mod in filteredMods' :key='mod.name[0]'>
     <td>
       <div>
         <input  :id="mod.name[0]" type="checkbox" v-model="mod.selected"> 
         <label :for="mod.name[0]" v-text="mod.name[0]"></label>
       </div>
-      <div v-show='mod.selected'>
+      <div v-show='mod.selected' class='version-radio-select'>
         <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" class="badge badge-light">
-        <input type="radio" :id="modId(mod, version)" name="mod.name[1]" v-model="mod.versionSelected">
+        <input type="radio" :id="modId(mod, version)" :name="mod.name[1]" v-model="mod.versionSelected"> 
         <span v-text="version"></span>
       </label>
       </div>
