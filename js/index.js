@@ -20,9 +20,8 @@ let v = new Vue({
     versions: {}
   },
   computed: {
-    canPackMods: functions() {
-      // you can pack mods if they have the same package version number
-      // (list of package number must not change)
+    canPackMods: function() {
+      return this.modPackageVersion != undefined
     }
     emptyTable: function() {
       if(this.loading == true)
@@ -32,7 +31,7 @@ let v = new Vue({
         return this.sentences.failed
 
       if(this.form.search.length >= 1 && !isNaN(parseInt(this.form.search.charAt(0))) && this.filteredMods.length == 0)
-        return this.sentences.noResultsVersion + ' '  + this.form.search
+        return this.sentences.noResultsVersion + ' ' + this.form.search
       
       if(this.filteredMods.length == 0)
         return this.sentences.noresults + this.form.search
@@ -69,6 +68,32 @@ let v = new Vue({
         }
       })
     },
+    modPackageVersion: function() {
+      // you can pack mods if they have the same package version number
+      // (list of package number must not change)
+
+      // we need mods and versions to be loaded
+      if(!loading || !loadingVersions)
+        return false
+
+      let result = undefined
+      let packageVersionChanged = false
+
+      let i = 0
+      while(i < modSelection.length && !packageVersionChanged) {
+        let tmp = this.packageVersion(modSelection[i].version)
+
+        if(!packageVersionChanged) {
+          result = modSelection[i].version
+        } else {
+          packageVersionChanged = true
+        }
+
+        ++i
+      }
+
+      return packageVersionChanged ? undefined : result
+    },
     result: function() {
       return ''
     },
@@ -90,10 +115,27 @@ let v = new Vue({
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
-    packageVersion: function(version) {
-      const numbers = version.split('.')
+    packageVersion: function(modVersion) {
+      const versionKeys = Object.keys(this.versions);
 
-      
+      let i = 0;
+      let result = -1;
+      while(i < versionKeys && version == -1) {
+        if(modVersion >= this.versions[versionKeys[i]].min && (result == null || modVersion <= this.versions[versionKeys[i]].max)) {
+          result = versionKeys
+        }
+
+        ++i
+      }
+
+      if(result == -1) {
+        if(versionKeys.length == 0)
+          throw 'No versions file';
+        else
+          return versionKeys[versionKeys.length -1]
+      }
+
+      return result
     }
   },
   mounted: function() {

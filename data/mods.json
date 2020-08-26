@@ -30,5 +30,15 @@
 			"1.12.2"
 		],
 		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Advancement Book",
+			"advancementbook"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
 	}
 ]
