@@ -20,8 +20,8 @@ title: Mods List
         <input  :id="mod.name[0]" type="checkbox" v-model="mod.selected"> 
         <label :for="mod.name[0]" v-text="mod.name[0]"></label>
       </div>
-      <div class='version-radio-select'>
-        <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" :class="{'badge': true, 'badge-light': true, 'mb-0': true, 'mr-1': true, 'modChosen': mod.versionSelected == version}">
+      <div :class="{'version-radio-select': true, modNotChosen: !mod.selected}">
+        <label v-for="version in mod.versions" :key="modId(mod, version)" :id="modId(mod, version)" :class="{'badge': true, 'badge-light': true, 'mb-0': true, 'mr-1': true, 'modChosen': mod.selected && mod.versionSelected == version}">
         <input :disabled="!mod.selected" type="radio" :id="modId(mod, version)" :name="mod.name[1]" v-model="mod.versionSelected" :value="version"> 
         <span v-text="version"></span>
       </label>

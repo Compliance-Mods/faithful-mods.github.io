@@ -435,4 +435,5 @@ img[src$=".gif"] {
 
 .modChosen {
   background-color: #2979ff;
+  color: white;
 }
