@@ -67,7 +67,7 @@ let v = new Vue({
           version: mod.versionSelected
         }
       })
-    }
+    },
     searchAdvice: function() {
       if(this.loading == true || this.mods.length == 0)
         return ''
