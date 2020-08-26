@@ -1,5 +1,18 @@
 [
-	"name": "Ragnamod V"
-	"version": "5.8.0"
-	"mods"
+	{
+		"name": "Ragnamod V",
+		"modpack-version": "5.8.0",
+		"version": "1.12.2",
+		"mods": [
+			"abyssalcraft",
+			"actuallyadditions",
+			"advancedrocketry",
+			"aroma1997core",
+			"astralsorcery",
+			"betterquesting",
+			"betterquesting-standarexpansion",
+			"binnie'smods",
+			"bonsaitrees2"
+		]
+	}
 ]
