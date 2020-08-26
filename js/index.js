@@ -20,7 +20,7 @@ let v = new Vue({
       return ''
     },
     filteredMods: function() {
-      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0)))
+      if(this.form.search.length >= 2 && !isNaN(parseInt(this.form.seach.charAt(0))))
         return this.mods.filter(mod => {
           let versions = mod.versions
           let found = false
