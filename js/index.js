@@ -120,7 +120,7 @@ let v = new Vue({
 
       let i = 0;
       let result = -1;
-      while(i < versionKeys && version == -1) {
+      while(i < versionKeys && result == -1) {
         if(modVersion >= this.versions[versionKeys[i]].min && (result == null || modVersion <= this.versions[versionKeys[i]].max)) {
           result = versionKeys
         }

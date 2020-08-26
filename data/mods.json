@@ -47,7 +47,8 @@
 			"backpack"
 		],
 		"versions": [
-			"1.8.9"
+			"1.8.9",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	}
