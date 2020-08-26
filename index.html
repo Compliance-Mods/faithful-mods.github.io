@@ -3,36 +3,29 @@ layout: default
 title: Mods List
 ---
 
-<script src="https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.js"></script>
+<div id="app">
+  <button id="ResultBtn" v-on:click="download" class="btn btn-block btn-light disabled">Download Resource Pack</button>
+  <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
 
-<button id="ResultBtn" onclick="Download(ModsSelection)" class="btn btn-block btn-light disabled">Download Resource Pack</button>
-
-<br>
-
-<input id="SearchBar" type="text" onkeyup="Search()" placeholder="Search for mods or MC version.." title="Type something">
-
-<br>
-
-{%- assign space = " " -%}
-
-<table id="ModsTable" class="table table-dark">
-	{%- for mod in site.data.mods -%}
-	<tr>
-		<td>
-			{{ mod.name[0] }}
-			{%- for version in mod.versions -%}
-				{{ space }}
-				<label class="badge badge-light">
-					<input onchange="Selection('{{ mod.name[1] | append: "_" | append: version }}')" type="checkbox" id="{{ mod.name[1] | append: "_" | append: version }}" name="{{ mod.name[1] | append: "_" | append: version }}">
-					{{ version | replace: "-", "." }}
-				</label>
-			{%- endfor -%}
-		</td>
-	</tr>
-	{%- endfor -%}
+  <table id="ModsTable" class="table table-dark">
+  <tr v-for='mod in mods' :key='mod'>
+    <td>
+      <span>{{ mod.name[0] }}</span>
+      <input type="checkbox" v-model="mod.selected">
+      <label for="version in mod.versions" class="badge badge-light">
+        <input type="radio" v-model="version.selected">
+      </label>
+    </td>
+  </tr>
 </table>
+  <div id="Result">{{ result }}</div>
+</div>
 
-<p id="Result"></p>
+
+<script src="https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/index.js"></script>
 
 <script>
 	function Download() {
