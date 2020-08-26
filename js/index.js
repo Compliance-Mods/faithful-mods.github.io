@@ -61,9 +61,11 @@ let v = new Vue({
     modSelection: function() {
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
 
-      return selection.map(mod => return {
-        name: mod.name[1],
-        version: mod.versionSelected
+      return selection.map(mod => {
+        return {
+          name: mod.name[1],
+          version: mod.versionSelected
+        }
       })
     }
     searchAdvice: function() {
