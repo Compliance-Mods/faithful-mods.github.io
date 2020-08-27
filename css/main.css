@@ -179,7 +179,7 @@ pre {
 .lang-json {
 	color: orange;
 }
-.hljs-attr {
+.hljs-attr, .hljs-string {
 	color: darkcyan;
 }
 .hljs-number {
