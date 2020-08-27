@@ -14,7 +14,7 @@ let v = new Vue({
       loading: 'Loading mods...',
       failed: 'Failed to load mods. Check console for more informations',
       noresults: 'No results found for your search: ',
-      noResultsVersion:  'Nor results foud for version',
+      noResultsVersion:  'Nor results found for version',
       typeAnotherVersion: 'Try to type another version than'
     },
     versions: {}
@@ -120,7 +120,7 @@ let v = new Vue({
         }
       }
 
-      return numbers.map(parseInt)
+      return numbers.map(number => parseInt(number))
     },
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
