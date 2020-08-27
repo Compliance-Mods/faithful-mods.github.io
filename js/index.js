@@ -145,7 +145,7 @@ let v = new Vue({
         }
 
         if(same) {
-          result = this.versionKeys[i]
+          result = versionKeys[i]
         }
 
         ++i
