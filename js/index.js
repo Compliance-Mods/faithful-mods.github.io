@@ -89,23 +89,35 @@ let v = new Vue({
         return undefined
 
       let result = undefined
-      let packageVersionChanged = false
+      let versionChanged = false
+      let minecraftVersion = undefined
 
       let i = 0
-      while(i < this.modSelection.length && !packageVersionChanged) {
-        let tmp = this.packageVersion(this.modSelection[i].version)
+      while(i < this.modSelection.length && !versionChanged) {
+        if(this.exactVersionMode) {
+          let tmp = this.modSelection[i].version
 
-        if(result == undefined) {
-          result = tmp
+          if(minecraftVersion == undefined) {
+            minecraftVersion = tmp
+          } else {
+            if(minecraftVersion != tmp)
+              versionChanged = true
+          }
         } else {
-          if(result != tmp)
-            packageVersionChanged = true
+          let tmp = this.packageVersion(this.modSelection[i].version)
+
+          if(result == undefined) {
+            result = tmp
+          } else {
+            if(result != tmp)
+              versionChanged = true
+          }
         }
 
         ++i
       }
 
-      return packageVersionChanged ? undefined : result
+      return versionChanged ? undefined : (result || minecraftVersion)
     },
     result: function() {
       return ''
