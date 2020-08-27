@@ -1,14 +1,11 @@
----
-layout: default
-title: Help us!
----
+--- layout: default title: Help us! ---
 
-<h1 id="how-to-add-a-mods-ressource-pack-">How to add a Mods ressource pack:</h1>
+<h1>How to add a Mods resource pack:</h1>
 
 <blockquote>
-    <p>
-        You need to have an <a href="https://github.com/">GitHub</a> account first
-        <br>
+	<p>
+		You need to have an <a href="https://github.com/">GitHub</a> account first
+		<br>
         You need to verify if the Mod doesn&#39;t already have a repository
     </p>
 </blockquote>
@@ -24,13 +21,16 @@ title: Help us!
     <li>
         <p>Add your textures, use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
 
-        <pre><code class="lang-json">
-{
-    <span class="hljs-attr">"pack"</span>:{
-    <span class="hljs-attr">"pack_format"</span>: <span class="hljs-number">3</span>,
-    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Faithful Mods"</span>
-    }
-}</code></pre>
+        <pre>
+					<code class="language-json">
+				{
+					"pack":{
+					"pack_format": 3,
+					"description": "Faithful Mods"
+					}
+				}
+					</code>
+				</pre>
         <blockquote>
             <p>The <code>&quot;pack_format&quot;</code> can be found <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
         </blockquote>
@@ -43,31 +43,31 @@ title: Help us!
         <p>Then make a pull request modifying this <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">file</a> following this setup:</p>
 
         <pre>
-            <code class="lang-json">
-[
-    {
-        ... already existing mod ...
-    },
-    {
-        <span class="hljs-string">"name"</span>: [
-            <span class="hljs-string">"Actually Additions"</span>,     <span class="hljs-comment">// Name with capital &amp; spaces</span>
-            <span class="hljs-string">"actuallyadditions"</span>       <span class="hljs-comment">// Name from the `assets` file</span>
-        ],
-        <span class="hljs-string">"versions"</span>: [                 <span class="hljs-comment">// Add supported versions</span>
-            <span class="hljs-string">"1.12.2"</span>,
-            <span class="hljs-string">"1.10.2"</span>
-        ],
+          <code class="language-json">
+				[
+						{
+								... already existing mod ...
+						},
+						{
+								"name": [
+										"Actually Additions",     // Name with capital & spaces
+										"actuallyadditions"       // Name from the `assets` file
+								],
+								"versions": [                 // Add supported versions
+										"1.12.2",
+										"1.10.2"
+								],
 
-        <span class="hljs-comment">// Get the repository owner, can be your username or the organization name</span>
-        <span class="hljs-comment">// You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username</span>
+								// Get the repository owner, can be your username or the organization name
+								// You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
 
-        <span class="hljs-string">"repository"</span>: <span class="hljs-string">"Faithful-Mods"</span>
-    },
-    {
-        ... already existing mod ...
-    }
-]
-            </code>
+								"repository": "Faithful-Mods"
+						},
+						{
+								... already existing mod ...
+						}
+				]
+          </code>
         </pre>
 
         <blockquote>

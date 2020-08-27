@@ -13,7 +13,7 @@ footer {
 	width:100%;
 	padding: 2rem 1rem;
 	text-align: center;
-	background: #232323;
+	background: #232323
 }
 main {
 	margin: 30px 0
@@ -34,7 +34,7 @@ main {
 }
 /* Carousel arrow hover animation */
 .item img {
-  margin: 0 auto;
+  margin: 0 auto
 }
 
 /* Dark colors */
@@ -58,7 +58,8 @@ main {
 	background: #878787
 }
 .card {
-	background: #2D2E32
+	background: #2D2E32;
+  border-radius: 8px
 }
 body {
 	background: #171717;
@@ -91,7 +92,7 @@ h2, h3, h4, h5 {
 #advice {
 	margin: 1px 0 12px;
 	font-size: 0.75em;
-	opacity: 0.75;
+	opacity: 0.75
 }
 
 label {
@@ -99,28 +100,28 @@ label {
 }
 
 .modNotChosen {
-  opacity: 0.7;
+  opacity: 0.7
 }
 
 .version > * {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 .version > .modChosen {
   background-color: #2979ff;
-  color: white;
+  color: white
 }
 
 .btn, .table {
   border-radius: 8px
 }
 
-img .center {	
+.center {	
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 50%
 }
 
 /* Flexbox */
@@ -167,7 +168,7 @@ img .center {
 }
 .navbar-gallery {
 	z-index: 0;
-	background: #1C1C1C;
+	background: #1C1C1C
 }
 
 @media (min-width: 800px) {
@@ -176,24 +177,7 @@ img .center {
 	}
 	.custom-navbar {
 		display: inline-flex
-	}
-}
-
-/* json code block */
-pre {
-	background-color: #1f1d1a;
-}
-.lang-json {
-	color: orange;
-}
-.hljs-attr, .hljs-string {
-	color: darkcyan;
-}
-.hljs-number {
-	color: mediumpurple;
-}
-.hljs-comment {
-	color: lightgray;
+ray
 }
 
 /* Header images*/
@@ -261,7 +245,8 @@ pre {
 }
 
 .card-img-top {
-	border-radius: 5px;
+	border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 	cursor: pointer;
 	transition: 0.3s;
 	color: #000
