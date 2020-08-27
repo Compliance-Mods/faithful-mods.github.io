@@ -126,15 +126,15 @@ let v = new Vue({
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
     packageVersion: function(modVersion) {
-      const numbers = minecratVersionToNumberArray(modVersion)
+      const numbers = this.minecratVersionToNumberArray(modVersion)
 
       const versionKeys = Object.keys(this.versions)
 
       let i = 0
       let result = -1
       while(i < versionKeys.length && result == -1) {
-        otherNumbersMin = minecratVersionToNumberArray(this.versions[versionKeys[i]].min)
-        otherNumbersMax = minecratVersionToNumberArray(this.versions[versionKeys[i]].max)
+        otherNumbersMin = this.minecratVersionToNumberArray(this.versions[versionKeys[i]].min)
+        otherNumbersMax = this.minecratVersionToNumberArray(this.versions[versionKeys[i]].max)
 
         let a = 0
         let same = true
