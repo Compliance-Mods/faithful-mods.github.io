@@ -84,6 +84,9 @@ let v = new Vue({
         }
       })
     },
+    downloadButtonText: function() {
+      return this.isLoadingDownload ? '<i class="fas fa-spinner fa-spin"></i> Sending request...' : 'Download Resource Pack'
+    },
     downloadReposModSelection: function() {
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
 
