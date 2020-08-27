@@ -87,7 +87,7 @@ let v = new Vue({
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
 
       return selection.map(mod => {
-        return mod.repository + '/' + mod.name + '#' + mod.versionSelected
+        return mod.repository + '/' + mod.name[1] + '#' + mod.versionSelected
       })
     },
     modPackageVersion: function() {
