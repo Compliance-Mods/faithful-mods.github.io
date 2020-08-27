@@ -62,8 +62,12 @@ let v = new Vue({
       if(this.loadingVersions)
         return false;
 
-      const minNumberMinecraft = this.minecraftVersionsToNumbers([this.minecraftVersionToNumberArray(this.versions['1'].min)])[0]
-      return this.modSelection.findIndex(mod => this.minecraftVersionsToNumbers([this.minecraftVersionToNumberArray(mod.version)])[0] < minNumberMinecraft) != -1
+      
+      return this.modSelection.findIndex(mod => {
+        const correspondingNumbers = this.minecraftVersionsToNumbers([this.minecraftVersionToNumberArray(this.versions['1'].min), this.minecraftVersionToNumberArray(mod.version)])
+
+        return correspondingNumbers[1] < correspondingNumbers[0]
+      })
     },
     modSelection: function() {
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
