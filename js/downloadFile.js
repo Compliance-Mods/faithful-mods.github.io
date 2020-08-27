@@ -4,13 +4,16 @@ function downloadFile(url) {
   req.responseType = "blob";
 
   req.onload = function (event) {
+    if(req.status !== 200)
+      throw req
+    
     var blob = req.response;
     var fileName = null;
-    var contentType = req.getResponseHeader("content-type");
+    var contentType = req.getResponseHeader("Content-Type");
 
     // IE/EDGE seems not returning some response header
-    if (req.getResponseHeader("content-disposition")) {
-      var contentDisposition = req.getResponseHeader("content-disposition");
+    if (req.getResponseHeader("Content-Disposition")) {
+      var contentDisposition = req.getResponseHeader("Content-Disposition");
       fileName = contentDisposition.substring(contentDisposition.indexOf("=")+1);
     } else {
       fileName = "unnamed." + contentType.substring(contentType.indexOf("/")+1);
