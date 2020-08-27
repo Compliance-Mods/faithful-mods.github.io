@@ -44,12 +44,16 @@ let getRequest = function(url, params, callback) {
             callback(xhr, 1);
         }
     };
-    
-    xhr.open("GET", url, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
     let arr = [];
     for(let key in params) {
         arr.push(key+'='+encodeURIComponent(params[key]));
     }
-    xhr.send(arr.join('&'));
+    if(arr.length > 0) {
+      url += '?' + arr.join('&');
+    }
+    
+    xhr.open("GET", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
 }
