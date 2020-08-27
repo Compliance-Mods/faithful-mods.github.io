@@ -66,8 +66,9 @@ let v = new Vue({
       return this.modSelection.findIndex(mod => {
         const correspondingNumbers = this.minecraftVersionsToNumbers([this.minecraftVersionToNumberArray(this.versions['1'].min), this.minecraftVersionToNumberArray(mod.version)])
 
+        console.log(correspondingNumbers[1], correspondingNumbers[0])
         return correspondingNumbers[1] < correspondingNumbers[0]
-      })
+      }) != -1
     },
     modSelection: function() {
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
@@ -148,8 +149,6 @@ let v = new Vue({
         result.push('0') // we need this number to have a number to parse at the end
       }
 
-      console.log(maxNumbersCount)
-
       for(let a = 0; a < maxNumbersCount; ++a) {
         // if it' the first number, we just add it to the end
         if(a == 0) {
@@ -163,13 +162,10 @@ let v = new Vue({
           // first we find the maxDigits for this number
           let maxDigits = -1
           for(let i = 0; i < numbers.length; ++i) {
-            console.log(String(numbers[i][a] || ''), String(numbers[i][a] || '').length)
             if(String(numbers[i][a] || '').length > maxDigits) {
               maxDigits = String(numbers[i][a] || '').length
             }
           }
-
-          console.log(maxDigits)
 
           // then for each nuber we add the difference of zeros
           for(let i = 0; i < numbers.length; ++i) {
