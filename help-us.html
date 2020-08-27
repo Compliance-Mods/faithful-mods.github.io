@@ -23,12 +23,12 @@
 
         <pre>
 					<code class="language-json">
-				{
-					"pack":{
-					"pack_format": 3,
-					"description": "Faithful Mods"
+					{
+						"pack":{
+						"pack_format": 3,
+						"description": "Faithful Mods"
+						}
 					}
-				}
 					</code>
 				</pre>
         <blockquote>
@@ -41,35 +41,33 @@
     </li>
     <li>
         <p>Then make a pull request modifying this <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">file</a> following this setup:</p>
-
         <pre>
           <code class="language-json">
-				[
-						{
-								... already existing mod ...
-						},
-						{
-								"name": [
-										"Actually Additions",     // Name with capital & spaces
-										"actuallyadditions"       // Name from the `assets` file
-								],
-								"versions": [                 // Add supported versions
-										"1.12.2",
-										"1.10.2"
-								],
+					[
+							{
+									... already existing mod ...
+							},
+							{
+									"name": [
+											"Actually Additions",     // Name with capital & spaces
+											"actuallyadditions"       // Name from the `assets` file
+									],
+									"versions": [                 // Add supported versions
+											"1.12.2",
+											"1.10.2"
+									],
 
-								// Get the repository owner, can be your username or the organization name
-								// You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
+									// Get the repository owner, can be your username or the organization name
+									// You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
 
-								"repository": "Faithful-Mods"
-						},
-						{
-								... already existing mod ...
-						}
-				]
+									"repository": "Faithful-Mods"
+							},
+							{
+									... already existing mod ...
+							}
+					]
           </code>
         </pre>
-
         <blockquote>
             <p><strong>Please add it following an alphabetical order</strong></p>
         </blockquote>
