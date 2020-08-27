@@ -188,15 +188,10 @@ let v = new Vue({
         otherNumbersMin = this.minecraftVersionToNumberArray(this.versions[versionKeys[i]].min)
         otherNumbersMax = this.minecraftVersionToNumberArray(this.versions[versionKeys[i]].max)
 
-        let a = 0
-        let same = true
-        while(a < numbers.length && same) {
-          same = numbers[a] >= otherNumbersMin[a] && numbers[a] <= otherNumbersMax[a]
+        // we compute the corresponding numbers
+        let correspondingNumbers = this.minecraftVersionsToNumbers([numbers, otherNumbersMin, otherNumbersMax]);
 
-          ++a
-        }
-
-        if(same) {
+        if(correspondingNumbers[0] >= correspondingNumbers[1] && correspondingNumbers[0] <= correspondingNumbers[2]) {
           result = versionKeys[i]
         }
 
