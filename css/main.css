@@ -33,7 +33,7 @@ main {
 	height: 100%
 }
 /* Carousel arrow hover animation */
-.item > img {
+.item > a {
   margin: 0 auto;
 }
 
