@@ -112,27 +112,47 @@ let v = new Vue({
     download: function() {
       console.log('Hello World!')
     },
+    minecratVersionToNumberArray: function(version) {
+      let numbers = version.split('.')
+      if(numbers.length < 3) {
+        for(let i = 0; i < 3-numbers.length; ++i) {
+          numbers.push(0)
+        }
+      }
+
+      return numbers.map(parseInt)
+    }
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
     packageVersion: function(modVersion) {
-      const versionKeys = Object.keys(this.versions);
+      const numbers = minecratVersionToNumberArray(modVersion)
 
-      let i = 0;
-      let result = -1;
-      while(i < versionKeys && result == -1) {
-        if(modVersion >= this.versions[versionKeys[i]].min && (result == null || modVersion <= this.versions[versionKeys[i]].max)) {
-          result = versionKeys
+      const versionKeys = Object.keys(this.versions)
+
+      let i = 0
+      let result = -1
+      while(i < versionKeys.length && result == -1) {
+        otherNumbersMin = minecratVersionToNumberArray(this.versions[versionKeys[i]].min)
+        otherNumbersMax = minecratVersionToNumberArray(this.versions[versionKeys[i]].max)
+
+        let a = 0
+        let same = true
+        while(a < numbers.length && same) {
+          same = numbers[a] >= otherNumbersMin[a] && numbers[a] <= otherNumbersMax[a]
+
+          ++a
+        }
+
+        if(same) {
+          result = versionKeys[i]
         }
 
         ++i
       }
 
       if(result == -1) {
-        if(versionKeys.length == 0)
-          throw 'No versions file';
-        else
-          return versionKeys[versionKeys.length -1]
+        throw 'No versions file'
       }
 
       return result
