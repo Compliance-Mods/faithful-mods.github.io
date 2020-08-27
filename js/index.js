@@ -83,7 +83,7 @@ let v = new Vue({
       while(i < this.modSelection.length && !packageVersionChanged) {
         let tmp = this.packageVersion(this.modSelection[i].version)
 
-        if(!packageVersionChanged) {
+        if(result == undefined) {
           result = tmp
         } else {
           packageVersionChanged = true
