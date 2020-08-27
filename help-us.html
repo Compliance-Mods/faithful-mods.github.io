@@ -3,20 +3,65 @@ layout: default
 title: Help us!
 ---
 
-<h1>How to add a mod ressource pack:</h1>
-
+<h1 id="how-to-add-a-mods-ressource-pack-">How to add a Mods ressource pack:</h1>
+<blockquote>
+<p>You need to have an <a href="https://github.com/">GitHub</a> account first
+You need to verify if the Mod doesn&#39;t already have a repository</p>
+</blockquote>
 <ol>
-	<li><strong>Check if the mod ressource pack doesn't already exist!, You also need a GitHub account!</strong></li>
-	<li>Start with a pull request modifying this <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">file</a></li>
-	<li>Add your mod following this guideline: <br><img src="https://i.imgur.com/vZUR17l.png"></li>
+<li>Create a repository in your own profile, the repository need to have the same name as the <code>assets</code> folder file (ex: a <code>Actually Additions</code> mod repository would be named: <code>actuallyadditions</code>).</li>
+<li><p>Remove the <code>master</code> branch &amp; add a branch for each supported version, set default branch to the highest supported version. 
+<img src="https://i.imgur.com/q2AbvOk.png" alt=""></p>
+</li>
+<li><p>Add your textures, use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
+</li>
+</ol>
+<pre><code class="lang-json">{
+    <span class="hljs-attr">"pack"</span>:{
+        <span class="hljs-attr">"pack_format"</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Faithful Mods"</span>
+    }
+}
+</code></pre>
+<blockquote>
+<p>The <code>&quot;pack_format&quot;</code> can be found <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
+</blockquote>
+<li><p>Your repository should look like this:
+<img src="https://i.imgur.com/Bjyn0vW.png" alt=""></p>
+</li>
+<li><p>Then make a pull request modifying this <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">file</a> following this setup:</p>
+<pre><code class="lang-json">[
+ {
+     ... already existing mod ...
+ },
+ {
+     "name": [
+         "Actually Additions",     // Name with capital &amp; spaces
+         "actuallyadditions"       // Name from the `assets` file
+     ],
+     "versions": [                 // Add supported versions
+         "1.12.2",
+         "1.10.2"
+     ],
+
+     // Get the repository owner, can be your username or the organization name
+     // You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
+
+     "repository": "Faithful-Mods"
+ },
+ {
+     ... already existing mod ...
+ }
+]
+</code></pre>
+<blockquote>
+<p><strong>Please add it following an alphabetical order</strong></p>
+</blockquote>
+</li>
+<li><p><strong>Final step:</strong> if your pull request is merged, you will also received an invitation to be a member of the Faithful Mods Organization. From this, you will be able to move your repository inside our Organization (don&#39;t forget to modify the <code>mods.json</code> file with the new repository owner: replace your username with <code>Faithful-Mods</code>).</p>
+</li>
 </ol>
 
-	
 
-
-
-
-
-
-	Start by creating a repository on your <a href="https://github.com/"><i style="margin-right: 5px" class="fab fa-github"></i> GitHub</a> account,
-</p>
+<h1>How to add a Modpack:</h1>
+<p>This feature isn't ready yet, more information soon!</p>
