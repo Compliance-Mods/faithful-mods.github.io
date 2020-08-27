@@ -141,7 +141,7 @@ let v = new Vue({
 
       for(let a = 0; a < maxNumbersCount; ++a) {
         // if it' the first number, we just add it to the end
-        if(a == 1) {
+        if(a == 0) {
           for(let i = 0; i < numbers.length; ++i) {
             result[i] += String(numbers[i][a])
           }
