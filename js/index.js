@@ -59,7 +59,7 @@ let v = new Vue({
       return this.mods;
     },
     exactVersionMode: function() {
-      if(loadingVersions)
+      if(this.loadingVersions)
         return false;
 
       const minNumberMinecraft = this.minecraftVersionsToNumbers([this.minecraftVersionToNumberArray(this.versions['1'])])
