@@ -1,18 +1,14 @@
----
-layout: default
-title: Mods List
----
+--- layout: default title: Mods List ---
 
 <div id="app">
-  <a id="target" style="display: none"></a>
-	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-light disabled" v-text="isLoadingDownload ? 'Sending request...' : 'Download Resource Pack'"></button><br>
+	<a id="target" style="display: none"></a>
+	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-light disabled" v-html="isLoadingDownload ? '<i class=\"fas fa-spinner fa-spin\"></i> Sending request...' : 'Download Resource Pack'"></button><br>
 
   <div>
-  <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
-  <div id="advice" v-text="searchAdvice"></div>
+    <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
+    <div id="advice" v-text="searchAdvice"></div>
 	</div>
-	<hr>
-
+  
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
   <table id="ModsTable" class="table table-dark">
   <tr v-for='mod in filteredMods' :key='mod.name[0]'>
@@ -30,7 +26,6 @@ title: Mods List
     </td>
   </tr>
 </table>
-  <div id="Result" v-text="result"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -39,52 +34,3 @@ title: Mods List
 <script src="js/extensionjs.js"></script>
 <script src="js/downloadFile.js"></script>
 <script src="js/index.js"></script>
-
-<script>
-	function Download() {
-		var ModsCount = ModsSelection.length;
-		var result = document.getElementById("Result");
-		
-		var btn = document.getElementById("ResultBtn");
-		var asClass = btn.classList.contains('disabled');
-		
-		if (ModsCount > 0 && asClass == false) {
-
-			if (ModsCount == 1) {
-					var modver = ModsSelection[0].split('_');
-						var mod = modver[0];
-						var ver = modver[1].replace(new RegExp('-', 'g'), '.');
-						
-						window.open('https://github.com/Faithful-Mods/' + mod + '/archive/' + ver + '.zip', '_blank');
-				}
-			else {
-				var urlList = []
-
-				result.innerHTML = "not defined yet"
-			}
-		}
-	}
-
-	var ModsSelection = new Array()
-
-	function Selection(mod) {
-		var result = document.getElementById("Result");
-		var btn = document.getElementById("ResultBtn");
-
-		if (ModsSelection.includes(mod)){
-			// Remove from array if already in
-			ModsSelection = ModsSelection.filter(e => e !== mod);
-		} else {
-			// Add it if not found
-			ModsSelection.push(mod);
-		}
-
-		if (ModsSelection.length > 0){
-			btn.classList.remove('disabled');
-		} else {
-			btn.classList.add('disabled');
-		}
-
-		result.innerHTML = ModsSelection;
-	}
-</script>
