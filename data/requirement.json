@@ -1,20 +1,20 @@
 {
 	"1.12.2": [
-		"faithful-xMrVizzy",
+		"faithful",
 		"forge"
 	],
 	"1.11.2": [
-		"faithful-xMrVizzy",
+		"faithful",
 		"forge"
 	],
 	"1.10.2": [
-		"faithful-Vattic",
+		"minecraft",
 		"forge"
 	],
 	"1.8.9": [
-		"faithful-Vattic"
+		"minecraft"
 	],
 	"1.7.10": [
-		"faithful-Vattic"
+		"minecraft"
 	]
 }
