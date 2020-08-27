@@ -10,7 +10,7 @@ function downloadFile(url, callback) {
       throw req
     
     var blob = req.response;
-    var fileName = FINAL_NAME + ' ' + new Date().getTime() + '.zip;
+    var fileName = FINAL_NAME + ' ' + new Date().getTime() + '.zip';
     var contentType = 'application/zip';
 
     if (window.navigator.msSaveOrOpenBlob) {
