@@ -34,11 +34,11 @@
 </head>
 
 <body>
-	<header style="padding: 15px">
+	<header>
 		<div class="owl-carousel owl-theme">
 			<div class="item">
-				<a href="https://discord.com/invite/Tqtwtgh" target="_blank" rel="noopener">
-					<img src="{{ site.baseurl }}/image/icon/faithful_64x.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful 64x">
+				<a href="https://faithful-mods.github.io/" rel="noopener">
+					<img src="{{ site.baseurl }}/image/icon/faithful_mods.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful Mods">	
 				</a>
 			</div>
 			<div class="item">
@@ -47,8 +47,8 @@
 				</a>
 			</div>
 			<div class="item">
-				<a href="https://faithful-mods.github.io/" rel="noopener">
-					<img src="{{ site.baseurl }}/image/icon/faithful_mods.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful Mods">	
+				<a href="https://discord.com/invite/Tqtwtgh" target="_blank" rel="noopener">
+					<img src="{{ site.baseurl }}/image/icon/faithful_64x.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful 64x">
 				</a>
 			</div>
 			<div class="item">
@@ -111,9 +111,15 @@
 			loop:true,
 			margin:10,
 			responsive:{
-					600:{
-							items:4
-					}
+				400:{
+					items:4
+				},
+				800:{
+					items:5
+				},
+				3000:{
+					items:12
+				}
 			}
 		});
   </script>
