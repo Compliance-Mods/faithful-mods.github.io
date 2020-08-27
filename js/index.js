@@ -86,7 +86,8 @@ let v = new Vue({
         if(result == undefined) {
           result = tmp
         } else {
-          packageVersionChanged = true
+          if(result != tmp)
+            packageVersionChanged = true
         }
 
         ++i
