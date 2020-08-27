@@ -152,20 +152,20 @@ let v = new Vue({
           // first we find the maxDigits for this number
           let maxDigits = -1
           for(let i = 0; i < numbers.length; ++i) {
-            if(String(numbers[i][a]).length > maxDigits)
-              maxDigits = String(numbers[i][a]).length
+            if(String(numbers[i][a] || '').length > maxDigits)
+              maxDigits = String(numbers[i][a] || '').length
           }
 
           console.log(maxDigits)
 
           // then for each nuber we add the difference of zeros
           for(let i = 0; i < numbers.length; ++i) {
-            for(let b = 0; b < maxDigits - String(numbers[i][a]).length; ++b) {
+            for(let b = 0; b < maxDigits - String(numbers[i][a] || '').length; ++b) {
               result[i] += '0'
             }
 
             // finally we push the number
-            result[i] += String(numbers[i][a])
+            result[i] += String(numbers[i][a] || '')
           }
         }
       }
