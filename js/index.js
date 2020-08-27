@@ -124,6 +124,8 @@ let v = new Vue({
       return numbers.map(number => parseInt(number))
     },
     minecraftVersionsToNumbers: function(numbers) {
+      // initial numbers : 1.10, 1.7.9, 1.11.2 ( 1.7.9 < 1.10 < 1.11.2 )
+      //          result : 1100,  1079, 1112   (  1079 < 1100 < 1112 )
       let result = []
 
       // looking for max numbers count
@@ -134,6 +136,8 @@ let v = new Vue({
         
         result.push('0') // we need this number to have a number to parse at the end
       }
+
+      console.log(maxNumbersCount)
 
       for(let a = 0; a < maxNumbersCount; ++a) {
         // if it' the first number, we just add it to the end
@@ -152,6 +156,8 @@ let v = new Vue({
               maxDigits = String(numbers[i][a]).length
           }
 
+          console.log(maxDigits)
+
           // then for each nuber we add the difference of zeros
           for(let i = 0; i < numbers.length; ++i) {
             for(let b = 0; b < maxDigits - String(numbers[i][a]).length; ++b) {
@@ -159,7 +165,7 @@ let v = new Vue({
             }
 
             // finally we push the number
-            result[i] += numbers[i][a]
+            result[i] += String(numbers[i][a])
           }
         }
       }
