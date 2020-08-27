@@ -148,7 +148,7 @@ let v = new Vue({
         if(this.modSelection.length == 1) {
           window.open('https://github.com/Faithful-Mods/' + this.modSelection[0].name + '/archive/' + this.modSelection[0].version + '.zip', '_blank')
         } else {
-          getRequest('https://faithful-mods.vercel.app/api', {mods: this.downloadReposModSelection }, (result, result)=> {
+          getRequest('https://faithful-mods.vercel.app/api', {mods: this.downloadReposModSelection }, (result, err)=> {
             if(err) {
               console.error(err);
               return;
