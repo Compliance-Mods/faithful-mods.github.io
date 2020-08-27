@@ -29,13 +29,15 @@
 	<script src="{{ site.baseurl }}/js/owl.carousel.js"></script>
 
 	<!-- Font is awesome icons -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	 crossorigin="anonymous">
 </head>
 
-<header>
-	<div class="owl-carousel owl-theme">
-		<div class="item">
-			<img src="{{ site.baseurl }}/image/icon/faithful_mods.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful-Mods">
+<body>
+	<header>
+		<div class="owl-carousel owl-theme">
+			<div class="item">
+				<img src="{{ site.baseurl }}/image/icon/faithful_mods.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful-Mods">
 		</div>
 		<div class="item">
 			<img src="{{ site.baseurl }}/image/icon/faithful_dungeons.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful-Mods">
@@ -51,72 +53,53 @@
 		</div>
 	</div>
 
+	
+	</header>
+
+	<div class="custom-navbar-wrapper">
+		<nav class="custom-navbar navbar navbar-expand-sm navbar-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-label="Menu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ site.baseurl }}/"><i style="margin-right: 5px" class="fas fa-wrench"></i>Mods</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ site.baseurl }}/modpack"><i style="margin-right: 5px" class="fas fa-cube"></i>Modpacks</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://discord.gg/QF2CAX7"><i style="margin-right: 5px" class="fab fa-discord"></i>Discord</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/Faithful-Mods"><i style="margin-right: 5px" class="fab fa-github"></i>GitHub</a>
+					</li>
+				</ul>
+			</div>  
+		</nav>
+	</div>
+
+	<main class="container">
+		{{ content }}
+	</main>
+	<footer>
+		<p>Website made by Faithful Mods Team</p>
+	</footer>
+
 	<script>
-		var owl = $('.owl-carousel');
-		owl.owlCarousel({
-				loop:true,
-				nav:true,
-				margin:10,
-				responsive:{
-						0:{
-								items:1
-						},
-						600:{
-								items:3
-						},            
-						960:{
-								items:5
-						},
-						1200:{
-								items:6
-						}
+		$('.loop').owlCarousel({
+			center: true,
+			items:2,
+			loop:true,
+			margin:10,
+			responsive:{
+				600:{
+					items:4
 				}
-		});
-		owl.on('mousewheel', '.owl-stage', function (e) {
-				if (e.deltaY>0) {
-						owl.trigger('next.owl');
-				} else {
-						owl.trigger('prev.owl');
-				}
-				e.preventDefault();
+			}
 		});
 	</script>
-</header>
-
-<body>
-
-<div class="custom-navbar-wrapper">
-	<nav class="custom-navbar navbar navbar-expand-sm navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-label="Menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ site.baseurl }}/"><i style="margin-right: 5px" class="fas fa-wrench"></i>Mods</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ site.baseurl }}/modpack"><i style="margin-right: 5px" class="fas fa-cube"></i>Modpacks</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://discord.gg/QF2CAX7"><i style="margin-right: 5px" class="fab fa-discord"></i>Discord</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/Faithful-Mods"><i style="margin-right: 5px" class="fab fa-github"></i>GitHub</a>
-        </li>
-      </ul>
-    </div>  
-  </nav>
-</div>
-
-<main class="container">
-  {{ content }}
-</main>
 
 </body>
-
-<footer>
-  <p>Website made by Faithful Mods Team</p>
-</footer>
-
 </html>
