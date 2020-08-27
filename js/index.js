@@ -155,7 +155,7 @@ let v = new Vue({
           
           this.isLoadingDownload = true
           try {
-            downloadFile(url, function() {
+            downloadFile(url, () => {
               this.isLoadingDownload = false
             })
           } catch(err) {
