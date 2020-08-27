@@ -68,6 +68,14 @@ body {
 p {
 	color: rgba(255, 255, 255, .7)
 }
+
+main.container > ol {
+	padding-left: 10px;
+}
+main.container > ol > li {
+	margin-top: 30px;
+}
+
 .modal-header {
 	border-bottom: 1px solid #2D2E32
 }
@@ -299,4 +307,12 @@ img[src$=".gif"] {
 	-moz-user-drag: none;
 	-o-user-drag: none;
 	user-drag: none
+}
+
+img.img-fluid {
+    transition: all .5s ease
+}
+
+img.img-fluid:hover {
+    transform: scale(1.1)
 }
