@@ -172,6 +172,23 @@ label {
 	}
 }
 
+/* json code block */
+pre {
+	background-color: #282828;
+}
+.lang-json {
+	color: orange;
+}
+.hljs-attr {
+	color: darkcyan;
+}
+.hljs-number {
+	color: mediumpurple;
+}
+.hljs-comment {
+	color: lightgray;
+}
+
 /* Header images*/
 .header-image {
 	display: block;
