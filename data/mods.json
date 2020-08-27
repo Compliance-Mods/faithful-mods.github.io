@@ -66,5 +66,16 @@
 			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"The Twilight Forest",
+			"twilightforest"
+		],
+		"versions": [
+			"1.12.2",
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
 	}
 ]
