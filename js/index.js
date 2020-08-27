@@ -8,6 +8,7 @@ let v = new Vue({
       search: '',
       minSearchLetters: 3
     },
+    isLoadingDownload: false,
     loading: true,
     loadingVersions: true,
     mods: [],
@@ -151,8 +152,15 @@ let v = new Vue({
         } else {
 
           const url = API_ENDPOINT + '?mods=' + encodeURIComponent(JSON.stringify(this.downloadReposModSelection))
-          console.log(url)
-          downloadFile(url)
+          
+          this.isLoadingDownload = true
+          try {
+            downloadFile(url, function() {
+              this.isLoadingDownload = false
+            })
+          } catch(err) {
+            this.isLoadingDownload = false
+          }
         }
       } else {
         throw 'You can\'t pack mods'

@@ -1,23 +1,17 @@
-function downloadFile(url) {
+function downloadFile(url, callback) {
   var req = new XMLHttpRequest();
   req.open("GET", url, true);
-  req.responseType = "blob";
+  req.responseType = "blob"; 
+
+  const FINAL_NAME = 'Faithful Mods Resource Pack'
 
   req.onload = function (event) {
     if(req.status !== 200)
       throw req
     
     var blob = req.response;
-    var fileName = null;
-    var contentType = req.getResponseHeader("Content-Type");
-
-    // IE/EDGE seems not returning some response header
-    if (req.getResponseHeader("Content-Disposition")) {
-      var contentDisposition = req.getResponseHeader("Content-Disposition");
-      fileName = contentDisposition.substring(contentDisposition.indexOf("=")+1);
-    } else {
-      fileName = "unnamed." + contentType.substring(contentType.indexOf("/")+1);
-    }
+    var fileName = FINAL_NAME + ' ' + new Date().getTime() + '.zip;
+    var contentType = 'application/zip';
 
     if (window.navigator.msSaveOrOpenBlob) {
       // Internet Explorer
@@ -27,6 +21,8 @@ function downloadFile(url) {
       el.href = window.URL.createObjectURL(blob);
       el.download = fileName;
       el.click();
+
+      callback();
     }
   };
   req.send();
