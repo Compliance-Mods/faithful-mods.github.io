@@ -1,3 +1,5 @@
+const DEFAULT_REPO_NAME = 'Faithful-Mods'
+
 let v = new Vue({
   el: '#app',
   data: {
@@ -80,6 +82,13 @@ let v = new Vue({
         }
       })
     },
+    downloadReposModSelection: function() {
+      let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
+
+      return selection.map(mod => {
+        return mod.repository + '/' + mod.name + '#' + mod.version
+      })
+    }
     modPackageVersion: function() {
       // you can pack mods if they have the same package version number
       // (list of package number must not change)
@@ -135,7 +144,25 @@ let v = new Vue({
   },
   methods: {
     download: function() {
-      console.log('Hello World!')
+      if(this.canPackMods) {
+        if(this.modSelection.length == 1) {
+          window.open('https://github.com/Faithful-Mods/' + this.modSelection[0].name + '/archive/' + this.modSelection[0].version + '.zip', '_blank')
+        } else {
+          getRequest('https://faithful-mods.vercel.app/api', {mods: this.downloadReposModSelection }, (err, result)=> {
+            if(err) {
+              console.error(error);
+              return;
+            }
+
+            else {
+              console.log('success');
+              console.log(result);
+            }
+          })
+        }
+      } else {
+        throw 'You can\'t pack mods'
+      }
     },
     minecraftVersionToNumberArray: function(version) {
       let numbers = version.split('.')
