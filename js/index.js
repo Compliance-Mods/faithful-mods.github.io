@@ -143,7 +143,7 @@ let v = new Vue({
         // if it' the first number, we just add it to the end
         if(a == 1) {
           for(let i = 0; i < numbers.length; ++i) {
-            result[i] += numbers[i][a]
+            result[i] += String(numbers[i][a])
           }
         } else {
           // else we need to add additional zeros equals to the difference of letters with max number
@@ -152,8 +152,10 @@ let v = new Vue({
           // first we find the maxDigits for this number
           let maxDigits = -1
           for(let i = 0; i < numbers.length; ++i) {
-            if(String(numbers[i][a] || '').length > maxDigits)
+            console.log(String(numbers[i][a] || ''), String(numbers[i][a] || '').length)
+            if(String(numbers[i][a] || '').length > maxDigits) {
               maxDigits = String(numbers[i][a] || '').length
+            }
           }
 
           console.log(maxDigits)
