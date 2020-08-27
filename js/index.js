@@ -88,7 +88,7 @@ let v = new Vue({
       return selection.map(mod => {
         return mod.repository + '/' + mod.name + '#' + mod.version
       })
-    }
+    },
     modPackageVersion: function() {
       // you can pack mods if they have the same package version number
       // (list of package number must not change)
