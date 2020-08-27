@@ -121,7 +121,7 @@ let v = new Vue({
       }
 
       return numbers.map(parseInt)
-    }
+    },
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
