@@ -58,6 +58,13 @@ let v = new Vue({
         return this.mods.filter(mod => mod.name[0].toLowerCase().includes(this.form.search.toLowerCase()))
       return this.mods;
     },
+    exactVersionMode: function() {
+      if(loadingVersions)
+        return false;
+
+      const minNumberMinecraft = this.minecraftVersionsToNumbers([this.])
+      return -1 == this.modSelection.findIndex(mod => this.mod.version)
+    },
     modSelection: function() {
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
 
