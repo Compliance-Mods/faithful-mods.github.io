@@ -124,6 +124,11 @@ label {
   margin-bottom: 15px;
 }
 
+blockquote {
+	padding-left: 10px;
+	border-left: 5px solid #e83e8c;
+}
+
 /* Flexbox */
 .flex-container {
 	display: flex;
