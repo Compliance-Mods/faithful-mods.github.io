@@ -52,6 +52,8 @@ let getRequest = function(url, params, callback) {
     if(arr.length > 0) {
       url += '?' + arr.join('&');
     }
+
+    console.log(url);
     
     xhr.open("GET", url, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
