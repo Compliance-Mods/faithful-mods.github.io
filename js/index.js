@@ -152,7 +152,7 @@ let v = new Vue({
 
           const url = API_ENDPOINT + '?mods=' + encodeURIComponent(JSON.stringify(this.downloadReposModSelection))
           console.log(url)
-          window.open(url)
+          downloadFile(url)
         }
       } else {
         throw 'You can\'t pack mods'
