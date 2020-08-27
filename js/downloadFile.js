@@ -2,7 +2,6 @@ function downloadFile(url) {
   var req = new XMLHttpRequest();
   req.open("GET", url, true);
   req.responseType = "blob";
-  req.setRequestHeader('my-custom-header', 'custom-value'); // adding some headers (if needed)
 
   req.onload = function (event) {
     var blob = req.response;
