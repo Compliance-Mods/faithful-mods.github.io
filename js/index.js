@@ -155,11 +155,11 @@ let v = new Vue({
           // then for each nuber we add the difference of zeros
           for(let i = 0; i < numbers.length; ++i) {
             for(let b = 0; b < maxDigits - String(numbers[i][a]).length; ++b) {
-              result[i].push('0')
+              result[i] += '0'
             }
 
             // finally we push the number
-            result[i].push(numbers[i][a])
+            result[i] += numbers[i][a]
           }
         }
       }
