@@ -149,7 +149,10 @@ let v = new Vue({
         if(this.modSelection.length == 1) {
           window.open('https://github.com/Faithful-Mods/' + this.modSelection[0].name + '/archive/' + this.modSelection[0].version + '.zip', '_blank')
         } else {
-          document.body.appendHTML('<form target="_blank" action="' + API_ENDPOINT + '" target="_blank" method="get"><input type="hidden" name="mods" value="' + JSON.stringify(this.downloadReposModSelection) + '"></form>')
+
+          const url = API_ENDPOINT + '?mods=' + encodeURIComponent(JSON.stringify(this.downloadReposModSelection))
+
+          document.body.appendHTML('<form target="_blank" action="' + url + '" target="_blank" method="get"></form>')
           document.body.lastElementChild.submit()
           document.body.lastElementChild.remove()
         }
