@@ -66,17 +66,5 @@
 			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
-	},
-	{
-		"name": [
-			"Forge",
-			"forge"
-		],
-		"versions": [
-			"1.12.2",
-			"1.11.2",
-			"1.10.2"
-		],
-		"repository": "Faithful-Mods"
 	}
 ]
