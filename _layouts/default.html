@@ -107,18 +107,31 @@
   <script>
     $('.owl-carousel').owlCarousel({
 			center: true,
-			items:2,
 			loop:true,
-			margin:10,
-			responsive:{
-				400:{
-					items:4
+			autoplay: true,
+			lazyLoad: true,
+			rewind: true,
+			margin: 20,
+			responsiveClass: true,
+			autoHeight: true,
+			autoplayTimeout: 7000,
+			smartSpeed: 800,
+			nav: true,
+			responsive: {
+				0: {
+					items: 1
 				},
-				800:{
-					items:5
+
+				600: {
+					items: 3
 				},
-				3000:{
-					items:12
+
+				1024: {
+					items: 4
+				},
+
+				1366: {
+					items: 4
 				}
 			}
 		});
