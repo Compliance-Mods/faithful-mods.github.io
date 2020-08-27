@@ -1,4 +1,5 @@
 const DEFAULT_REPO_NAME = 'Faithful-Mods'
+const API_ENDPOINT = 'https://faithful-mods.vercel.app/api'
 
 let v = new Vue({
   el: '#app',
@@ -148,18 +149,9 @@ let v = new Vue({
         if(this.modSelection.length == 1) {
           window.open('https://github.com/Faithful-Mods/' + this.modSelection[0].name + '/archive/' + this.modSelection[0].version + '.zip', '_blank')
         } else {
-          getRequest('https://faithful-mods.vercel.app/api', {mods: this.downloadReposModSelection }, (result, err)=> {
-            if(err) {
-              console.error(err);
-              return;
-            }
-
-            else {
-              console.log('success');
-              console.log(result);
-            }
-          })
-        }
+          document.body.appendHTML('<form target="_blank" action="' + API_ENDPOINT + '" target="_blank" method="get"><input type="hidden" name="folder" value="' + JSON.stringify(this.downloadReposModSelection) + '"></form>')
+          document.body.lastElementChild.submit()
+          document.body.lastElementChild.remove()
       } else {
         throw 'You can\'t pack mods'
       }
