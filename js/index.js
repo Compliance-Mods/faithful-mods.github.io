@@ -113,7 +113,7 @@ let v = new Vue({
     download: function() {
       console.log('Hello World!')
     },
-    minecratVersionToNumberArray: function(version) {
+    minecraftVersionToNumberArray: function(version) {
       let numbers = version.split('.')
       if(numbers.length < 3) {
         for(let i = 0; i < 3-numbers.length; ++i) {
@@ -123,19 +123,62 @@ let v = new Vue({
 
       return numbers.map(number => parseInt(number))
     },
+    minecraftVersionsToNumbers: function(numbers) {
+      let result = []
+
+      // looking for max numbers count
+      let maxNumbersCount = -1
+      for(let i = 0; i < numbers.length; ++i) {
+        if(numbers[i].length > maxNumbersCount)
+          maxNumbersCount = numbers[i].length
+        
+        result.push('0') // we need this number to have a number to parse at the end
+      }
+
+      for(let a = 0; a < maxNumbersCount; ++a) {
+        // if it' the first number, we just add it to the end
+        if(a == 1) {
+          for(let i = 0; i < numbers.length; ++i) {
+            result[i] += numbers[i][a]
+          }
+        } else {
+          // else we need to add additional zeros equals to the difference of letters with max number
+          // 0, 20, 600 -> 000, 020, 600
+
+          // first we find the maxDigits for this number
+          let maxDigits = -1
+          for(let i = 0; i < numbers.length; ++i) {
+            if(String(numbers[i][a]).length > maxDigits)
+              maxDigits = String(numbers[i][a]).length
+          }
+
+          // then for each nuber we add the difference of zeros
+          for(let i = 0; i < numbers.length; ++i) {
+            for(let b = 0; b < maxDigits - String(numbers[i][a]).length; ++b) {
+              result[i].push('0')
+            }
+
+            // finally we push the number
+            result[i].push(numbers[i][a])
+          }
+        }
+      }
+
+      return result.map(number => parseInt(number))
+    }
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
     packageVersion: function(modVersion) {
-      const numbers = this.minecratVersionToNumberArray(modVersion)
+      const numbers = this.minecraftVersionToNumberArray(modVersion)
 
       const versionKeys = Object.keys(this.versions)
 
       let i = 0
       let result = -1
       while(i < versionKeys.length && result == -1) {
-        otherNumbersMin = this.minecratVersionToNumberArray(this.versions[versionKeys[i]].min)
-        otherNumbersMax = this.minecratVersionToNumberArray(this.versions[versionKeys[i]].max)
+        otherNumbersMin = this.minecraftVersionToNumberArray(this.versions[versionKeys[i]].min)
+        otherNumbersMax = this.minecraftVersionToNumberArray(this.versions[versionKeys[i]].max)
 
         let a = 0
         let same = true
