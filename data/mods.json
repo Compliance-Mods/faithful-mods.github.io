@@ -1,14 +1,14 @@
 [
 	{
-    "name": [
-      "Abyssalcraft",
-      "abyssalcraft"
-    ],
-    "versions": [
-      "1.12.2"
-    ],
+		"name": [
+			"Abyssalcraft",
+			"abyssalcraft"
+		],
+		"versions": [
+			"1.12.2"
+		],
 		"repository": "Faithful-Mods"
-  },
+		},
 	{
 		"name": [
 			"Actually Additions",
@@ -64,6 +64,18 @@
 			"1.10.2",
 			"1.8.9",
 			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Forge",
+			"forge"
+		],
+		"versions": [
+			"1.12.2",
+			"1.11.2",
+			"1.10.2"
 		],
 		"repository": "Faithful-Mods"
 	}
