@@ -82,6 +82,18 @@
 	},
 	{
 		"name": [
+			"Thaumcraft",
+			"thaumcraft"
+		],
+		"versions": [
+			"1.12.2",
+			"1.8.9",
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"The Twilight Forest",
 			"twilightforest"
 		],
