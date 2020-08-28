@@ -7,7 +7,7 @@ Vue.component('minecraft-versions', {
     '<div id="minecraftVersions">\
       <h2>{{ title }}</h2>\
       <div class="btn-group btn-block">\
-        <download-minecraft-version v-for="version in versions" :key="version" :value="version" />\
+        <download-minecraft-version v-for="version in orderedVersions" :key="version" :value="version" />\
       </div>\
     </div>'
   ,
@@ -19,7 +19,7 @@ Vue.component('minecraft-versions', {
       return this.$props.versions.sort(function(a, b) {
         const numbers = MinecraftUtils.minecraftVersionsToNumbers([a, b])
 
-        return numbers[0] > numbers[1]
+        return (numbers[0] > numbers[1] ? 1 : -1)
       })
     }
   },
