@@ -19,7 +19,7 @@ Vue.component('minecraft-versions', {
       return this.$props.versions.sort(function(a, b) {
         const numbers = MinecraftUtils.minecraftVersionsToNumbers([a, b])
 
-        return (numbers[0] > numbers[1] ? 1 : -1)
+        return (numbers[0] > numbers[1] ? -1 : 1)
       })
     }
   },

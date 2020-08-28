@@ -10,7 +10,6 @@ const MinecraftUtils = {
     return numbers.map(number => parseInt(number))
   },
   minecraftVersionsToNumbers: function(numbers) {
-    console.log(this)
     // initial numbers : 1.10, 1.7.9, 1.11.2 ( 1.7.9 < 1.10 < 1.11.2 )
     //          result : 1100,  1079, 1112   (  1079 < 1100 < 1112 )
 
@@ -19,7 +18,7 @@ const MinecraftUtils = {
       let tmp = []
 
       for(let i = 0; i < numbers.length; ++i) {
-        tmp.push(MinecraftUtils.minecraftVersionToNumberArray(numbers[i]))
+        tmp.push(this.minecraftVersionToNumberArray(numbers[i]))
       }
 
       numbers = tmp
