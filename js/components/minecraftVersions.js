@@ -17,7 +17,7 @@ Vue.component('minecraft-versions', {
   computed: {
     orderedVersions: function() {
       return this.$props.versions.sort(function(a, b) {
-        const numbers = MinecraftUtils.minecraftVersionsToNumbers([a, b])
+        const numbers = MinecraftUtils.minecraftVersionsToNumbers([a.version, b.version])
 
         return (numbers[0] > numbers[1] ? -1 : 1)
       })

@@ -1,6 +1,7 @@
 const DEFAULT_REPO_NAME = 'Faithful-Mods'
 const API_ENDPOINT = 'https://faithful-mods.vercel.app/api'
 
+Vue.config.devtools = true
 let v = new Vue({
   el: '#app',
   data: {
@@ -96,16 +97,27 @@ let v = new Vue({
       })
     },
     minecraftVersions: function() {
-      const result = []
+      const mcVersions = []
+      const count = []
 
       for(let i = 0; i < this.mods.length; ++i) {
         for(let a = 0; a < this.mods[i].versions.length; ++a) {
-          if(!result.includes(this.mods[i].versions[a]))
-            result.push(this.mods[i].versions[a])
+          let index
+          if((index = mcVersions.findIndex(item => item.version == this.mods[i].versions[a])) != -1) {
+            mcVersions.push({
+              version: this.mods[i].versions[a],
+              count: 1
+            })
+          } else {
+            mcVersions[i].count = mcVersions[i].count + 1
+          }
         }
       }
 
-      return result
+      return mcVersions
+    },
+    minecraftVersions: function() {
+      return this.minecraftVersionsCount.versions
     },
     modPackageVersion: function() {
       // you can pack mods if they have the same package version number
