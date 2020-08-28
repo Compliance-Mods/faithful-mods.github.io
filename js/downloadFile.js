@@ -23,7 +23,7 @@ function downloadFile(url) {
         el.click()
       }
   
-      revolve()
+      resolve()
     }
   })
 }
