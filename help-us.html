@@ -7,7 +7,7 @@ title: Help us!
 <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
 <script src="{{ site.baseurl }}/js/prism.js"></script>
 
-<h1>How to add a mod to the list:</h1>
+<h1 href="#How-to-add-a-mod-to-the-list">How to add a mod to the list:</h1>
 
 <blockquote>
 	<p>
@@ -25,7 +25,7 @@ title: Help us!
         <p>Remove the <code>master</code> branch &amp; add a branch for each supported version, set the default branch to the highest supported version.</p>
         <img src="https://i.imgur.com/q2AbvOk.png" class="img-fluid center">
     </li>
-    <li>
+    <li href="#pack-mcmeta">
         <p>Add your textures, use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
 
         <pre>
@@ -45,8 +45,11 @@ title: Help us!
     <li>
         <p>Your repository should look like this:</p>
         <img src="https://i.imgur.com/Bjyn0vW.png" class="img-fluid center">
+        <blockquote>
+        		<p><strong>You need to create an <code>assets</code> folder and place textures inside!</strong></p>
+        </blockquote>
     </li>
-    <li>
+    <li href="#mods-json">
         <p>Then make a pull request modifying this <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">file</a> following this setup:</p>
         <pre>
           <code class="language-json">
@@ -75,7 +78,7 @@ title: Help us!
 					]
           </code>
         </pre>
-        <blockquote>
+        <blockquote href="#alphabetical-order">
             <p><strong>Please add it following an alphabetical order</strong></p>
         </blockquote>
     </li>
@@ -86,5 +89,5 @@ title: Help us!
 
 <hr>
 
-<h1>How to add a Modpack:</h1>
+<h1  href="#How-to-add-a-Modpack">How to add a Modpack</h1>
 <p>This feature isn't ready yet, more information soon!</p>
