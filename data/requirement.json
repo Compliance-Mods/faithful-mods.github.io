@@ -1,4 +1,16 @@
 {
+	"1.16.2": [
+		"faithful",
+		"fabric"
+	],
+	"1.15.2": [
+		"faithful",
+		"fabric"
+	],
+	"1.14.4": [
+		"faithful",
+		"fabric"
+	],
 	"1.12.2": [
 		"faithful",
 		"forge"
