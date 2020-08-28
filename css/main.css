@@ -70,10 +70,10 @@ p {
 }
 
 main.container > ol {
-	padding-left: 10px;
+	padding-left: 10px
 }
 main.container > ol > li {
-	margin-top: 30px;
+	margin-top: 30px
 }
 
 .modal-header {
@@ -129,12 +129,12 @@ label {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 15px;
+  margin-bottom: 15px
 }
 
 blockquote {
 	padding-left: 10px;
-	border-left: 5px solid #e83e8c;
+	border-left: 5px solid #e83e8c
 }
 
 /* Flexbox */
@@ -258,7 +258,7 @@ blockquote {
 
 .card-img-top {
 	border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+	border-top-right-radius: 8px;
 	cursor: pointer;
 	transition: 0.3s;
 	color: #000
@@ -291,19 +291,6 @@ img[src$=".png"] {
 	image-rendering: -o-crisp-edges;
 	-ms-interpolation-mode: nearest-neighbor;
 	-webkit-user-drag: none;
-	-khtml-user-drag: none;
-	-moz-user-drag: none;
-	-o-user-drag: none;
-	user-drag: none
-}
-
-img[src$=".gif"] {
-	image-rendering: pixelated;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: -o-crisp-edges;
-	-ms-interpolation-mode: nearest-neighbor;
-	-webkit-user-drag: none;
-	-khtml-user-drag: none;
 	-moz-user-drag: none;
 	-o-user-drag: none;
 	user-drag: none
