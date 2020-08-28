@@ -309,10 +309,10 @@ img[src$=".gif"] {
 	user-drag: none
 }
 
-img.img-fluid {
+.item a img.img-fluid {
     transition: all .5s ease
 }
 
-img.img-fluid:hover {
+.item a img.img-fluid:hover {
     transform: scale(1.1)
 }
