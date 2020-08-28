@@ -5,14 +5,17 @@ title: Mods List
 
 <div id="app">
 	<a id="target" style="display: none"></a>
+  
+  <br>
+  <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion"></minecraft-versions>
+  <br>
+  
 	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-light disabled" v-html="downloadButtonText"></button><br>
 
   <div>
     <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
     <div id="advice" v-text="searchAdvice"></div>
   </div>
-  
-  <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion"></minecraft-versions>
   
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
   <table id="ModsTable" class="table table-dark">

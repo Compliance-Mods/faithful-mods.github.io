@@ -4,10 +4,10 @@ Vue.component('minecraft-versions', {
     versions: Array,
   },
   template:
-    '<br><div id="minecraftVersions">\
+    '<div id="minecraftVersions">\
       <h2>{{ title }}</h2>\
       <download-minecraft-version v-for="version in versions" :key="version" :value="version" />\
-    </div><br>'
+    </div>'
   ,
   data() {
     return {}
