@@ -42,6 +42,24 @@ main {
 	}
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #4a0332;
+    border-color: #e83e8c;
+}
+
+.btn-primary.focus, .btn-primary:focus, .btn-primary:hover {
+    background-color: #e83e8c;
+    border-color: #e83e8c;
+    color: #fff;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #941b6b;
+    border-color: #e83e8c;
+}
+
 /* Make the image fully responsive (carousel) */
 .carousel-inner img {
 	width: 100%;
