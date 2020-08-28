@@ -6,7 +6,9 @@ Vue.component('minecraft-versions', {
   template:
     '<div id="minecraftVersions">\
       <h2>{{ title }}</h2>\
-      <download-minecraft-version v-for="version in versions" :key="version" :value="version" />\
+      <div class="btn-group btn-block">\
+        <download-minecraft-version v-for="version in versions" :key="version" :value="version" />\
+      </div>\
     </div>'
   ,
   data() {
