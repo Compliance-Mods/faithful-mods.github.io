@@ -109,6 +109,16 @@
 	},
 	{
 		"name": [
+			"IC2",
+			"ic2"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Trinsdar"
+	},
+	{
+		"name": [
 			"Inventory Profiles",
 			"inventoryprofiles"
 		],
