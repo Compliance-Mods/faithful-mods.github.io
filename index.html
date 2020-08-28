@@ -12,7 +12,7 @@ title: Mods List
     <div id="advice" v-text="searchAdvice"></div>
   </div>
   
-  <minecraft-versions :versions="versions" />
+  <minecraft-versions :versions="minecraftVersions" />
   
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
   <table id="ModsTable" class="table table-dark">
