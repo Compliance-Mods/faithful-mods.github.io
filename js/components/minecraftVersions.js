@@ -16,18 +16,12 @@ Vue.component('minecraft-versions', {
     return {}
   },
   computed: {
-    versionsOrganized: function() {
-      const result = []
+    orderedVersions: function() {
+      return this.$props.versions.sort(function(a, b) {
+        const numbers = MinecraftUtils.minecraftVersionsToNumbers([a.version, b.version])
 
-      for(let i =0; i < this.$props.versions.length; ++i) {
-        if(i%this.elementsPerLine == 0) {
-          result.push([])
-        }
-
-        result[result.length-1].push(this.$props.versions[i])
-      }
-
-      return result;
+        return (numbers[0] > numbers[1] ? -1 : 1)
+      })
     },
     elementsPerLine: function() {
       if(!!this.$props.breakpoints.lg && !this.$props.breakpoints.md)
@@ -38,12 +32,18 @@ Vue.component('minecraft-versions', {
       
       return 3
     },
-    orderedVersions: function() {
-      return this.$props.versions.sort(function(a, b) {
-        const numbers = MinecraftUtils.minecraftVersionsToNumbers([a.version, b.version])
+    versionsOrganized: function() {
+      const result = []
 
-        return (numbers[0] > numbers[1] ? -1 : 1)
-      })
+      for(let i =0; i < this.orderedVersions.length; ++i) {
+        if(i%this.elementsPerLine == 0) {
+          result.push([])
+        }
+
+        result[result.length-1].push(this.orderedVersions[i])
+      }
+
+      return result;
     }
   },
   methods: {
