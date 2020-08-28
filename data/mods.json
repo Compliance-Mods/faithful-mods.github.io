@@ -59,6 +59,19 @@
 	},
 	{
 		"name": [
+			"Applied Energistics 2",
+			"appliedenergistics2"
+		],
+		"versions": [
+			"1.12.2",
+			"1.11.2",
+			"1.10.2",
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Backpacks",
 			"backpack"
 		],
