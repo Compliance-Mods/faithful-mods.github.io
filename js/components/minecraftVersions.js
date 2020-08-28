@@ -26,7 +26,7 @@ Vue.component('minecraft-versions', {
   methods: {
     downloadVersion: function(version) {
       if(this.$root.handleDownload) {
-        this.$root.handleDownload({
+        this.$root.handleDownload('version', {
           version: version
         })
       }

@@ -160,15 +160,15 @@ let v = new Vue({
   methods: {
     download: function() {
       if(this.canPackMods) {
-        this.handleDownload({
+        this.handleDownload('', {
           mods: JSON.stringify(this.downloadReposModSelection)
         })
       } else {
         throw 'You can\'t pack mods'
       }
     },
-    handleDownload: function(params) {
-      const url = API_ENDPOINT + encodeData(params)
+    handleDownload: function(endpoint, params) {
+      const url = API_ENDPOINT + '/' + endpoint + encodeData(params)
 
       this.isLoadingDownload = true
       downloadFile(url).catch((err) => {
