@@ -7,7 +7,7 @@ title: Mods List
 	<a id="target" style="display: none"></a>
   
   <br>
-  <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion"></minecraft-versions>
+  <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion" :breakpoints="breakpoints"></minecraft-versions>
   <br>
 
 	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-primary" v-html="downloadButtonText"></button><br>
@@ -36,7 +36,6 @@ title: Mods List
 </table>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue-mq@1/dist/vue-mq.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="js/polyfill.js"></script>
 <script src="js/ajax.js"></script>

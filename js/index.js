@@ -2,7 +2,6 @@ const DEFAULT_REPO_NAME = 'Faithful-Mods'
 const API_ENDPOINT = 'https://faithful-mods.vercel.app/api'
 
 Vue.config.devtools = true
-Vue.use(VueMq)
 let v = new Vue({
   el: '#app',
   data: {
@@ -24,9 +23,26 @@ let v = new Vue({
       typeAnotherVersion: 'Try to type another version than',
       downloadVersion: 'Download all resource packs for version :'
     },
-    versions: {}
+    versions: {},
+    breakpointLimits: {
+      sm: 450,
+      md: 1250,
+      lg: Infinity,
+    },
+    windowSize: window.innerWidth
   },
   computed: {
+    breakpoints: function() {
+      const result = {}
+
+      const keys = Object.keys(this.breakpointLimits)
+      
+      for(let i = 0; i < keys.length; ++i) {
+        result[keys[i]] = this.breakpointLimits[keys[i]] <= this.windowSize
+      }
+      
+      return result
+    },
     canPackMods: function() {
       return this.modPackageVersion != undefined
     },
@@ -237,5 +253,9 @@ let v = new Vue({
       this.loadingVersions = false
       this.versions = json
     })
+
+    // we need this part for breakpoints
+    this.windowSize = window.innerWidth
+    window.addEventListener('resize', () => this.windowSize = window.innerWidth )
   }
 })
