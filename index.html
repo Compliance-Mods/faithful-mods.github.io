@@ -10,7 +10,9 @@ title: Mods List
   <div>
     <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
     <div id="advice" v-text="searchAdvice"></div>
-	</div>
+  </div>
+  
+  <minecraft-versions :versions="versions" />
   
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
   <table id="ModsTable" class="table table-dark">
@@ -36,4 +38,6 @@ title: Mods List
 <script src="js/ajax.js"></script>
 <script src="js/extensionjs.js"></script>
 <script src="js/downloadFile.js"></script>
+<script src="js/components/minecraftVersions.js"></script>
+<script src="js/components/downloadMinecraftVersion.js"></script>
 <script src="js/index.js"></script>

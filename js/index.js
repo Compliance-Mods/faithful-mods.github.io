@@ -94,6 +94,18 @@ let v = new Vue({
         return mod.repository + '/' + mod.name[1] + '#' + mod.versionSelected
       })
     },
+    minecraftVersions: function() {
+      const result = []
+
+      for(let i = 0; i < this.mods.length; ++i) {
+        for(let a = 0; a < this.mods[i].versions.length; ++a) {
+          if(!result.includes(this.mods[i].versions[a]))
+            result.push(this.mods[i].versions[a])
+        }
+      }
+
+      return result
+    },
     modPackageVersion: function() {
       // you can pack mods if they have the same package version number
       // (list of package number must not change)
@@ -147,23 +159,23 @@ let v = new Vue({
   methods: {
     download: function() {
       if(this.canPackMods) {
-        if(this.modSelection.length == 1) {
-          window.open('https://github.com/Faithful-Mods/' + this.modSelection[0].name + '/archive/' + this.modSelection[0].version + '.zip', '_blank')
-        } else {
-
-          const url = API_ENDPOINT + '?mods=' + encodeURIComponent(JSON.stringify(this.downloadReposModSelection))
-          
-          this.isLoadingDownload = true
-          try {
-            downloadFile(url, () => {
-              this.isLoadingDownload = false
-            })
-          } catch(err) {
-            this.isLoadingDownload = false
-          }
-        }
+        this.handleDownload({
+          mods: JSON.stringify(this.downloadReposModSelection)
+        })
       } else {
         throw 'You can\'t pack mods'
+      }
+    },
+    handleDownload: function(params) {
+      const url = API_ENDPOINT + encodeData(params)
+
+      this.isLoadingDownload = true
+      try {
+        downloadFile(url, () => {
+          this.isLoadingDownload = false
+        })
+      } catch(err) {
+        this.isLoadingDownload = false
       }
     },
     minecraftVersionToNumberArray: function(version) {

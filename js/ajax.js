@@ -59,3 +59,22 @@ let getRequest = function(url, params, callback) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send();
 }
+
+/**
+ * Encode data from an object and returns
+ * @param {Object} params The parameters to parse
+ * @returns {string}
+ */
+const encodeData = function(params) {
+    let result = '?'
+    let arr = []
+
+    const keys = Object.keys(params)
+    keys.forEach(function(key) {
+        arr.push(key += '=' + encodeURIComponent(params[key]))
+    })
+
+    result += arr.join('&')
+
+    return result
+}
