@@ -10,7 +10,7 @@ title: Mods List
   <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion"></minecraft-versions>
   <br>
 
-	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-light disabled" v-html="downloadButtonText"></button><br>
+	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-primary" v-html="downloadButtonText"></button><br>
 
   <div>
     <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
