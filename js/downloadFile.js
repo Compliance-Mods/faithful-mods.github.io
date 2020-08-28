@@ -7,7 +7,10 @@ function downloadFile(url) {
     const FINAL_NAME = 'Faithful Mods Resource Pack'
 
     req.onload = (_event) => {
-      if (req.status !== 200) reject(req)
+      if (req.status !== 200) {
+        reject(req)
+        return;
+      }
   
       var blob = req.response
       var fileName = FINAL_NAME + ' ' + new Date().getTime() + '.zip'
@@ -24,6 +27,9 @@ function downloadFile(url) {
       }
   
       resolve()
+    }
+    req.onerror = () => {
+      reject(req)
     }
   })
 }
