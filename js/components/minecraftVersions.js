@@ -30,10 +30,10 @@ Vue.component('minecraft-versions', {
       return result;
     },
     elementsPerLine: function() {
-      if(!!this.$props.breakpoints.lg)
+      if(!!this.$props.breakpoints.lg && !this.$props.breakpoints.md)
         return this.$props.versions.length
 
-      if(!!this.$props.breakpoints.md)
+      if(!!this.$props.breakpoints.md && !this.$props.breakpoints.sm)
         return 5
       
       return 3
