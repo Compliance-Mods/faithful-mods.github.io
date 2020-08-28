@@ -21,9 +21,9 @@ function downloadFile(url) {
         el.href = window.URL.createObjectURL(blob)
         el.download = fileName
         el.click()
-  
-        revole()
       }
+  
+      revolve()
     }
   })
 }
