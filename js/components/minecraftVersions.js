@@ -7,7 +7,7 @@ Vue.component('minecraft-versions', {
   template:
     '<div id="minecraftVersions">\
       <h2>{{ title }}</h2>\
-      <div v-for="(line, index) in versionsOrganized" :key="index" class="btn-group btn-block">\
+      <div v-for="(line, index) in versionsOrganized" :key="index" class="btn-group btn-block mt-0">\
         <download-minecraft-version v-for="version in line" :key="version.version" :value="version" />\
       </div>\
     </div>'

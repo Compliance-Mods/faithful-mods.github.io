@@ -2,7 +2,7 @@ Vue.component('download-minecraft-version', {
   props: {
     value: Object,
   },
-  template: '<button type="button" class="btn btn-primary minecraftVersion mb-1 mr-1" :value="value.version" @click="dv" >{{ value.version + " (" + value.count + ")" }}</button>',
+  template: '<button type="button" class="btn btn-primary minecraftVersion mb-1 mr-1" :value="value.version" @click="dv" >{{ value.version + \'<span class="badge badge-light" style="color: black;">\' + value.count + \'</span>\' }}</button>',
   data() {
     return {}
   },
