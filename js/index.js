@@ -103,7 +103,7 @@ let v = new Vue({
       for(let i = 0; i < this.mods.length; ++i) {
         for(let a = 0; a < this.mods[i].versions.length; ++a) {
           let index
-          if((index = mcVersions.findIndex(item => item.version == this.mods[i].versions[a])) != -1) {
+          if((index = mcVersions.findIndex(item => item.version == this.mods[i].versions[a])) == -1) {
             mcVersions.push({
               version: this.mods[i].versions[a],
               count: 1
