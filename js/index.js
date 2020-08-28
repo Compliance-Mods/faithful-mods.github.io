@@ -38,7 +38,7 @@ let v = new Vue({
       const keys = Object.keys(this.breakpointLimits)
       
       for(let i = 0; i < keys.length; ++i) {
-        result[keys[i]] = this.breakpointLimits[keys[i]] <= this.windowSize
+        result[keys[i]] = this.windowSize <= this.breakpointLimits[keys[i]]
       }
       
       return result

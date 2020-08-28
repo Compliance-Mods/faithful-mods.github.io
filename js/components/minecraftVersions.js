@@ -7,11 +7,8 @@ Vue.component('minecraft-versions', {
   template:
     '<div id="minecraftVersions">\
       <h2>{{ title }}</h2>\
-      <div class="btn-group btn-block">\
-        <template v-for="(version, index) in orderedVersions" :key="version">\
-          <template v-if="index%elementsPerLine == 0"></div><div class="btn-group btn-block">\
-          <download-minecraft-version :value="version" />\
-        </template>\
+      <div v-for="(line, index) in versionsOrganized" :key="index" class="btn-group btn-block">\
+        <download-minecraft-version v-for="version in line" :key="version" :value="version" />\
       </div>\
     </div>'
   ,
@@ -19,6 +16,22 @@ Vue.component('minecraft-versions', {
     return {}
   },
   computed: {
+    versionsOrganized: function() {
+      const result = []
+
+      for(let i =0; i < this.$props.versions.length; ++i) {
+        if(i%this.elementsPerLine == 0) {
+          result.push([])
+        }
+
+        result[result.length-1].push(this.$props.versions[i])
+      }
+
+      return result;
+    },
+    numberOfLines: function() {
+      return this.versionsOrganized.length;
+    },
     elementsPerLine: function() {
       if(!!this.$props.breakpoints.sm)
         return 3
