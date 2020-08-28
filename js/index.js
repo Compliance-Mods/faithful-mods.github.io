@@ -116,9 +116,6 @@ let v = new Vue({
 
       return mcVersions
     },
-    minecraftVersions: function() {
-      return this.minecraftVersionsCount.versions
-    },
     modPackageVersion: function() {
       // you can pack mods if they have the same package version number
       // (list of package number must not change)
