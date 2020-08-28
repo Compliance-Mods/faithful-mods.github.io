@@ -60,6 +60,18 @@ main {
     border-color: #e83e8c;
 }
 
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #4a0332;
+    border-color: #e83e8c;
+}
+
+.btn-primary.disabled:hover, .btn-primary:disabled:hover {
+    color: #fff;
+    background-color: #4a0332;
+    border-color: #e83e8c;
+}
+
 /* Make the image fully responsive (carousel) */
 .carousel-inner img {
 	width: 100%;
