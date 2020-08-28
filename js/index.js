@@ -19,7 +19,8 @@ let v = new Vue({
       failed: 'Failed to load mods. Check console for more informations',
       noresults: 'No results found for your search: ',
       noResultsVersion:  'No results found for version',
-      typeAnotherVersion: 'Try to type another version than'
+      typeAnotherVersion: 'Try to type another version than',
+      downloadVersion: 'Download all resource packs for version :'
     },
     versions: {}
   },

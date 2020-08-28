@@ -5,7 +5,7 @@ function downloadFile(url, callback) {
 
   const FINAL_NAME = 'Faithful Mods Resource Pack'
 
-  req.onload = function (event) {
+  req.onload = (event) => {
     if(req.status !== 200)
       throw req
     
