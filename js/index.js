@@ -25,8 +25,8 @@ let v = new Vue({
     },
     versions: {},
     breakpointLimits: {
-      sm: 450,
-      md: 1250,
+      sm: 785,
+      md: 1200,
       lg: Infinity,
     },
     windowSize: window.innerWidth
