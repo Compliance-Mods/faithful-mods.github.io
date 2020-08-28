@@ -107,19 +107,40 @@
                 <div class="col-sm-3 item">
                     <h3>Pages</h3>
                     <ul>
-                        <li><a href="/">Mods</a></li>
-                        <li><a href="/modpack">Modpacks</a></li>
-                        <li><a href="/help-us">Help us!</a></li>
-                        <li></li>
+                        <li>
+                        	<a href="{{ site.baseurl }}/"><i style="margin-right: 5px" class="fas fa-wrench">Mods</a>
+                        </li>
+                        <li>
+                        	<a href="{{ site.baseurl }}/modpack"><i style="margin-right: 5px" class="fas fa-cube">Modpacks</a>
+                        </li>
+                        <li>
+                        	<a href="{{ site.baseurl }}/help-us"><i style="margin-right: 5px" class="fas fa-hands-helping">Help us!</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-3 item">
                     <h3>Related</h3>
                     <ul>
-                        <li><a href="https://faithful.team/" target="_blank" rel="noopener">Faithful Team</a></li>
-						<li><a href="https://faithful.team/tag/faithful-addons/" target="_blank" rel="noopener">Faithful Addons</a></li>
-						<li><a href="https://faithful-dungeons.github.io/Website/" target="_blank" rel="noopener">Faithful Dungeons</a></li>
-                        <li><a href="https://faithfultweaks.com/" target="_blank" rel="noopener">Faithful Tweaks</a></li>
+                        <li>
+                        	<img src="{{ site.baseurl }}/image/icon/faithful.png" style="width: 20px;margin-right: 5px;">
+                        	<a href="https://faithful.team/" target="_blank" rel="noopener">Faithful Team</a>
+                        </li>
+                        <li>
+                        	<img src="{{ site.baseurl }}/image/icon/faithful_64x.png" style="width: 20px;margin-right: 5px;">
+                        	<a href="https://discord.com/invite/Tqtwtgh" target="_blank" rel="noopener">Faithful 64x</a>
+                        </li>
+												<li>
+                        	<img src="{{ site.baseurl }}/image/icon/faithful_addons.png" style="width: 20px;margin-right: 5px;">
+													<a href="https://faithful.team/tag/faithful-addons/" target="_blank" rel="noopener">Faithful Addons</a>
+												</li>
+												<li>
+                        	<img src="{{ site.baseurl }}/image/icon/faithful_dungeons.png" style="width: 20px;margin-right: 5px;">
+													<a href="https://faithful-dungeons.github.io/Website/" target="_blank" rel="noopener">Faithful Dungeons</a>
+												</li>
+                        <li>
+                        	<img src="{{ site.baseurl }}/image/icon/faithful_tweaks.png" style="width: 20px;margin-right: 5px;">
+                        	<a href="https://faithfultweaks.com/" target="_blank" rel="noopener">Faithful Tweaks</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-3 item">
@@ -160,6 +181,9 @@
 				}
 			}
 		});
+
+    // fix non centered icons
+		document.addEventListener('DOMContentLoaded', function () { window.dispatchEvent(new Event('resize')); })
   </script>
 </body>
 </html>
