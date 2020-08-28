@@ -172,8 +172,9 @@ let v = new Vue({
 
       this.isLoadingDownload = true
       downloadFile(url).catch((err) => {
-        console.log(err)
+        console.trace(err)
       }).finally(() => {
+        console.log('finished loading')
         this.isLoadingDownload = false
       })
     },
