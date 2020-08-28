@@ -69,6 +69,19 @@
 	},
 	{
 		"name": [
+			"Just Enough Items (JEI)",
+			"jei"
+		],
+		"versions": [
+			"1.12.2",
+			"1.11.2",
+			"1.10.2",
+			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"The Twilight Forest",
 			"twilightforest"
 		],
