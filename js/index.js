@@ -109,7 +109,7 @@ let v = new Vue({
               count: 1
             })
           } else {
-            mcVersions[i].count = mcVersions[i].count + 1
+            mcVersions[index].count = mcVersions[i].count + 1
           }
         }
       }
