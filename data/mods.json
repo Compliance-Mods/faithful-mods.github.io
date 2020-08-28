@@ -121,6 +121,16 @@
 	},
 	{
 		"name": [
+			"The Aether II",
+			"aether"
+		],
+		"versions": [
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"The Twilight Forest",
 			"twilightforest"
 		],
