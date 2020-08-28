@@ -2,6 +2,7 @@ const DEFAULT_REPO_NAME = 'Faithful-Mods'
 const API_ENDPOINT = 'https://faithful-mods.vercel.app/api'
 
 Vue.config.devtools = true
+Vue.use(VueMq)
 let v = new Vue({
   el: '#app',
   data: {
@@ -70,7 +71,7 @@ let v = new Vue({
 
       
       return this.modSelection.findIndex(mod => {
-        const correspondingNumbers = this.minecraftVersionsToNumbers([this.minecraftVersionToNumberArray(this.versions['1'].min), this.minecraftVersionToNumberArray(mod.version)])
+        const correspondingNumbers = MinecraftUtils.minecraftVersionsToNumbers([this.versions['1'].min, mod.version])
 
         console.log(correspondingNumbers[1], correspondingNumbers[0])
         return correspondingNumbers[1] < correspondingNumbers[0]
@@ -186,78 +187,22 @@ let v = new Vue({
         this.isLoadingDownload = false
       })
     },
-    minecraftVersionToNumberArray: function(version) {
-      let numbers = version.split('.')
-      if(numbers.length < 3) {
-        for(let i = 0; i < 3-numbers.length; ++i) {
-          numbers.push(0)
-        }
-      }
-
-      return numbers.map(number => parseInt(number))
-    },
-    minecraftVersionsToNumbers: function(numbers) {
-      // initial numbers : 1.10, 1.7.9, 1.11.2 ( 1.7.9 < 1.10 < 1.11.2 )
-      //          result : 1100,  1079, 1112   (  1079 < 1100 < 1112 )
-      let result = []
-
-      // looking for max numbers count
-      let maxNumbersCount = -1
-      for(let i = 0; i < numbers.length; ++i) {
-        if(numbers[i].length > maxNumbersCount)
-          maxNumbersCount = numbers[i].length
-        
-        result.push('0') // we need this number to have a number to parse at the end
-      }
-
-      for(let a = 0; a < maxNumbersCount; ++a) {
-        // if it' the first number, we just add it to the end
-        if(a == 0) {
-          for(let i = 0; i < numbers.length; ++i) {
-            result[i] += String(numbers[i][a])
-          }
-        } else {
-          // else we need to add additional zeros equals to the difference of letters with max number
-          // 0, 20, 600 -> 000, 020, 600
-
-          // first we find the maxDigits for this number
-          let maxDigits = -1
-          for(let i = 0; i < numbers.length; ++i) {
-            if(String(numbers[i][a] || '').length > maxDigits) {
-              maxDigits = String(numbers[i][a] || '').length
-            }
-          }
-
-          // then for each nuber we add the difference of zeros
-          for(let i = 0; i < numbers.length; ++i) {
-            for(let b = 0; b < maxDigits - String(numbers[i][a] || '').length; ++b) {
-              result[i] += '0'
-            }
-
-            // finally we push the number
-            result[i] += String(numbers[i][a] || '')
-          }
-        }
-      }
-
-      return result.map(number => parseInt(number))
-    },
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
     packageVersion: function(modVersion) {
-      const numbers = this.minecraftVersionToNumberArray(modVersion)
+      const numbers = MinecraftUtils.minecraftVersionToNumberArray(modVersion)
 
       const versionKeys = Object.keys(this.versions)
 
       let i = 0
       let result = -1
       while(i < versionKeys.length && result == -1) {
-        otherNumbersMin = this.minecraftVersionToNumberArray(this.versions[versionKeys[i]].min)
-        otherNumbersMax = this.minecraftVersionToNumberArray(this.versions[versionKeys[i]].max)
+        otherNumbersMin = MinecraftUtils.minecraftVersionToNumberArray(this.versions[versionKeys[i]].min)
+        otherNumbersMax = MinecraftUtils.minecraftVersionToNumberArray(this.versions[versionKeys[i]].max)
 
         // we compute the corresponding numbers
-        let correspondingNumbers = this.minecraftVersionsToNumbers([numbers, otherNumbersMin, otherNumbersMax]);
+        let correspondingNumbers = MinecraftUtils.minecraftVersionsToNumbers([numbers, otherNumbersMin, otherNumbersMax]);
 
         if(correspondingNumbers[0] >= correspondingNumbers[1] && correspondingNumbers[0] <= correspondingNumbers[2]) {
           result = versionKeys[i]
