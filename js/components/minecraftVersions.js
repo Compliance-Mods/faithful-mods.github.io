@@ -14,6 +14,15 @@ Vue.component('minecraft-versions', {
   data() {
     return {}
   },
+  computed: {
+    orderedVersions: function() {
+      return this.$props.versions.sort(function(a, b) {
+        const numbers = MinecraftUtils.minecraftVersionsToNumbers([a, b])
+
+        return numbers[0] > numbers[1]
+      })
+    }
+  },
   methods: {
     downloadVersion: function(version) {
       if(this.$root.handleDownload) {

@@ -9,7 +9,7 @@ title: Mods List
   <br>
   <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion"></minecraft-versions>
   <br>
-  
+
 	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-light disabled" v-html="downloadButtonText"></button><br>
 
   <div>
@@ -41,6 +41,7 @@ title: Mods List
 <script src="js/ajax.js"></script>
 <script src="js/extensionjs.js"></script>
 <script src="js/downloadFile.js"></script>
+<script src="js/minecraftUtils.js"></script>
 <script src="js/components/minecraftVersions.js"></script>
 <script src="js/components/downloadMinecraftVersion.js"></script>
 <script src="js/index.js"></script>
