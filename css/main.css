@@ -27,6 +27,21 @@ main {
 	}
 }
 
+/* Versions btn for small screen */
+@media (max-width: 777px) {
+    .btn-group {
+	  -ms-flex-direction: column;
+	  flex-direction: column;
+	  -ms-flex-align: start;
+	  -ms-flex-pack: center;
+	  justify-content: center;
+	}
+
+	.btn-group > .btn {
+      border-radius: 0.25rem !important;
+	}
+}
+
 /* Make the image fully responsive (carousel) */
 .carousel-inner img {
 	width: 100%;
