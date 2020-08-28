@@ -171,13 +171,11 @@ let v = new Vue({
       const url = API_ENDPOINT + encodeData(params)
 
       this.isLoadingDownload = true
-      try {
-        downloadFile(url, () => {
-          this.isLoadingDownload = false
-        })
-      } catch(err) {
+      downloadFile(url).catch((err) => {
+        console.log(err)
+      }).finally(() => {
         this.isLoadingDownload = false
-      }
+      })
     },
     minecraftVersionToNumberArray: function(version) {
       let numbers = version.split('.')
