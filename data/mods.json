@@ -367,6 +367,16 @@
 	},
 	{
 		"name": [
+			"Refined Machinery",
+			"refinedmachinery"
+		],
+		"versions": [
+			"1.14.4"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Thaumcraft",
 			"thaumcraft"
 		],
