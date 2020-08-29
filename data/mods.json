@@ -248,6 +248,76 @@
 	},
 	{
 		"name": [
+			"Better Advancement",
+			"betteradvancements"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Better Builders Wands",
+			"betterbuilderswands"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Better Questing",
+			"betterquesting"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BiblioCraft",
+			"bibliocraft"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Big/Extreme Reactors",
+			"bigreactors"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Biomes O' Plenty",
+			"biomesoplenty"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Blood Magic",
+			"bloodmagic"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Botania",
 			"botania"
 		],
@@ -256,6 +326,86 @@
 			"1.11.2",
 			"1.10.2",
 			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BuildCraft | Builders",
+			"buildcraftbuilders"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BuildCraft | Core",
+			"buildcraftcore"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BuildCraft | Compat",
+			"buildcraftcompat"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BuildCraft | Energy",
+			"buildcraftenergy"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BuildCraft | Silicon",
+			"buildcraftsilicon"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"BuildCraft | Transport",
+			"buildcrafttransport"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Building Gadgets",
+			"buildinggadgets"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Bullseye",
+			"bullseye"
+		],
+		"versions": [
+			"1.12.2"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -354,7 +504,7 @@
 	},
 	{
 		"name": [
-			"Fabric Mod Menu",
+			"Mod Menu",
 			"modmenu"
 		],
 		"versions": [
