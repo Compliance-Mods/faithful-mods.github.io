@@ -341,8 +341,8 @@
 	},
 	{
 		"name": [
-			"BuildCraft | Core",
-			"buildcraftcore"
+			"BuildCraft | Compat",
+			"buildcraftcompat"
 		],
 		"versions": [
 			"1.12.2"
@@ -351,8 +351,8 @@
 	},
 	{
 		"name": [
-			"BuildCraft | Compat",
-			"buildcraftcompat"
+			"BuildCraft | Core",
+			"buildcraftcore"
 		],
 		"versions": [
 			"1.12.2"
