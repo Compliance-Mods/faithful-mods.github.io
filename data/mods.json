@@ -33,6 +33,16 @@
 	},
 	{
 		"name": [
+			"Advanced Solar Materials",
+			"advsolars"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Advancement Book",
 			"advancementbook"
 		],
