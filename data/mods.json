@@ -344,6 +344,16 @@
 	},
 	{
 		"name": [
+			"Nether Things",
+			"netherthings"
+		],
+		"versions": [
+			"1.14.4"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Fabric Mod Menu",
 			"modmenu"
 		],
