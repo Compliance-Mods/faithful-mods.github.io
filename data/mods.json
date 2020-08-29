@@ -222,6 +222,16 @@
 	},
 	{
 		"name": [
+			"Auto Dropper",
+			"autodropper"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Avaritia",
 			"avaritia"
 		],
