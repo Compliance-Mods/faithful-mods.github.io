@@ -43,6 +43,96 @@
 	},
 	{
 		"name": [
+			"Advanced Generators",
+			"advgenerators"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"AE2 Stuff",
+			"ae2stuff"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"AgriCraft",
+			"agricraft"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"AIOT Botania",
+			"aiotbotania"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Akashic Tome",
+			"akashictome"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Alchemistry",
+			"alchemistry"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Animania",
+			"animania"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Another Dusts",
+			"anotherdusts"
+		],
+		"versions": [
+			"1.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"AppleCore",
+			"applecore"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"AppleSkin",
 			"appleskin"
 		],
@@ -67,6 +157,66 @@
 			"1.11.2",
 			"1.10.2",
 			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"ArchitectureCraft",
+			"architecturecraft"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"ArmorPlus",
+			"armorplus"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Aroma1997s Dimensional World",
+			"aroma1997sdimension"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Astral Sorcery",
+			"astralsorcery"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Auraddons",
+			"auraddons"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Avaritia",
+			"avaritia"
+		],
+		"versions": [
+			"1.12.2"
 		],
 		"repository": "Faithful-Mods"
 	},
