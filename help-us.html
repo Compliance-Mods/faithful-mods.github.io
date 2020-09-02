@@ -9,24 +9,28 @@ title: Help us!
 
 <h1 href="#How-to-add-a-mod-to-the-list">How to add a mod to the list:</h1>
 
+<hr>
+
+<h2 href="#Prerequisites">Prerequisites:</h2>
 <blockquote>
 	<p>
-		You need to have an <a href="https://github.com/">GitHub</a> account first
-		<br>
-        You need to verify if the Mod doesn&#39;t already have a repository
-    </p>
+		You need to have an <a href="https://github.com/">GitHub</a> account first.
+		<br>You need to verify if the Mod doesn&#39;t already have a repository.
+		<br>It is recommended to download <a href="https://desktop.github.com/">GitHub Desktop</a> for easier file and branch management.
+  </p>
 </blockquote>
 
 <ol>
     <li>
         <p>Create a repository in your own profile, the repository needs to have the same name as the <code>assets</code> folder file (ex: <code>Actually Additions</code> mod repository would be named: <code>actuallyadditions</code>).</p>
+				<img src="https://i.imgur.com/u8vCpYj.png" class="img-fluid center">
     </li>
     <li>
         <p>Remove the <code>master</code> branch &amp; add a branch for each supported version, set the default branch to the highest supported version.</p>
         <img src="https://i.imgur.com/q2AbvOk.png" class="img-fluid center">
     </li>
     <li href="#pack-mcmeta">
-        <p>Add your textures, use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
+        <p>Upload your textures, use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
 
         <pre>
 					<code class="language-json">
@@ -44,23 +48,23 @@ title: Help us!
     </li>
     <li>
         <p>Your repository now should look like this:</p>
-        <img src="https://i.imgur.com/Bjyn0vW.png" class="img-fluid center">
+        <img src="https://i.imgur.com/QwAVdpv.png" class="img-fluid center">
         <blockquote>
         		<p><strong>You need to create an <code>assets</code> folder and place textures inside!</strong></p>
         </blockquote>
     </li>
     <li href="#mods-json">
-        <p>Then make a pull request modifying this <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">file</a> following this setup:</p>
+        <p>Then make a pull request on the website repository modifying <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">this file</a> following this setup:</p>
         <pre>
           <code class="language-json">
 					[
 						{
-							... already existing mod ...
+							... another mod ...
 						},
 						{
 							"name": [
-								"Actually Additions",     // Name with capital & spaces
-								"actuallyadditions"       // Name from the `assets` file
+								"Example Mod",     // Name with capital & spaces
+								"examplemod"       // Name from the `assets` file
 							],
 							"versions": [                 // Add supported versions
 								"1.12.2",
@@ -73,7 +77,7 @@ title: Help us!
 							"repository": "Faithful-Mods"
 						},
 						{
-							... already existing mod ...
+							... another mod ...
 						}
 					]
           </code>
