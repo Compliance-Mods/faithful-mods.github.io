@@ -298,6 +298,26 @@
 	},
 	{
 		"name": [
+			"Better Nether",
+			"betternether"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Better With Mods",
+			"betterwithmods"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"BiblioCraft",
 			"bibliocraft"
 		],
