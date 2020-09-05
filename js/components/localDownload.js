@@ -8,7 +8,8 @@ Vue.component('local-download', {
       <div id="downloadModal" v-show="isDownloading">\
         <div id="downloadModalContent">\
           <h1>{{ steps[currentStep].name }}</h1>\
-          <p>{{ steps[currentStep].content + currentMod }}</p>\
+          <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
+          <p v-else>{{ steps[currentStep].content }}</p>\
         </div>\
       </div>\
     </div>',
