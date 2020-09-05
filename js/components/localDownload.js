@@ -1,6 +1,6 @@
 Vue.component('local-download', {
   props: {
-    canPack: Boolean,
+    canpack: Boolean,
   },
   template: 
     '<div>\
@@ -127,7 +127,7 @@ Vue.component('local-download', {
   },
   computed: {
     canDownloadLocally: function() {
-      return !this.$props.canPack || this.isDownloading
+      return !this.$props.canpack || this.isDownloading
     }
   },
   mounted: function() {  
