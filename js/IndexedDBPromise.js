@@ -63,11 +63,11 @@ class IndexedDBDatabase {
     
     getStore(storeName, access) {
         return new Promise((resolve, reject) => {
-            if(!!stores && Array.isArray(stores)) {
-                let i = stores.findIndex(el => el.name === storeName)
+            if(!!this.stores && Array.isArray(this.stores)) {
+                let i = this.stores.findIndex(el => el.name === storeName)
                 
                 if(i != -1) {
-                    resolve(new IndexedDBStore(this.db, storeName, access, stores[i].store))
+                    resolve(new IndexedDBStore(this.db, storeName, access, this.stores[i].store))
                     return;
                 }
             }
