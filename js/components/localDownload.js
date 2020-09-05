@@ -4,7 +4,7 @@ Vue.component('local-download', {
   },
   template: 
     '<div>\
-      <button id="DownloadLocally" :disabled="!canPack || isDownloading" class="btn btn-block btn-custom" v-on:click="downloadLocally">Download locally (ALPHA)</button>\
+      <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="downloadLocally">Download locally (ALPHA)</button>\
       <div id="downloadModal" v-show="isDownloading">\
         <div id="downloadModalContent">\
           <h1>{{ steps[currentStep].name }}</h1>\
@@ -126,6 +126,9 @@ Vue.component('local-download', {
     }
   },
   computed: {
+    canDownloadLocally: function() {
+      return !this.$props.canPack || this.isDownloading
+    }
   },
   mounted: function() {  
     IndexedDBPromise.open(this.dbName, this.dbVersion, this.stores)
