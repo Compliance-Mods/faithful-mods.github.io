@@ -288,8 +288,8 @@
 	},
 	{
 		"name": [
-			"Better Questing",
-			"betterquesting"
+			"Better Nether",
+			"betternether"
 		],
 		"versions": [
 			"1.12.2"
@@ -298,8 +298,8 @@
 	},
 	{
 		"name": [
-			"Better Nether",
-			"betternether"
+			"Better Questing",
+			"betterquesting"
 		],
 		"versions": [
 			"1.12.2"
