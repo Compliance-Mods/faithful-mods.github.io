@@ -44,7 +44,6 @@ Vue.component('local-download', {
 
       let success = 0
       Promise.all(promises).then((values) => {
-        console.log(values.forEach)
         values.forEach((res, index) => {
           const fileKey = modSelection[index].name + '-' + modSelection[index].version
 
@@ -79,17 +78,17 @@ Vue.component('local-download', {
                   level: 9
                 }
               }).then(blob => {            // 1) generate the zip file
-                  saveAs(blob, 'Faithful Mods Resource Pack ' + (new Date.getTime()) + ".zip") // 2) trigger the download
+                  saveAs(blob, 'Faithful Mods Resource Pack ' + ((new Date).getTime()) + ".zip") // 2) trigger the download
                   this.isDownloading = false
               }, err => {
                   console.error(err)
                   this.isDownloading = false
               });
             }
+          }).catch(err => {
+            console.error(err)
+            this.isDownloading = false
           })
-        }).catch(err => {
-          console.error(err)
-          this.isDownloading = false
         })
       }).catch(reason => {
         console.error(reason)
