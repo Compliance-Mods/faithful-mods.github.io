@@ -12,7 +12,7 @@ title: Mods List
 
   <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-primary" v-html="downloadButtonText"></button><br>
   
-  <local-download :canPack="canPackMods" />
+  <local-download :canPack="canPackMods"></local-download>
   <br>
 
   <div>
