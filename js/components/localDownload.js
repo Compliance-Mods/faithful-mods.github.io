@@ -40,6 +40,8 @@ Vue.component('local-download', {
         promises.push(this.downloadMod(mod))
       })
 
+      console.log(promises)
+
       let success = 0
       Promise.all(promises).then((values) => {
         values.forEach((res, index) => {
