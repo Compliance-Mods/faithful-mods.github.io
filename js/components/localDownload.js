@@ -44,6 +44,7 @@ Vue.component('local-download', {
 
       let success = 0
       Promise.all(promises).then((values) => {
+        console.log(values)
         values.forEach((res, index) => {
           const fileKey = modSelection[index].name + '-' + modSelection[index].version
 
