@@ -10,7 +10,10 @@ title: Mods List
   <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion" :breakpoints="breakpoints"></minecraft-versions>
   <br>
 
-	<button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-primary" v-html="downloadButtonText"></button><br>
+  <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-primary" v-html="downloadButtonText"></button><br>
+  
+  <local-download :canPack="canPackMods" />
+  <br>
 
   <div>
     <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
@@ -44,4 +47,9 @@ title: Mods List
 <script src="js/minecraftUtils.js"></script>
 <script src="js/components/minecraftVersions.js"></script>
 <script src="js/components/downloadMinecraftVersion.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/jszip.min.js"></script>
+<script src="js/IndexedDBPromise.js"></script>
+<script src="js/FileSaver.min.js"></script>
+<script src="js/components/localDownload.js"></script>
 <script src="js/index.js"></script>
