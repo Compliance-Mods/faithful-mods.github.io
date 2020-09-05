@@ -10,7 +10,7 @@ title: Mods List
   <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion" :breakpoints="breakpoints"></minecraft-versions>
   <br>
 
-  <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-primary" v-html="downloadButtonText"></button><br>
+  <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-custom" v-html="downloadButtonText"></button><br>
   
   <local-download :canPack="canPackMods"></local-download>
   <br>
