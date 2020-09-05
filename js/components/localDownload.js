@@ -79,7 +79,7 @@ Vue.component('local-download', {
                   level: 9
                 }
               }).then(blob => {            // 1) generate the zip file
-                  saveAs(blob, key + ".zip") // 2) trigger the download
+                  saveAs(blob, 'Faithful Mods Resource Pack ' + (new Date.getTime()) + ".zip") // 2) trigger the download
                   this.isDownloading = false
               }, err => {
                   console.error(err)
