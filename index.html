@@ -21,7 +21,7 @@ title: Mods List
   </div>
   
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
-  <table id="ModsTable" class="table table-dark">
+  <table id="ModsTable" class="table table-custom">
   <tr v-for='mod in filteredMods' :key='mod.name[0]'>
     <td>
       <div>
