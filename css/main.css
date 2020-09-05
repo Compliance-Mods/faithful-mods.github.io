@@ -134,6 +134,31 @@ p {
 	color: rgba(255, 255, 255, .7)
 }
 
+#downloadModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.5);
+	padding: 10px;
+}
+
+#downloadModal #downloadModalContent {
+	background: white;
+	color: black;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	padding: 10px 20px;
+	position: absolute;
+	width: 400px;
+	height: 300px;
+	max-width: 100%;
+	max-height: 100%;
+	overflow: auto;
+}
+
 main.container > ol {
 	padding-left: 10px
 }
