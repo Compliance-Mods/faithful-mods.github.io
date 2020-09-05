@@ -7,10 +7,15 @@ Vue.component('local-download', {
   data() {
     return {
       dbName: 'faithful',
-      storeName: 'files',
       dbVersion: 2.0,
-      database: undefined,
-      store: undefined,
+      database: null,
+      store: null,
+      stores: [
+        {
+          name: 'files',
+          options: { autoIncrement: true }
+        }
+      ],
       isDownloading: false
     }
   },
@@ -91,18 +96,11 @@ Vue.component('local-download', {
   },
   computed: {
   },
-  mounted: function() {
-    const stores = [
-      {
-        name: this.storeName,
-        options: { autoIncrement: true }
-      }
-    ]
-    
-    IndexedDBPromise.open(this.dbName, this.dbVersion, stores)
+  mounted: function() {  
+    IndexedDBPromise.open(this.dbName, this.dbVersion, this.stores)
     .then((db) => {
       this.database = db
-      return db.getStore(this.storeName, 'readwrite', true)
+      return db.getStore(this.stores[0].name, 'readwrite', true)
     })
     .then((store) => {
       this.store = store
