@@ -3,7 +3,7 @@ Vue.component('local-download', {
     canPack: Boolean,
   },
   template: 
-    '<button id="DownloadLocally" :disabled="!canPack && isDownloading" class="btn btn-block btn-light" v-on:click="downloadLocally">Download locally (ALPHA)</button>',
+    '<button id="DownloadLocally" :disabled="!canPack && isDownloading" class="btn btn-block btn-custom" v-on:click="downloadLocally">Download locally (ALPHA)</button>',
   data() {
     return {
       dbName: 'faithful',

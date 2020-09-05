@@ -62,31 +62,31 @@ main {
 	}
 }
 
-.btn-primary {
+.btn-custom {
     color: #fff;
     background-color: #4a0332;
     border-color: #e83e8c;
 }
 
-.btn-primary.focus, .btn-primary:focus, .btn-primary:hover {
+.btn-custom.focus, .btn-custom:focus, .btn-custom:hover {
     background-color: #e83e8c;
     border-color: #e83e8c;
     color: #fff;
 }
 
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+.btn-custom:not(:disabled):not(.disabled).active, .btn-custom:not(:disabled):not(.disabled):active, .show>.btn-custom.dropdown-toggle {
     color: #fff;
     background-color: #941b6b;
     border-color: #e83e8c;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-custom.disabled, .btn-custom:disabled {
     color: #fff;
     background-color: #4a0332;
     border-color: #e83e8c;
 }
 
-.btn-primary.disabled:hover, .btn-primary:disabled:hover {
+.btn-custom.disabled:hover, .btn-custom:disabled:hover {
     color: #fff;
     background-color: #4a0332;
     border-color: #e83e8c;
