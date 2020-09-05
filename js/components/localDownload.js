@@ -3,7 +3,7 @@ Vue.component('local-download', {
     canPack: Boolean,
   },
   template: 
-    '<button id="DownloadLocally" :disabled="!canPack && !isDownloading" class="btn btn-block" v-on:click="downloadLocally">Download locally (ALPHA)</button>',
+    '<button id="DownloadLocally" :disabled="!canPack && isDownloading" class="btn btn-block" v-on:click="downloadLocally">Download locally (ALPHA)</button>',
   data() {
     return {
       dbName: 'faithful',
@@ -39,6 +39,8 @@ Vue.component('local-download', {
       modSelection.forEach(mod => {
         promises.push(this.downloadMod(mod))
       })
+
+      console.log(promises)
 
       let success = 0
       Promise.all(promises).then((values) => {
