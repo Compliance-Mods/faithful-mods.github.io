@@ -7,7 +7,13 @@ Vue.component('local-download', {
       <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="downloadLocally">Download locally (ALPHA)</button>\
       <div id="downloadModal" v-show="isDownloading">\
         <div id="downloadModalContent">\
-          <h1>{{ steps[currentStep].name }}</h1>\
+          <div id="steps"class="row">\
+            <div v-for"(step, index) in steps" :key="step.name" class="col-sm">\
+              <button v-if="index == currentStep" class="mx-auto btn btn-custom">{{ index }}</button>\
+              <button v-else disabled class="mx-auto btn btn-custom">{{ index }}</button>\
+            </div>\
+          </div>\
+          <h3>{{ steps[currentStep].name }}</h3>\
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
           <p v-else>{{ steps[currentStep].content }}</p>\
         </div>\
