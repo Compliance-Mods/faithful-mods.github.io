@@ -206,7 +206,7 @@ p {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: .75rem 0.5rem;
+	padding: .5rem 0.75rem;
 	color: white;
 }
 
@@ -219,11 +219,12 @@ p {
 
 #downloadModalContent #logs {
 	background: #171717;
-	max-height: 300px;
-	overflow: auto;
+	height: 300px;
+	overflow-x: auto;
+	overflow-y: scroll;
 }
 
-#logs .log:even {
+#logs > .log:even {
 	background-color: rgba(0,0,0,0.2);
 }
 
@@ -232,7 +233,7 @@ p {
 	color: rgb(255,25,25);
 }
 
-#logs .log.error:even {
+#logs > .log.error:even {
 	background-color: rgba(255,25,25, 0.7);
 }
 

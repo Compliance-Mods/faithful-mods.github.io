@@ -12,8 +12,8 @@ Vue.component('local-download', {
           </button>\
           <div id="steps" class="row">\
             <div v-for="(step, index) in steps" :key="step.name" class="col text-center">\
-              <div v-if="index == currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</div>\
-              <div v-else disabled class="mx-auto btn btn-custom">{{ index+1 }}</div>\
+              <button v-if="index == currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</button>\
+              <button v-else disabled class="mx-auto btn btn-custom">{{ index+1 }}</button>\
             </div>\
           </div>\
           <h3 class="my-3">{{ steps[currentStep].name }}</h3>\
