@@ -89,7 +89,6 @@ let v = new Vue({
       return this.modSelection.findIndex(mod => {
         const correspondingNumbers = MinecraftUtils.minecraftVersionsToNumbers([this.versions['1'].min, mod.version])
 
-        console.log(correspondingNumbers[1], correspondingNumbers[0])
         return correspondingNumbers[1] < correspondingNumbers[0]
       }) != -1
     },
@@ -202,9 +201,6 @@ let v = new Vue({
       }).finally(() => {
         this.isLoadingDownload = false
       })
-    },
-    modId: function(mod, version) {
-      return String(mod.name[1] + '-' + version.replace(/\./g,''))
     },
     packageVersion: function(modVersion) {
       const numbers = MinecraftUtils.minecraftVersionToNumberArray(modVersion)
