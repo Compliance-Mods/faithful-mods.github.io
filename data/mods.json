@@ -541,6 +541,17 @@
 	},
 	{
 		"name": [
+			"ComputerCraft",
+			"computercraft",
+			"computercraft"
+		],
+		"versions": [
+			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Ender IO",
 			"enderio",
 			"ender-io"
