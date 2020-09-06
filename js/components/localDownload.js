@@ -150,9 +150,9 @@ Vue.component('local-download', {
     },
     logStep: function() {
       if(this.currentStep < this.steps.length - 1) {
-        this.addLog(steps[currentStep].content + currentMod.name + " v" + currentMod.version)
+        this.addLog(this.steps[this.currentStep].content + this.currentMod.name + " v" + this.currentMod.version)
       } else {
-        this.addLog(steps[currentStep].content)
+        this.addLog(this.steps[this.currentStep].content)
       }
     },
     log: function(obj) {
