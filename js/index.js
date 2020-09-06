@@ -89,7 +89,6 @@ let v = new Vue({
       return this.modSelection.findIndex(mod => {
         const correspondingNumbers = MinecraftUtils.minecraftVersionsToNumbers([this.versions['1'].min, mod.version])
 
-        console.log(correspondingNumbers[1], correspondingNumbers[0])
         return correspondingNumbers[1] < correspondingNumbers[0]
       }) != -1
     },

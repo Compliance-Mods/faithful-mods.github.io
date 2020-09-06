@@ -4,14 +4,16 @@ Vue.component('minecraft-mod', {
   },
   template:
     '<li class="w3-bar">\
-      <img src="https://media.forgecdn.net/avatars/54/432/636135140666602633.png" class="w3-bar-item w3-hide-small" style="width:85px">\
+      <div v-if="!!imageSource" :style="{ \'background-image\': \'url(\' + imageSource + \')\' }" class="w3-bar-item w3-hide-small mod-img"></div>\
       <div class="w3-bar-item">\
-        <input :id="mod.name[0]" type="checkbox" v-model="mod.selected">\
-        <label class="w3-large" :for="mod.name[0]">{{ mod.name[1] }}</label><br>\
-        <div :class="{\'version-radio-select\': true, version: true, modNotChosen: !mod.selected}">\
+        <input :id="mod.name[1]" type="checkbox" v-model="mod.selected">\
+        <label class="w3-large" :for="mod.name[1]">{{ mod.name[0] }}</label>\
+        <a v-if="!!link" :href="link" target="_blank" :title="link"><i class="fas fa-info-circle"></i></a>\
+        <br>\
+        <div :class="{ modNotChosen: !mod.selected }">\
           <template v-for="version in mod.versions":key="modId(mod, version)">\
             <input :disabled="!mod.selected" type="radio" :id="modId(mod, version)" :name="modId(mod, version)"  v-model="mod.versionSelected" :value="version">\
-            <label :for="modId(mod, version)">{{ version }}</label>\
+            <label :for="modId(mod, version)" class="mr-1">{{ version }}</label>\
           </template>\
         </div>\
       </div>\
@@ -20,5 +22,34 @@ Vue.component('minecraft-mod', {
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
     }
+  },
+  data: function() {
+    return {
+      imageSource: undefined,
+      link: undefined
+    }
+  },
+  mounted: function() {
+    axios(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://addons-ecs.forgesvc.net/api/v2/addon/search?gameId=432&pageSize=1&sectionId=6&searchFilter=${this.$props.mod.name[0]}`)}`)
+    .then(res => {
+      // console.log(res.data)
+      const results = res.data.filter(mod => {
+        return mod.name.toLowerCase() === this.$props.mod.name[0].toLowerCase()
+      })
+      console.log(results)
+      if(results.length > 0) {
+        const attachments = results[0].attachments
+        
+        if(attachments.length > 0) {
+          const index = Math.max(0, attachments.findIndex(att => att.isDefault))
+          this.imageSource = attachments[index].url
+        }
+
+        this.link = results[0].websiteUrl
+      }
+    })
+    .catch(err => {
+      console.error(err)
+    })
   }
 })

@@ -21,13 +21,12 @@ title: Mods List
   </div>
   
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
-  <table id="ModsTable" class="table table-custom">
-  <tr v-for='mod in filteredMods' :key='mod.name[0]'>
-    <minecraft-mod v-for="version in mod.versions" :key="modId(mod, version)" :mod="mod"></minecraft-mod>
-  </tr>
+
+  <minecraft-mod-list :mods="filteredMods"></minecraft-mod-list>
 </table>
 </div>
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="js/polyfill.js"></script>
 <script src="js/ajax.js"></script>
@@ -42,4 +41,5 @@ title: Mods List
 <script src="js/FileSaver.min.js"></script>
 <script src="js/components/localDownload.js"></script>
 <script src="js/components/minecraftMod.js"></script>
+<script src="js/components/minecraftModsList.js"></script>
 <script src="js/index.js"></script>
