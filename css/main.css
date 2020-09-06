@@ -66,6 +66,7 @@ label {
 	cursor: pointer;
 	display: inline;
 	padding-left: 10px
+	padding-right: 10px;
 }
 
 .fa-info-circle {
