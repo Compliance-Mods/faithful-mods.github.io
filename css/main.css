@@ -177,6 +177,16 @@ p {
 	background: rgba(0,0,0,0.5);
 	padding: 10px;
 	z-index: 3000;
+	text-align: center;
+}
+
+#downloadModal > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#downloadModal > span.taille {
+	height: 100%;
 }
 
 #downloadModal #downloadModalContent {
@@ -184,13 +194,44 @@ p {
 	border-radius: 6px;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
-	position: absolute;
 	width: 400px;
 	max-width: 100%;
 	max-height: 100%;
 	overflow: auto;
-	margin: 50% 0 0 50%;
-	transform: translate(-50%, -50%);
+	text-align: left;
+}
+
+#downloadModalContent #close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: .75rem;
+}
+
+#downloadModalContent #steps .btn-custom {
+	height: 2.2rem;
+	width: 2.2rem;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#downloadModalContent #logs {
+	background: #171717;
+	max-height: 300px;
+	overflow: auto;
+}
+
+#logs .log:even {
+	background-color: rgba(0,0,0,0.2);
+}
+
+#logs .log.error {
+	background-color: rgba(255,25,25, 0.5);
+	color: rgb(255,25,25);
+}
+
+#logs .log.error:even {
+	background-color: rgba(255,25,25, 0.7);
 }
 
 main.container > ol {
