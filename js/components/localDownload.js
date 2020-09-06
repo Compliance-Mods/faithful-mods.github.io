@@ -10,11 +10,14 @@ Vue.component('local-download', {
           <button id="close" type="button" :disabled="canCloseModal" v-on:click="modalOpened = false" class="close" aria-label="Close">\
             <span aria-hidden="true">&times;</span>\
           </button>\
-          <div id="steps" class="row">\
-            <div v-for="(step, index) in steps" :key="step.name" class="col text-center">\
-              <button v-if="index == currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</button>\
-              <button v-else disabled class="mx-auto btn btn-custom">{{ index+1 }}</button>\
-            </div>\
+          <div id="steps" class="row pr-4">\
+            <template v-for="(step, index) in steps" :key="step.name" >\
+              <div class="col text-center">\
+                <button v-if="index == currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</button>\
+                <button v-else disabled class="mx-auto btn btn-custom">{{ index+1 }}</button>\
+              </div>\
+              <div v-if="index < steps.length -1" class="line col"></div>\
+            </template>\
           </div>\
           <h3 class="my-3">{{ steps[currentStep].name }}</h3>\
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
@@ -133,12 +136,12 @@ Vue.component('local-download', {
               });
             }
           }).catch(err => {
-            console.error(err)
+            this.error(err)
             this.isDownloading = false
           })
         })
       }).catch(reason => {
-        console.error(reason)
+        this.error(reason)
         this.isDownloading = false
       })
     },
