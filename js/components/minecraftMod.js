@@ -21,35 +21,86 @@ Vue.component('minecraft-mod', {
   methods: {
     modId: function(mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g,''))
+    },
+    search(index, searchFilter, fullName = false) {
+      return new Promise((resolve, reject) => {
+        const size = index * 25
+        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://addons-ecs.forgesvc.net/api/v2/addon/search?gameId=432&pageSize=${size}&sectionId=6&searchFilter=${ searchFilter }`)}`
+
+        axios(url)
+          .then(res => {
+            const result = res.data.find(mod => {
+              let found = false
+              if(this.$props.mod.name[2]) {
+                found = mod.websiteUrl.split('/').pop() === this.$props.mod.name[2]
+              }
+              
+              return found || mod.name.toLowerCase() === this.$props.mod.name[0].toLowerCase()
+            })
+
+            if(result) {
+              resolve(result)
+            } else {
+              reject(result)
+            }
+          })
+          .catch(err => {
+            reject(-1)
+          })
+      })
+    },
+    makeSearch: function(index = 1, fullName = false) {
+      return new Promise((resolve, reject) => {
+        let searchFilter = fullName ? this.$props.mod.name[0] : this.$props.mod.name[2]
+        this.search(index, searchFilter)
+        .then(results => {
+          resolve(results)
+        }).catch(err => {
+          if(isNaN(err)) {
+            if(index < this.searchPages) {
+              this.makeSearch(index + 1, fullName).then(res => {
+                resolve(res)
+              }).catch(err => {
+                reject(err)
+              })
+            } else {
+              if(!fullName) {
+                this.makeSearch(1, true).then(res => {
+                  resolve(res)
+                }).catch(err => {
+                  reject(err)
+                })
+              } else {
+                reject()
+              }
+            }
+          } else {
+            reject()
+          }
+        })
+      })
     }
   },
   data: function() {
     return {
+      searchPages: 3,
       imageSource: undefined,
       link: undefined
     }
   },
   mounted: function() {
-    axios(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://addons-ecs.forgesvc.net/api/v2/addon/search?gameId=432&pageSize=1&sectionId=6&searchFilter=${this.$props.mod.name[0]}`)}`)
-    .then(res => {
-      // console.log(res.data)
-      const results = res.data.filter(mod => {
-        return mod.name.toLowerCase() === this.$props.mod.name[0].toLowerCase()
-      })
-      console.log(results)
-      if(results.length > 0) {
-        const attachments = results[0].attachments
+    this.makeSearch().then(result => {
+      const attachments = result.attachments
         
-        if(attachments.length > 0) {
-          const index = Math.max(0, attachments.findIndex(att => att.isDefault))
-          this.imageSource = attachments[index].url
-        }
-
-        this.link = results[0].websiteUrl
+      if(attachments.length > 0) {
+        const index = Math.max(0, attachments.findIndex(att => att.isDefault))
+        this.imageSource = attachments[index].thumbnailUrl
       }
-    })
-    .catch(err => {
+
+      this.link = result.websiteUrl
+    }).catch(err => {
       console.error(err)
+      console.error(this.$props.mod.name[2] || this.$props.mod.name[0])
     })
   }
 })

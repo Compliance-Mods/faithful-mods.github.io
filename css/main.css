@@ -292,8 +292,8 @@ label {
 }
 
 .mod-img {
-	width: 85px !important;
-	height: 85px;
+	width: 65px !important;
+	height: 65px;
 	background-size: auto 100%;
 	background-size: contain;
 	background-repeat: no-repeat;
