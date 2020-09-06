@@ -269,7 +269,7 @@ h2, h3, h4, h5 {
 	font-size: 16px;
 	padding: 12px 20px 12px 40px;
 	border: 1px solid #868686;
-	border-radius: 8px
+	border-radius: .8em
 }
 
 #advice {
@@ -280,7 +280,7 @@ h2, h3, h4, h5 {
 
 #app .w3-ul li:hover{
 	background-color: rgba(0,0,0,.35);
-	color: white;
+	color: white
 }
 
 #app .w3-ul li {
@@ -299,7 +299,7 @@ h2, h3, h4, h5 {
 	background-size: contain;
 	background-repeat: no-repeat;
 	image-rendering: crisp-edges;
-	background-position: center;
+	background-position: center
 }
 
 .version > * {
@@ -308,7 +308,11 @@ h2, h3, h4, h5 {
 }
 
 .btn {
-	border-radius: 64px
+	border-radius: .8em
+}
+
+.w3-card-4 {
+	background: #1b1b1b
 }
 
 .center {	
