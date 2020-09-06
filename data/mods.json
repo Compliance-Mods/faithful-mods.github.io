@@ -642,6 +642,17 @@
 	},
 	{
 		"name": [
+			"Iron Chests",
+			"ironchest",
+			"iron-chests"
+		],
+		"versions": [
+			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Just Enough Items (JEI)",
 			"jei",
 			"jei"
