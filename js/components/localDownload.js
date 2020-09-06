@@ -7,19 +7,18 @@ Vue.component('local-download', {
       <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="downloadLocally">Download locally (ALPHA)</button>\
       <div id="downloadModal" v-show="modalOpened">\
         <div id="downloadModalContent" class="p-3">\
-          <button id="close" type="button" :disabled="canCloseModal" v-on:click="modalOpened = false" class="close" aria-label="Close">\
+          <button id="close" type="button" :disabled="!canCloseModal" v-on:click="modalOpened = false" class="close" aria-label="Close">\
             <span aria-hidden="true">&times;</span>\
           </button>\
           <div id="steps" class="row pr-4">\
             <template v-for="(step, index) in steps" :key="step.name" >\
-              <div class="col text-center">\
-                <button v-if="index == currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</button>\
-                <button v-else disabled class="mx-auto btn btn-custom">{{ index+1 }}</button>\
+              <div class="col-auto text-center">\
+                <button :disabled="index != currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</button>\
               </div>\
               <div v-if="index < steps.length -1" class="line col"></div>\
             </template>\
           </div>\
-          <h3 class="my-3">{{ steps[currentStep].name }}</h3>\
+          <h3 class="my-3">{{ "Step " + (currentStep+1) + ": " + steps[currentStep].name }}</h3>\
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
           <p v-else>{{ steps[currentStep].content }}</p>\
           <div id="logs">\
@@ -73,6 +72,8 @@ Vue.component('local-download', {
       })
     },
     downloadLocally: function() {
+      this.logs = []
+
       const finalZip = new JSZip()
 
       this.isDownloading = true

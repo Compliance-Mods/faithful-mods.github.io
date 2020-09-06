@@ -210,6 +210,10 @@ p {
 	color: white;
 }
 
+#downloadModalContent #steps {
+	align-items: center;
+}
+
 #downloadModalContent #steps .btn-custom {
 	height: 2.2rem;
 	width: 2.2rem;
@@ -219,7 +223,7 @@ p {
 
 #downloadModalContent #steps .line {
 	height: 1px;
-	background-color: grey;
+	background-color: lightgray;
 }
 
 #downloadModalContent #logs {
@@ -227,6 +231,11 @@ p {
 	height: 300px;
 	overflow-x: auto;
 	overflow-y: scroll;
+}
+
+#logs .log {
+	height: 24px;
+	line-height: 24px;
 }
 
 #logs .log:nth-child(even) {
