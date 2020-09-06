@@ -203,9 +203,6 @@ let v = new Vue({
         this.isLoadingDownload = false
       })
     },
-    modId: function(mod, version) {
-      return String(mod.name[1] + '-' + version.replace(/\./g,''))
-    },
     packageVersion: function(modVersion) {
       const numbers = MinecraftUtils.minecraftVersionToNumberArray(modVersion)
 
