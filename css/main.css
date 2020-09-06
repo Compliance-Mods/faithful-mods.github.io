@@ -199,13 +199,15 @@ p {
 	max-height: 100%;
 	overflow: auto;
 	text-align: left;
+	position: relative;
 }
 
 #downloadModalContent #close {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: .75rem;
+	padding: .75rem 0.5rem;
+	color: white;
 }
 
 #downloadModalContent #steps .btn-custom {

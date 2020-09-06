@@ -20,7 +20,7 @@ Vue.component('local-download', {
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
           <p v-else>{{ steps[currentStep].content }}</p>\
           <div id="logs">\
-            <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === "error" }">{{ log.value }}</div>\
+            <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }">{{ log.value }}</div>\
           </div>\
         </div><span class="taille"></span>\
       </div>\
