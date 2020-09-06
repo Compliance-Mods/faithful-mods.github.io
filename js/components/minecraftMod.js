@@ -8,9 +8,9 @@ Vue.component('minecraft-mod', {
       <div class="w3-bar-item">\
         <input :id="mod.name[1]" type="checkbox" v-model="mod.selected">\
         <label class="w3-large" :for="mod.name[1]">{{ mod.name[0] }}</label>\
-        <a v-if="!!link" :href="link" target="_blank" :title="link"><i class="fas fa-info-circle"></i></a>\
+        <a v-if="!!link" :href="link" target="_blank" :title="link" class="ml-2"><i class="fas fa-info-circle"></i></a>\
         <br>\
-        <div :class="{ modNotChosen: !mod.selected }">\
+        <div :class="{ \'mt-1\': true, modNotChosen: !mod.selected }">\
           <template v-for="version in mod.versions":key="modId(mod, version)">\
             <input :disabled="!mod.selected" type="radio" :id="modId(mod, version)" :name="modId(mod, version)"  v-model="mod.versionSelected" :value="version">\
             <label :for="modId(mod, version)" class="mr-1">{{ version }}</label>\

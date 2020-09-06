@@ -83,10 +83,19 @@ input[type=radio] {
 	margin-left: -16.6px;
 }
 
+input[type=radio] + label {
+	border-radius: 20px;
+	padding: 2px 4px; 
+}
+
 input[type=radio]:checked + label {
 	background-color: lightcoral;
-	color: black;
-	border-radius: 20px;   
+	color: black; 
+}
+
+.modNotChosen input[type=radio]:checked + label {
+	background-color: transparent;
+	color: white;
 }
 
 .btn-custom {
