@@ -566,6 +566,17 @@
 	},
 	{
 		"name": [
+			"Ender Zoo",
+			"enderzoo",
+			"ender-zoo"
+		],
+		"versions": [
+			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Forestry",
 			"forestry",
 			"forestry"
