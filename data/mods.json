@@ -552,6 +552,17 @@
 	},
 	{
 		"name": [
+			"Enchanting Plus",
+			"eplus",
+			"enchanting-plus"
+		],
+		"versions": [
+			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Ender IO",
 			"enderio",
 			"ender-io"
