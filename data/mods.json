@@ -293,6 +293,17 @@
 	},
 	{
 		"name": [
+			"Baubley Heart Canisters",
+			"bhc",
+			"baubley-heart-canisters"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Better Advancements",
 			"betteradvancements",
 			"better-advancements"
@@ -362,6 +373,17 @@
 			"Big/Extreme Reactors",
 			"bigreactors",
 			"extreme-reactors"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Binnie's Mod",
+			"binnie",
+			"binnies-mods"
 		],
 		"versions": [
 			"1.12.2"
