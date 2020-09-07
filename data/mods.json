@@ -644,6 +644,17 @@
 	},
 	{
 		"name": [
+			"Ice & Fire",
+			"iceandire",
+			"ice-and-fire-dragons"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Industrial Craft 2 (IC2)",
 			"ic2",
 			"industrial-craft"
