@@ -637,6 +637,61 @@
 	},
 	{
 		"name": [
+			"Classic Bars",
+			"classicbar",
+			"classic-bars"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Clay Bucket",
+			"claybucket",
+			"clay-bucket"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"CoFH Core",
+			"cofh",
+			"cofh-core"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Compact Machines",
+			"compactmachines3",
+			"compact-machines"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Compact Solars",
+			"compactsolars",
+			"compact-solars"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"ComputerCraft",
 			"computercraft",
 			"computercraft"
