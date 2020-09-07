@@ -406,12 +406,24 @@
 	},
 	{
 		"name": [
+			"Buildcraft",
+			"buildcraft",
+			"buildcraft"
+		],
+		"versions": [
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"BuildCraft | Builders",
 			"buildcraftbuilders",
 			"buildcraft-builders"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -422,7 +434,8 @@
 			"buildcraft-compat"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -433,7 +446,8 @@
 			"buildcraft-core"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -444,7 +458,8 @@
 			"buildcraft-energy"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -455,7 +470,19 @@
 			"buildcraft-factory"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Buildcraft | Robotics",
+			"buildcraftrobotics",
+			"buildcraft-robotics"
+		],
+		"versions": [
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -466,7 +493,8 @@
 			"buildcraft-silicon"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -477,7 +505,8 @@
 			"buildcraft-transport"
 		],
 		"versions": [
-			"1.12.2"
+			"1.12.2",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
