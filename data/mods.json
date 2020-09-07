@@ -403,6 +403,17 @@
 	},
 	{
 		"name": [
+			"Block Drops (JEI Addon)",
+			"blockdrops",
+			"block-drops-jei-addon"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Blood Magic",
 			"bloodmagic",
 			"blood-magic"
@@ -562,6 +573,39 @@
 		],
 		"versions": [
 			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Career Bees",
+			"careerbees",
+			"career-bees"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Ceramics",
+			"ceramics"
+			"ceramics"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Chicken Chunks",
+			"chickenchunks",
+			"chicken-chunks-1-8"
+		],
+		"versions": [
+			"1.12.2"
 		],
 		"repository": "Faithful-Mods"
 	},
