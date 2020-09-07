@@ -564,6 +564,7 @@
 			"chisels-bits"
 		],
 		"versions": [
+			"1.12.2",
 			"1.8.9"
 		],
 		"repository": "Faithful-Mods"
@@ -676,6 +677,7 @@
 			"iron-chests"
 		],
 		"versions": [
+			"1.12.2",
 			"1.8.9"
 		],
 		"repository": "Faithful-Mods"
