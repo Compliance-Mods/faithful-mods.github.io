@@ -80,13 +80,13 @@ Vue.component('local-download', {
       this.modalOpened = true
 
       const modSelection = this.$root.modSelection
+      
+      this.currentStep = 0
 
       const promises = []
       modSelection.forEach(mod => {
         promises.push(this.downloadMod(mod))
       })
-      
-      this.currentStep = 0
 
       let success = 0
       Promise.all(promises).then((values) => {
