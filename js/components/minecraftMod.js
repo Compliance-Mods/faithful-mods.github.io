@@ -89,13 +89,29 @@ Vue.component('minecraft-mod', {
     }
   },
   mounted: function() {
+    let result = this.$parent.searchCache(this.$props.mod.name[0])
+
+    if(result) {
+      this.imageSource = result.imageSource
+      this.link = result.link
+      return;
+    }
+
     this.makeSearch().then(result => {
       const attachments = result.attachments
-        
+      
+      let index
       if(attachments.length > 0) {
-        const index = Math.max(0, attachments.findIndex(att => att.isDefault))
+        index = Math.max(0, attachments.findIndex(att => att.isDefault))
         this.imageSource = attachments[index].thumbnailUrl
       }
+
+      // add image to cache
+      this.$parent.thumbnailCache.push({
+        modName: this.$props.mod.name[0],
+        imageSource: attachments[index].thumbnailUrl,
+        link: result.websiteUrl
+      })
 
       this.link = result.websiteUrl
     }).catch(err => {
