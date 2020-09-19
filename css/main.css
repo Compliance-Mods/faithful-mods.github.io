@@ -131,6 +131,23 @@ input[type=radio]:checked + label {
 	margin: 0 auto
 }
 
+.btn-group-custom .btn {
+	border-radius: 0;
+}
+
+.btn-group-custom:first-child .btn:first-child {
+	border-top-left-radius: .8em;
+}
+.btn-group-custom:first-child .btn:last-child {
+	border-top-right-radius: .8em;
+}
+.btn-group-custom:last-child .btn:last-child {
+	border-bottom-right-radius: .8em;
+}
+.btn-group-custom:last-child .btn:first-child {
+	border-bottom-left-radius: .8em;
+}
+
 /* Dark colors */
 ::-webkit-scrollbar{
 	width: 17px

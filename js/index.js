@@ -25,6 +25,7 @@ let v = new Vue({
     },
     versions: {},
     breakpointLimits: {
+      xs: 575,
       sm: 785,
       md: 1200,
       lg: Infinity,

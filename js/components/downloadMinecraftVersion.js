@@ -1,20 +1,27 @@
 Vue.component('download-minecraft-version', {
   props: {
-    value: Object,
+    value: {
+      version: String,
+      count: Number
+    },
+    block: Boolean
   },
-  template: '<button type="button" class="btn btn-custom minecraftVersion mb-1 mr-1" :value="value.version" @click="dv" v-html="buttonTitle"></button>',
+  template:
+  '<button type="button" class="col-sm btn btn-custom minecraftVersion mb-1 mr-1" :value="value.version" @click="dv">\
+    <span :style="{display: block ? \'block\' : \'initial\' }">{{ value.version }}</span> <span class="badge badge-light" style="color: black;">{{ value.count }}</span></div>\
+  </button>',
   data() {
     return {}
   },
   methods: {
     dv: function() {
-      if(this.$parent && !!this.$parent.downloadVersion)
-        this.$parent.downloadVersion(this.value.version)
-    }
-  },
-  computed: {
-    buttonTitle: function() {
-      return this.$props.value.version + ' <span class="badge badge-light" style="color: black;">' + this.$props.value.count + '</span>'
+      if(this.$root.$refs.localDownload && !!this.$root.$refs.localDownload.openConfirmModal)
+        this.$root.$refs.localDownload.openConfirmModal(this.$root.mods.filter(mod => mod.versions.includes(this.$props.value.version)).map(mod => {
+          return {
+            name: mod.name[1],
+            version: this.$props.value.version
+          }
+        }))
     }
   }
 });

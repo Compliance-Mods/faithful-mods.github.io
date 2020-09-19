@@ -4,12 +4,12 @@ Vue.component('local-download', {
   },
   template: 
     '<div>\
-      <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="confirmOpened = true">Download Resource Pack</button>\
+      <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="openConfirmModal(undefined)">Download Resource Pack</button>\
       <div v-if="this.$root.modSelection.length != 0 && canDownloadLocally" class="advice text-center">Error: {{ reasonCantDownload }}</div>\
       \
       <div id="cacheClear" class="customModal" v-show="confirmOpened">\
         <div id="cacheClearContent" class="customModalContent p-3">\
-          <h3>Some mods may already be downloaded. Do you want to use the cached versions or re-download them?</h3>\
+          <h3>Some mods may already be downloaded. Do you want to use the last cached versions or re-download them?</h3>\
           <p class="mb-2">This might take longer to download but you will have the latest version of the resource packs.</p>\
           <div class="text-center row px-2">\
             <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(true)">NO</button>\
@@ -26,15 +26,16 @@ Vue.component('local-download', {
           <div id="steps" class="row pr-4">\
             <template v-for="(step, index) in steps" :key="step.name" >\
               <div class="col-auto text-center">\
-                <button :disabled="index != currentStep" class="mx-auto btn btn-custom">{{ index+1 }}</button>\
+                <button :disabled="index != currentStep" class="mx-auto px-0 btn btn-custom">{{ index+1 }}</button>\
               </div>\
               <div v-if="index < steps.length -1" class="line col"></div>\
             </template>\
           </div>\
-          <h3 class="my-3">{{ "Step " + (currentStep+1) + ": " + steps[currentStep].name }}</h3>\
+          <h3 class="mt-3 mb-1">{{ "Step " + (currentStep+1) + ": " + steps[currentStep].name }}</h3>\
+          <p class="mb-3">{{ "Estimated zipping time: " + finalZippingTime }}</p>\
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
           <p v-else>{{ steps[currentStep].content }}</p>\
-          <div id="logs">\
+          <div id="logs" ref="log">\
             <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
           </div>\
         </div><span class="taille"></span>\
@@ -64,17 +65,23 @@ Vue.component('local-download', {
         },
         {
           name: 'Creating archive',
-          content: 'Zipping...'
+          content: 'Zipping... Please be patient...'
         }
       ],
       currentStep: 0,
       currentMod: '',
       modalOpened: false,
       confirmOpened: false,
+      modSelection: undefined,
       logs: []
     }
   },
   methods: {
+    openConfirmModal: function(modSelection) {
+      this.modSelection = (!modSelection) ? this.$root.modSelection : modSelection
+
+      this.confirmOpened = true
+    },
     downloadMod: function(mod, forceDownlaod = false) {
       this.currentMod = mod
       this.logStep()
@@ -103,7 +110,7 @@ Vue.component('local-download', {
         })
       })
     },
-    downloadLocally: function(forceDownload = false, modSelection = undefined) {
+    downloadLocally: function(forceDownload = false) {
       // hide confirm modal
       this.confirmOpened = false
 
@@ -113,14 +120,11 @@ Vue.component('local-download', {
 
       this.isDownloading = true
       this.modalOpened = true
-
-      if(!modSelection)
-        modSelection = this.$root.modSelection
       
       this.currentStep = 0
 
       const promises = []
-      modSelection.forEach(mod => {
+      this.modSelection.forEach(mod => {
         promises.push(this.downloadMod(mod, forceDownload))
       })
 
@@ -128,15 +132,17 @@ Vue.component('local-download', {
       Promise.all(promises).then((values) => {
         this.currentStep = 1
         values.forEach((res, index) => {
-          this.currentMod = modSelection[index]
+          this.currentMod = this.modSelection[index]
+          if(res.data.type == "text/xml") {
+            console.warn(this.modSelection[index])
+          }
           this.logStep()
-          const fileKey = this.fileKey(modSelection[index])
+          const fileKey = this.fileKey(this.modSelection[index])
 
           this.store.delete(fileKey).then(() => {
             return this.store.put(res.data, fileKey)
           })
           .then(() => {
-            console.log(res.data)
             let zip = new JSZip()
             return zip.loadAsync(res.data)
           })
@@ -155,7 +161,7 @@ Vue.component('local-download', {
 
             ++success
             // if all archives have been successfully added
-            if(success == modSelection.length) {
+            if(success == this.modSelection.length) {
               this.currentStep = 2
               this.logStep()
               finalZip.generateAsync({
@@ -174,6 +180,7 @@ Vue.component('local-download', {
               });
             }
           }).catch(err => {
+            console.log(res)
             this.error(err)
             this.isDownloading = false
           })
@@ -201,6 +208,11 @@ Vue.component('local-download', {
     },
     log: function(obj) {
       this.addLog(obj)
+
+      setTimeout(() => {
+        let objDiv = this.$refs.log;
+        objDiv.scrollTop = objDiv.scrollHeight + 100;
+      }, 20)
     },
     error: function(err) {
       this.addLog(err, true)
@@ -208,6 +220,12 @@ Vue.component('local-download', {
     }
   },
   computed: {
+    finalZippingTime: function() {
+      let time = this.modSelection ? this.modSelection.length / 30 : undefined
+      if(!time) return ''
+
+      return Math.floor(time) + 'min ' + Math.round((time - Math.floor(time))*60*100)/100 + 's'
+    },
     canDownloadLocally: function() {
       return !this.$props.canpack || this.isDownloading || !this.database || !this.store
     },
