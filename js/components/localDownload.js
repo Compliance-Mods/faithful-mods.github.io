@@ -4,10 +4,23 @@ Vue.component('local-download', {
   },
   template: 
     '<div>\
-      <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="downloadLocally">Download locally (ALPHA)</button>\
-      <div id="downloadModal" v-show="modalOpened">\
-        <div id="downloadModalContent" class="p-3">\
-          <button id="close" type="button" :disabled="!canCloseModal" v-on:click="modalOpened = false" class="close" aria-label="Close">\
+      <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="confirmOpened = true">Download Resource Pack</button>\
+      <div v-if="this.$root.modSelection.length != 0 && canDownloadLocally" class="advice text-center">Error: {{ reasonCantDownload }}</div>\
+      \
+      <div id="cacheClear" class="customModal" v-show="confirmOpened">\
+        <div id="cacheClearContent" class="customModalContent p-3">\
+          <h3>Some mods may already be downloaded. Do you want to use the cached versions or re-download them?</h3>\
+          <p class="mb-2">This might take longer to download but you will have the latest version of the resource packs.</p>\
+          <div class="text-center row px-2">\
+            <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(true)">NO</button>\
+            <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(false)">YES</button>\
+          </div>\
+        </div><span class="taille">\
+      </div>\
+      \
+      <div id="downloadModal" class="customModal" v-show="modalOpened">\
+        <div id="downloadModalContent" class="customModalContent p-3">\
+          <button type="button" :disabled="!canCloseModal" v-on:click="modalOpened = false" class="close" aria-label="Close">\
             <span aria-hidden="true">&times;</span>\
           </button>\
           <div id="steps" class="row pr-4">\
@@ -22,7 +35,7 @@ Vue.component('local-download', {
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
           <p v-else>{{ steps[currentStep].content }}</p>\
           <div id="logs">\
-            <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }">{{ log.value }}</div>\
+            <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
           </div>\
         </div><span class="taille"></span>\
       </div>\
@@ -30,7 +43,7 @@ Vue.component('local-download', {
   data() {
     return {
       dbName: 'faithful',
-      dbVersion: 2.0,
+      dbVersion: 3,
       database: null,
       isDownloading: false,
       store: null,
@@ -57,21 +70,43 @@ Vue.component('local-download', {
       currentStep: 0,
       currentMod: '',
       modalOpened: false,
+      confirmOpened: false,
       logs: []
     }
   },
   methods: {
-    downloadMod: function(mod) {
+    downloadMod: function(mod, forceDownlaod = false) {
       this.currentMod = mod
       this.logStep()
-      return axios({
-        url:
-          "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
-        method: "GET",
-        responseType: "blob" // important
+
+      if(forceDownlaod) {
+        return axios({
+          url:
+            "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
+          method: "GET",
+          responseType: "blob" // important
+        })
+      }
+
+      return new Promise((resolve, reject) => {
+        const fileKey = this.fileKey(mod)
+        this.store.get(fileKey).then(res => {
+          this.log("Already downloaded " + mod.name + " v" + mod.version + " in cache")
+          resolve({ data: res })
+        }).catch(() => {
+          axios({
+            url:
+              "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
+            method: "GET",
+            responseType: "blob" // important
+          }).then(resolve).catch(reject)
+        })
       })
     },
-    downloadLocally: function() {
+    downloadLocally: function(forceDownload = false, modSelection = undefined) {
+      // hide confirm modal
+      this.confirmOpened = false
+
       this.logs = []
 
       const finalZip = new JSZip()
@@ -79,13 +114,14 @@ Vue.component('local-download', {
       this.isDownloading = true
       this.modalOpened = true
 
-      const modSelection = this.$root.modSelection
+      if(!modSelection)
+        modSelection = this.$root.modSelection
       
       this.currentStep = 0
 
       const promises = []
       modSelection.forEach(mod => {
-        promises.push(this.downloadMod(mod))
+        promises.push(this.downloadMod(mod, forceDownload))
       })
 
       let success = 0
@@ -94,12 +130,13 @@ Vue.component('local-download', {
         values.forEach((res, index) => {
           this.currentMod = modSelection[index]
           this.logStep()
-          const fileKey = modSelection[index].name + '-' + modSelection[index].version
+          const fileKey = this.fileKey(modSelection[index])
 
           this.store.delete(fileKey).then(() => {
             return this.store.put(res.data, fileKey)
           })
           .then(() => {
+            console.log(res.data)
             let zip = new JSZip()
             return zip.loadAsync(res.data)
           })
@@ -152,6 +189,9 @@ Vue.component('local-download', {
         value: '' + value
       })
     },
+    fileKey: function(mod) {
+      return mod.name + '-' + mod.version
+    },
     logStep: function() {
       if(this.currentStep < this.steps.length - 1) {
         this.addLog(this.steps[this.currentStep].content + this.currentMod.name + " v" + this.currentMod.version)
@@ -171,6 +211,18 @@ Vue.component('local-download', {
     canDownloadLocally: function() {
       return !this.$props.canpack || this.isDownloading || !this.database || !this.store
     },
+    reasonCantDownload: function() {
+      if(!this.$props.canpack)
+        return "This selection cannot be packed"
+      
+      if(this.isDownloading)
+        return "You are currently downloading"
+
+      if(!this.database)
+        return "No database found"
+
+      return "No database store found"
+    },
     canCloseModal: function() {
       return this.modalOpened && !this.isDownloading
     }
@@ -183,6 +235,9 @@ Vue.component('local-download', {
     })
     .then((store) => {
       this.store = store
+    })
+    .catch(err => {
+      console.error(err)
     })
   }
 })

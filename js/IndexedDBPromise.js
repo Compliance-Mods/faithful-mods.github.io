@@ -7,9 +7,15 @@ class IndexedDBStore {
         
         let store = createdStore
         if(!store) {
-            const tr = this.db.transaction(this.storeName, this.access)
-            store = tr.objectStore(this.storeName)
+            try {
+                const tr = this.db.transaction(this.storeName, this.access)
+                store = tr.objectStore(this.storeName)
+            } catch (error) {
+                console.error(error)
+            }
         }
+
+        this.store = store
         
         let that = this;
         
@@ -25,6 +31,11 @@ class IndexedDBStore {
                             
                             if(returnType === 'IDBRequest') {
                                 req.onsuccess = function(e) {
+                                    if(key === "get") {
+                                        if(!e.target.result)
+                                            reject()
+                                        resolve(e.target.result)
+                                    }
                                     resolve(e.target.result)
                                 }
                                 
@@ -67,12 +78,12 @@ class IndexedDBDatabase {
                 let i = this.stores.findIndex(el => el.name === storeName)
                 
                 if(i != -1) {
-                    resolve(new IndexedDBStore(this.db, storeName, access, this.stores[i].store))
-                    return;
+                    resolve(new IndexedDBStore(this.db, storeName, access))
+                } else {
+                    console.error("No predefine for store \"" + storeName + "\" was found.")
+                    reject("No predefine for store \"" + storeName + "\" was found.")
                 }
             }
-            
-            resolve(new IndexedDBStore(this.db, storeName, access))
         })
     }
     
@@ -95,7 +106,7 @@ const IndexedDBPromise = {
             
             request.onsuccess = function(e) {
                 if(!upgrading) {
-                    let result = new IndexedDBDatabase(name, e.target.result)
+                    let result = new IndexedDBDatabase(name, e.target.result, stores)
                     that.databases.push(result)
                     resolve(result)
                 }

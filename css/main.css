@@ -163,7 +163,7 @@ p {
 	color: rgba(255, 255, 255, .7)
 }
 
-#downloadModal {
+.customModal {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -175,16 +175,16 @@ p {
 	text-align: center;
 }
 
-#downloadModal > * {
+.customModal > * {
 	display: inline-block;
 	vertical-align: middle;
 }
 
-#downloadModal > span.taille {
+.customModal > span.taille {
 	height: 100%;
 }
 
-#downloadModal #downloadModalContent {
+.customModal .customModalContent {
 	background: #232323;
 	border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -197,7 +197,7 @@ p {
 	position: relative;
 }
 
-#downloadModalContent #close {
+.customModalContent .close {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -231,6 +231,9 @@ p {
 #logs .log {
 	height: 24px;
 	line-height: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #logs .log:nth-child(even) {
@@ -239,11 +242,6 @@ p {
 
 #logs .log.error {
 	background-color: rgba(255,25,25, 0.5);
-	color: rgb(255,25,25);
-}
-
-#logs .log.error:nth-child(even) {
-	background-color: rgba(255,25,25, 0.7);
 }
 
 main.container > ol {
@@ -274,7 +272,7 @@ h2, h3, h4, h5 {
 	border-radius: .8em
 }
 
-#advice {
+.advice {
 	margin: 1px 0 12px;
 	font-size: 0.75em;
 	opacity: 0.75

@@ -10,14 +10,14 @@ title: Mods List
   <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion" :breakpoints="breakpoints"></minecraft-versions>
   <br>
 
-  <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-custom" v-html="downloadButtonText"></button><br>
+  <!-- <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-custom" v-html="downloadButtonText"></button><br> -->
   
   <local-download :canpack="canPackMods"></local-download>
   <br>
 
   <div>
     <input id="SearchBar" type="text" placeholder="Search for mods or MC version.." title="Type something" v-model="form.search">
-    <div id="advice" v-text="searchAdvice"></div>
+    <div class="advice" v-text="searchAdvice"></div>
   </div>
   
   <div v-if='filteredMods.length == 0' v-text="emptyTable" id="noresults"></div>
