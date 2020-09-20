@@ -44,10 +44,9 @@ Vue.component('local-download', {
   data() {
     return {
       dbName: 'faithful',
-      dbVersion: 3,
+      dbVersion: 4,
       database: null,
       isDownloading: false,
-      store: null,
       stores: [
         {
           name: 'files',
@@ -97,9 +96,18 @@ Vue.component('local-download', {
 
       return new Promise((resolve, reject) => {
         const fileKey = this.fileKey(mod)
-        this.store.get(fileKey).then(res => {
+        this.database.get(this.stores[0].name, fileKey).then(res => {
           this.log("Already downloaded " + mod.name + " v" + mod.version + " in cache")
-          resolve({ data: res })
+          if(!res) {
+            axios({
+              url:
+                "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
+              method: "GET",
+              responseType: "blob" // important
+            }).then(resolve).catch(reject)
+          }
+          else
+            resolve({ data: res })
         }).catch(() => {
           axios({
             url:
@@ -139,8 +147,8 @@ Vue.component('local-download', {
           this.logStep()
           const fileKey = this.fileKey(this.modSelection[index])
 
-          this.store.delete(fileKey).then(() => {
-            return this.store.put(res.data, fileKey)
+          this.database.delete(this.stores[0].name, fileKey).then(() => {
+            return this.database.put(this.stores[0].name, res.data, fileKey)
           })
           .then(() => {
             let zip = new JSZip()
@@ -180,7 +188,7 @@ Vue.component('local-download', {
               });
             }
           }).catch(err => {
-            console.log(res)
+            console.error("request", res)
             this.error(err)
             this.isDownloading = false
           })
@@ -227,7 +235,7 @@ Vue.component('local-download', {
       return Math.floor(time) + 'min ' + Math.round((time - Math.floor(time))*60*100)/100 + 's'
     },
     canDownloadLocally: function() {
-      return !this.$props.canpack || this.isDownloading || !this.database || !this.store
+      return !this.$props.canpack || this.isDownloading || !this.database
     },
     reasonCantDownload: function() {
       if(!this.$props.canpack)
@@ -236,23 +244,22 @@ Vue.component('local-download', {
       if(this.isDownloading)
         return "You are currently downloading"
 
-      if(!this.database)
-        return "No database found"
-
-      return "No database store found"
+      return "No database found"
     },
     canCloseModal: function() {
       return this.modalOpened && !this.isDownloading
     }
   },
-  mounted: function() {  
-    IndexedDBPromise.open(this.dbName, this.dbVersion, this.stores)
-    .then((db) => {
-      this.database = db
-      return db.getStore(this.stores[0].name, 'readwrite', true)
+  mounted: function() { 
+    const that = this
+
+    idb.openDB(this.dbName, this.dbVersion, {
+      upgrade(db, oldVersion, newVersion, transaction) {
+        db.createObjectStore(that.stores[0].name);
+      },
     })
-    .then((store) => {
-      this.store = store
+    .then(db => {
+      this.database = db
     })
     .catch(err => {
       console.error(err)
