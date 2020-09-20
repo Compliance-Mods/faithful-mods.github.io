@@ -9,8 +9,8 @@ Vue.component('local-download', {
       \
       <div id="cacheClear" class="customModal" v-show="confirmOpened">\
         <div id="cacheClearContent" class="customModalContent p-3">\
-          <h3>Some mods may already be downloaded. Do you want to use the last cached versions or re-download them?</h3>\
-          <p class="mb-2">This might take longer to download but you will have the latest version of the resource packs.</p>\
+          <h3>Some mods resource packs may already be downloaded. Do you want to use the last cached versions ?</h3>\
+          <p class="mb-2">If you choose "yes", only the not downloaded packs will be downloaded. You can choose "no" and re-download them is you want.</p>\
           <div class="text-center row px-2">\
             <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(true)">NO</button>\
             <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(false)">YES</button>\
