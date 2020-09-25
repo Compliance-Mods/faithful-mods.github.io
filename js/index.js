@@ -97,10 +97,7 @@ let v = new Vue({
       let selection =  this.mods.filter(mod => mod.selected && !!mod.versionSelected)
 
       return selection.map(mod => {
-        return {
-          name: mod.name[1],
-          version: mod.versionSelected
-        }
+        return this.modToSelection(mod)
       })
     },
     downloadButtonText: function() {
@@ -184,6 +181,14 @@ let v = new Vue({
     }
   },
   methods: {
+    modToSelection: function(mod, version = undefined) {
+      return {
+        name: mod.name[1],
+        displayName: mod.name[0],
+        repository: mod.repository,
+        version: mod.versionSelected || version
+      }
+    },
     download: function() {
       if(this.canPackMods) {
         this.handleDownload('', {

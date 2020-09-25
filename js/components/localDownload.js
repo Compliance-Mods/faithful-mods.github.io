@@ -35,7 +35,7 @@ Vue.component('local-download', {
           <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
           <p v-else>{{ steps[currentStep].content }}<span v-if="isGenerating">{{ timeLeft }}</span></p>\
           <div id="zipProgressBar" v-if="isGenerating" class="progress my-3">\
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" :style="{ width: generatedPercent + \'%\' }" :aria-valuenow="generatedPercent" aria-valuemin="0" aria-valuemax="100">{{ generatedPercent + "%" }}</div>\
+            <div :class="{ \'progress-bar\': true, \'progress-bar-striped\': parseInt(generatedPercent) < 100, \'progress-bar-animated\': parseInt(generatedPercent) < 100 }" role="progressbar" :style="{ width: generatedPercent + \'%\' }" :aria-valuenow="generatedPercent" aria-valuemin="0" aria-valuemax="100">{{ generatedPercent + "%" }}</div>\
           </div>\
           <div id="logs" ref="log">\
             <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
@@ -86,40 +86,31 @@ Vue.component('local-download', {
 
       this.confirmOpened = true
     },
+    requestDownloadMod(mod) {
+      return axios({
+        url:
+          "https://api.allorigins.win/raw?url=https://github.com/" + mod.repository + "/" + mod.name + "/archive/" + mod.version + ".zip",
+        method: "GET",
+        responseType: "blob" // important
+      })
+    },
     downloadMod: function(mod, forceDownlaod = false) {
       this.currentMod = mod
       this.logStep()
 
-      if(forceDownlaod) {
-        return axios({
-          url:
-            "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
-          method: "GET",
-          responseType: "blob" // important
-        })
-      }
+      if(forceDownlaod)
+        return this.requestDownloadMod(mod)
 
       return new Promise((resolve, reject) => {
         const fileKey = this.fileKey(mod)
         this.database.get(this.stores[0].name, fileKey).then(res => {
-          this.log("Already downloaded " + mod.name + " v" + mod.version + " in cache")
-          if(!res) {
-            axios({
-              url:
-                "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
-              method: "GET",
-              responseType: "blob" // important
-            }).then(resolve).catch(reject)
-          }
+          this.log("Already downloaded " + mod.displayName + " v" + mod.version + " in cache")
+          if(!res)
+            this.requestDownloadMod(mod).then(resolve).catch(reject)
           else
             resolve({ data: res })
         }).catch(() => {
-          axios({
-            url:
-              "https://api.allorigins.win/raw?url=https://github.com/" + "Faithful-Mods" + "/" + mod.name + "/archive/" + mod.version + ".zip",
-            method: "GET",
-            responseType: "blob" // important
-          }).then(resolve).catch(reject)
+          this.requestDownloadMod(mod).then(resolve).catch(reject)
         })
       })
     },
@@ -176,7 +167,7 @@ Vue.component('local-download', {
             // if all archives have been successfully added
             if(success == this.modSelection.length) {
               this.currentStep = 2
-              this.logStep()
+              this.log("Zipping...")
               this.startTime.set(new Date())
               finalZip.generateAsync({
                 type:"blob",
@@ -218,7 +209,7 @@ Vue.component('local-download', {
     },
     logStep: function() {
       if(this.currentStep < this.steps.length - 1) {
-        this.addLog(this.steps[this.currentStep].content + this.currentMod.name + " v" + this.currentMod.version)
+        this.addLog(this.steps[this.currentStep].content + this.currentMod.displayName + " v" + this.currentMod.version)
       } else {
         this.addLog(this.steps[this.currentStep].content)
       }
