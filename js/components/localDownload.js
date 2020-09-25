@@ -225,16 +225,22 @@ Vue.component('local-download', {
     },
     log: function(obj) {
       this.addLog(obj)
-
-      setTimeout(() => {
-        let objDiv = this.$refs.log;
-        objDiv.scrollTop = objDiv.scrollHeight + 100;
-      }, 20)
     },
     error: function(err) {
       this.addLog(err, true)
       console.error(err)
     }
+  },
+  watch: {
+    logs: {
+      handler: function () {
+        Vue.nextTick(() => {
+          let objDiv = this.$refs.log;
+          objDiv.scrollTop = objDiv.scrollHeight + 100;
+        })
+      },
+      deep: true
+    },
   },
   computed: {
     canDownloadLocally: function() {
