@@ -220,7 +220,8 @@ p {
 	top: 0;
 	right: 0;
 	padding: .5rem 0.75rem;
-	color: white
+	color: white;
+	z-index: 100;
 }
 
 #downloadModalContent #steps {
