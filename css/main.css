@@ -246,6 +246,11 @@ p {
 	overflow-y: scroll
 }
 
+#downloadModalContent #zipProgressBar > * {
+	transition: unset;
+	background-color: rgb(123, 0, 82);
+}
+
 #logs .log {
 	height: 24px;
 	line-height: 24px;
