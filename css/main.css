@@ -39,7 +39,9 @@ main {
 	margin: 30px 0
 }
 .img-fluid {
-	border-radius: .25rem
+	border-radius: .25rem;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem
 }
 @media (min-width: 576px) {
 	footer {
@@ -58,7 +60,9 @@ main {
 	}
 
 	.btn-group > .btn {
-		border-radius: 0.25rem !important
+		border-radius: 0.25rem !important;
+		-webkit-border-radius: 0.25rem !important;
+		-moz-border-radius: 0.25rem !important
 	}
 }
 
@@ -78,6 +82,8 @@ label {
 
 input[type=radio] + label {
 	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
 	padding: 2px 4px
 }
 
@@ -133,7 +139,9 @@ input[type=radio]:checked + label {
 }
 
 .btn-group-custom .btn {
-	border-radius: 0
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0
 }
 
 .btn-group-custom:first-child .btn:first-child {
@@ -171,7 +179,9 @@ input[type=radio]:checked + label {
 }
 .card {
 	background: #2D2E32;
-	border-radius: 8px
+	border-radius: 8px;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px
 }
 body {
 	background: #171717;
@@ -310,7 +320,9 @@ h2, h3, h4, h5 {
 	font-size: 16px;
 	padding: 12px 20px 12px 40px;
 	border: 1px solid #868686;
-	border-radius: .8em
+	border-radius: .8em;
+	-webkit-border-radius: .8em;
+	-moz-border-radius: .8em
 }
 
 .advice {
@@ -349,7 +361,9 @@ h2, h3, h4, h5 {
 }
 
 .btn {
-	border-radius: .8em
+	border-radius: .8em;
+	-webkit-border-radius: .8em;
+	-moz-border-radius: .8em
 }
 
 .w3-card-4 {
@@ -384,10 +398,14 @@ blockquote {
 .links-image {
 	width: 100%;
 	margin: 0 0 15px 0;
-	border-radius: .25rem
+	border-radius: .25rem;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem
 }
 .links-image img {
-	border-radius: .25rem
+	border-radius: .25rem;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem
 }
 @media (min-width: 992px) {
 	.links-image, .links-content {
@@ -428,7 +446,9 @@ blockquote {
 	display: block;
 	max-width: 100%;
 	margin: 0 auto 1rem;
-	border-radius: .25rem
+	border-radius: .25rem;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
 }
 @media (min-width: 768px) {
 	.header-image {
