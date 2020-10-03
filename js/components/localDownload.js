@@ -87,14 +87,29 @@ Vue.component('local-download', {
       this.confirmOpened = true
     },
     requestDownloadMod(mod) {
-      return axios({
-        url:
-          "https://api.allorigins.win/raw?url=https://github.com/" + mod.repository + "/" + mod.name + "/archive/" + mod.version + ".zip",
-        method: "GET",
-        responseType: "blob" // important
+      return new Promise((resolve, reject) => {
+        axios({
+          url:
+            "https://api.allorigins.win/raw?url=https://github.com/" + mod.repository + "/" + mod.name + "/archive/" + mod.version + ".zip",
+          method: "GET",
+          responseType: "blob" // important
+        })
+        .then( res => {
+          const fileKey = this.fileKey(mod)
+
+          this.database.delete(this.stores[0].name, fileKey).then(() => {
+            this.database.put(this.stores[0].name, res.data, fileKey)
+          })
+          
+          resolve(res)
+        })
+        .catch( error => {
+          reject(error)
+        })
       })
+      return 
     },
-    downloadMod: function(mod, forceDownlaod = false) {
+    getMod: function(mod, forceDownlaod = false) {
       this.currentMod = mod
       this.logStep()
 
@@ -129,7 +144,7 @@ Vue.component('local-download', {
 
       const promises = []
       this.modSelection.forEach(mod => {
-        promises.push(this.downloadMod(mod, forceDownload))
+        promises.push(this.getMod(mod, forceDownload))
       })
 
       let success = 0
@@ -141,15 +156,11 @@ Vue.component('local-download', {
             console.warn(this.modSelection[index])
           }
           this.logStep()
-          const fileKey = this.fileKey(this.modSelection[index])
 
-          this.database.delete(this.stores[0].name, fileKey).then(() => {
-            return this.database.put(this.stores[0].name, res.data, fileKey)
-          })
-          .then(() => {
-            let zip = new JSZip()
-            return zip.loadAsync(res.data)
-          })
+          const fileKey = this.fileKey(this.modSelection[index])
+          let zip = new JSZip()
+          
+          zip.loadAsync(res.data)
           .then((zip) => {
             const keys = Object.keys(zip.files)
           
@@ -230,16 +241,10 @@ Vue.component('local-download', {
   },
   computed: {
     canDownloadLocally: function() {
-      return !this.$props.canpack || this.isDownloading || !this.database
+      return !this.$props.canpack
     },
     reasonCantDownload: function() {
-      if(!this.$props.canpack)
-        return "This selection cannot be packed"
-      
-      if(this.isDownloading)
-        return "You are currently downloading"
-
-      return "No database found"
+      return "This selection cannot be packed (resource pack version incompability)"
     },
     canCloseModal: function() {
       return this.modalOpened && !this.isDownloading
