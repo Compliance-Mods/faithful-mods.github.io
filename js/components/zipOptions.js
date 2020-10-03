@@ -2,11 +2,11 @@ Vue.component('zip-options', {
   template:
     '<div id="zipOptions">\
       <h4 class="my-3">\
-        <label for="aoe" class="d-inline-block noselect">Advanced zip options </label> <input id="aoe" type="checkbox" v-model="advancedOptionsEnabled" />\
+        <label for="aoe" class="d-inline-block noselect">Advanced options </label> <input id="aoe" type="checkbox" v-model="advancedOptionsEnabled" />\
       </h4>\
       <div v-show="advancedOptionsEnabled" id="advancedOptions">\
         <div class="form-row">\
-          <div class="form-group col-md-6">\
+          <div class="form-group col-md-4">\
             <label for="compressionSelect" class="d-block pb-1">Compression level</label>\
             <select id="compressionSelect" class="form-control custom-select" v-model="compressionChosen">\
               <template v-for="(ct, ctindex) in compressionTypes">\
@@ -16,10 +16,11 @@ Vue.component('zip-options', {
               </template>\
             </select>\
           </div>\
-          <div class="form-group col-md-6">\
+          <div class="form-group col-md-4">\
             <label for="archiveName" class="d-block pb-1">Archive name</label>\
             <input type="text" autocomplete="false" name="archiveName" :class="{ \'form-control\': true, empty: !archiveName.trim() }" v-model="archiveName" id="archiveName" placeholder="Leave empty to generate a unique name">\
           </div>\
+          <clear-database></clear-database>\
         </div>\
       </div>\
     </div>',
