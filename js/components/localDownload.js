@@ -1,8 +1,11 @@
+/* global Vue, saveAs, ResourcePackCreator, moment */
+/* eslint no-multi-str: 0 */
+
 Vue.component('local-download', {
   props: {
-    canpack: Boolean,
+    canpack: Boolean
   },
-  template: 
+  template:
     '<div>\
       <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="openConfirmModal(undefined)">Download Resource Pack</button>\
       <div v-if="this.$root.modSelection.length != 0 && canDownloadLocally" class="advice text-center">Error: {{ reasonCantDownload }}</div>\
@@ -20,7 +23,7 @@ Vue.component('local-download', {
       \
       <div id="downloadModal" class="customModal" v-show="modalOpened">\
         <div id="downloadModalContent" class="customModalContent p-3">\
-          <button type="button" :disabled="!canCloseModal" v-on:click="modalOpened = false" class="close" aria-label="Close">\
+          <button type="button" :disabled="!canCloseModal" v-on:click="closeModal" class="close" aria-label="Close">\
             <span aria-hidden="true">&times;</span>\
           </button>\
           <div id="steps" class="row pr-4">\
@@ -32,7 +35,7 @@ Vue.component('local-download', {
             </template>\
           </div>\
           <h3 class="mt-3 mb-1">{{ "Step " + (currentStep+1) + ": " + steps[currentStep].name }}</h3>\
-          <p v-if="currentStep < 2">{{ steps[currentStep].content + currentMod.name + " v" + currentMod.version }}</p>\
+          <p v-if="currentStep < 2">{{ latestLog }}</p>\
           <p v-else>{{ steps[currentStep].content }}<span v-if="isGenerating">{{ timeLeft }}</span></p>\
           <div id="zipProgressBar" v-if="isGenerating" class="progress my-3">\
             <div :class="{ \'progress-bar\': true, \'progress-bar-striped\': parseInt(generatedPercent) < 100, \'progress-bar-animated\': parseInt(generatedPercent) < 100 }" role="progressbar" :style="{ width: generatedPercent + \'%\' }" :aria-valuenow="generatedPercent" aria-valuemin="0" aria-valuemax="100">{{ generatedPercent + "%" }}</div>\
@@ -43,7 +46,7 @@ Vue.component('local-download', {
         </div><span class="taille"></span>\
       </div>\
     </div>',
-  data() {
+  data () {
     return {
       dbName: 'faithful',
       dbVersion: 4,
@@ -76,183 +79,151 @@ Vue.component('local-download', {
       modSelection: undefined,
       logs: [],
       generatedPercent: -1,
-      startTime: new moment(),
-      currentTime: new moment()
+      startTime: new moment(), // eslint-disable-line new-cap
+      currentTime: new moment(), // eslint-disable-line new-cap
+      currentWorker: undefined
     }
   },
   methods: {
-    openConfirmModal: function(modSelection) {
-      this.modSelection = (!modSelection) ? this.$root.modSelection : modSelection
+    closeModal: function () {
+      this.modalOpened = false
 
-      this.confirmOpened = true
+      if (this.navigatorSupportsWorkers && this.currentWorker !== undefined) {
+        this.currentWorker.terminate()
+      }
     },
-    requestDownloadMod(mod) {
-      return new Promise((resolve, reject) => {
-        axios({
-          url:
-            "https://api.allorigins.win/raw?url=https://github.com/" + mod.repository + "/" + mod.name + "/archive/" + mod.version + ".zip",
-          method: "GET",
-          responseType: "blob" // important
-        })
-        .then( res => {
-          const fileKey = this.fileKey(mod)
-
-          this.database.delete(this.stores[0].name, fileKey).then(() => {
-            this.database.put(this.stores[0].name, res.data, fileKey)
-          })
-          
-          resolve(res)
-        })
-        .catch( error => {
-          reject(error)
-        })
-      })
-      return 
-    },
-    getMod: function(mod, forceDownlaod = false) {
-      this.currentMod = mod
-      this.logStep()
-
-      if(forceDownlaod)
-        return this.requestDownloadMod(mod)
-
-      return new Promise((resolve, reject) => {
-        const fileKey = this.fileKey(mod)
-        this.database.get(this.stores[0].name, fileKey).then(res => {
-          this.log("Already downloaded " + mod.displayName + " v" + mod.version + " in cache")
-          if(!res)
-            this.requestDownloadMod(mod).then(resolve).catch(reject)
-          else
-            resolve({ data: res })
-        }).catch(() => {
-          this.requestDownloadMod(mod).then(resolve).catch(reject)
-        })
-      })
-    },
-    downloadLocally: function(forceDownload = false) {
+    downloadLocally: function (forceDownload = false) {
       // hide confirm modal
       this.confirmOpened = false
       this.logs = []
       this.generatedPercent = -1
 
-      const finalZip = new JSZip()
-
       this.isDownloading = true
       this.modalOpened = true
-      
+
       this.currentStep = 0
 
-      const promises = []
-      this.modSelection.forEach(mod => {
-        promises.push(this.getMod(mod, forceDownload))
+      if (this.navigatorSupportsWorkers) {
+        this.downloadWithWorker(this.modSelection, forceDownload, this.logHandler)
+
+        return
+      }
+
+      ResourcePackCreator.openDatabase(this.dbName, this.dbVersion, this.stores[0].name)
+      ResourcePackCreator.packVersions = this.$root.versions
+      ResourcePackCreator.zipOptions = this.$root.$refs.zipOptions.zipOptions
+      ResourcePackCreator.downloadLocally(this.modSelection, forceDownload, this.logHandler)
+    },
+    downloadWithWorker: function (modSelection, forceDownload, logListener) {
+      // terminate (or re-terminate old worker)
+      if (this.currentWorker) this.currentWorker.terminate()
+
+      this.currentWorker = new Worker('/js/worker/downloadWorker.js') // eslint-disable-line no-undef
+
+      // listen to logs
+      this.currentWorker.onmessage = function (e) {
+        if (e.data && e.data.type === 'log') logListener(e.data.content)
+      }
+
+      // open database
+      this.currentWorker.postMessage({
+        channel: 'openDatabase',
+        data: {
+          dbName: this.dbName,
+          dbVersion: this.dbVersion,
+          storeName: this.stores[0].name
+        }
       })
 
-      let success = 0
-      Promise.all(promises).then((values) => {
-        this.currentStep = 1
-        values.forEach((res, index) => {
-          this.currentMod = this.modSelection[index]
-          if(res.data.type == "text/xml") {
-            console.warn(this.modSelection[index])
-          }
-          this.logStep()
+      // set zip options
+      this.currentWorker.postMessage({
+        channel: 'fillZipOptions',
+        data: this.$root.$refs.zipOptions.zipOptions
+      })
 
-          const fileKey = this.fileKey(this.modSelection[index])
-          let zip = new JSZip()
-          
-          zip.loadAsync(res.data)
-          .then((zip) => {
-            const keys = Object.keys(zip.files)
-          
-            let newName
-            for(let i = 0; i < keys.length; ++i) {
-              newName = keys[i].replace(fileKey + '/', '')
-              
-              if(newName.trim() !== '') {
-                finalZip.files[newName] = zip.files[keys[i]]
-                finalZip.files[newName].name = newName
-              }
-            }
+      // open database
+      this.currentWorker.postMessage({
+        channel: 'fillPackVersions',
+        data: this.$root.versions
+      })
 
-            ++success
-            // if all archives have been successfully added
-            if(success == this.modSelection.length) {
-              this.currentStep = 2
-              this.log("Zipping...")
-              this.startTime.set(new Date())
-              finalZip.generateAsync(this.$root.$refs.zipOptions.zipOptions, metadata => {
-                this.currentTime = new moment()
-                this.generatedPercent = metadata.percent.toFixed(2)
-              }).then(blob => { //  1) generate the zip file
-                  const customName = this.$root.$refs.zipOptions.customArchiveName
-                  const archiveName = customName ? customName : 'Faithful Mods Resource Pack ' + ((new Date).getTime())
-                  saveAs(blob, archiveName + ".zip") // 2) trigger the download
-                  this.isDownloading = false
-              }, err => {
-                  console.error(err)
-                  this.isDownloading = false
-              });
-            }
-          }).catch(err => {
-            console.error("request", res)
-            this.error(err)
-            this.isDownloading = false
-          })
-        })
-      }).catch(reason => {
-        this.error(reason)
-        this.isDownloading = false
+      // finally create pack
+      this.currentWorker.postMessage({
+        channel: 'createPack',
+        data: {
+          modSelection: modSelection,
+          forceDownload: forceDownload
+        }
       })
     },
-    addLog: function(value, isError = false) {
+    logHandler: function (log) {
+      if (log.step < 3) {
+        this.currentStep = log.step
+
+        if (log.step !== 2) {
+          this.addLog(log.message)
+        } else {
+          if (!isNaN(parseFloat(log.message))) {
+            this.generatedPercent = log.message
+
+            this.currentTime = new moment() // eslint-disable-line
+          } else if (typeof log.message === 'string') this.addLog(log.message)
+        }
+      } else {
+        const customName = this.$root.$refs.zipOptions.customArchiveName
+        const archiveName = customName || 'Faithful Mods Resource Pack ' + ((new Date()).getTime())
+        saveAs(log.message, archiveName + '.zip') // 2) trigger the download
+        this.isDownloading = false
+      }
+    },
+    addLog: function (value, isError = false) {
       this.logs.push({
         type: isError ? 'error' : 'log',
         value: '' + value
       })
     },
-    fileKey: function(mod) {
-      return mod.name + '-' + mod.version
-    },
-    logStep: function() {
-      if(this.currentStep < this.steps.length - 1) {
-        this.addLog(this.steps[this.currentStep].content + this.currentMod.displayName + " v" + this.currentMod.version)
-      } else {
-        this.addLog(this.steps[this.currentStep].content)
-      }
-    },
-    log: function(obj) {
-      this.addLog(obj)
-    },
-    error: function(err) {
-      this.addLog(err, true)
-      console.error(err)
+    openConfirmModal: function (modSelection) {
+      this.modSelection = (!modSelection) ? this.$root.modSelection : modSelection
+
+      this.confirmOpened = true
     }
   },
   watch: {
     logs: {
+      currentStep: function (newValue, oldValue) {
+        if (oldValue === 1 && newValue === 2) {
+          this.startTime.set(new Date())
+        }
+      },
       handler: function () {
         Vue.nextTick(() => {
-          let objDiv = this.$refs.log;
-          objDiv.scrollTop = objDiv.scrollHeight + 100;
+          let objDiv = this.$refs.log
+          objDiv.scrollTop = objDiv.scrollHeight + 100
         })
       },
       deep: true
-    },
+    }
   },
   computed: {
-    canDownloadLocally: function() {
+    canCloseModal: function () {
+      return this.navigatorSupportsWorkers || (this.modalOpened && !this.isDownloading)
+    },
+    canDownloadLocally: function () {
       return !this.$props.canpack
     },
-    reasonCantDownload: function() {
-      return "This selection cannot be packed (resource pack version incompability)"
-    },
-    canCloseModal: function() {
-      return this.modalOpened && !this.isDownloading
-    },
-    isGenerating: function() {
+    isGenerating: function () {
       return this.generatedPercent > 0
     },
-    timeLeft: function() {
+    latestLog: function () {
+      return (this.logs.length > 0) ? this.logs[this.logs.length - 1].value || '' : ''
+    },
+    navigatorSupportsWorkers: function () {
+      return typeof (Worker) === 'function'
+    },
+    reasonCantDownload: function () {
+      return 'This selection cannot be packed (Pack versions not compatible)'
+    },
+    timeLeft: function () {
       // we need to multiply duration by percent
 
       /*
@@ -260,7 +231,7 @@ Vue.component('local-download', {
       *
       *  durationInMs | percent
       *  totalDurInMs | 100
-      * 
+      *
       *  timeLeftInMs = totalDurInMs - durationMs
       */
 
@@ -276,20 +247,5 @@ Vue.component('local-download', {
 
       return (h > 0 ? h + 'h ' : '') + (m > 0 ? m + 'min ' : '') + s + 's'
     }
-  },
-  mounted: function() { 
-    const that = this
-
-    idb.openDB(this.dbName, this.dbVersion, {
-      upgrade(db, oldVersion, newVersion, transaction) {
-        db.createObjectStore(that.stores[0].name);
-      },
-    })
-    .then(db => {
-      this.database = db
-    })
-    .catch(err => {
-      console.error(err)
-    })
   }
 })

@@ -1,3 +1,6 @@
+/* global Vue, axios */
+/* eslint no-multi-str: 0 */
+
 Vue.component('minecraft-mod', {
   props: {
     mod: Object
@@ -19,89 +22,89 @@ Vue.component('minecraft-mod', {
       </div>\
     </li>',
   methods: {
-    modId: function(mod, version) {
-      return String(mod.name[1] + '-' + version.replace(/\./g,''))
+    modId: function (mod, version) {
+      return String(mod.name[1] + '-' + version.replace(/\./g, ''))
     },
-    search(index, searchFilter, fullName = false) {
+    search (index, searchFilter, fullName = false) {
       return new Promise((resolve, reject) => {
         const size = index * 25
-        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://addons-ecs.forgesvc.net/api/v2/addon/search?gameId=432&pageSize=${size}&sectionId=6&searchFilter=${ searchFilter }`)}`
+        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://addons-ecs.forgesvc.net/api/v2/addon/search?gameId=432&pageSize=${size}&sectionId=6&searchFilter=${searchFilter}`)}`
 
         axios(url)
           .then(res => {
             const result = res.data.find(mod => {
               let found = false
-              if(this.$props.mod.name[2]) {
+              if (this.$props.mod.name[2]) {
                 found = mod.websiteUrl.split('/').pop() === this.$props.mod.name[2]
               }
-              
+
               return found || mod.name.toLowerCase() === this.$props.mod.name[0].toLowerCase()
             })
 
-            if(result) {
+            if (result) {
               resolve(result)
             } else {
               reject(result)
             }
           })
           .catch(err => {
-            reject(-1)
+            reject(new Error(err))
           })
       })
     },
-    makeSearch: function(index = 1, fullName = false) {
+    makeSearch: function (index = 1, fullName = false) {
       return new Promise((resolve, reject) => {
         let searchFilter = fullName ? this.$props.mod.name[0] : this.$props.mod.name[2]
         this.search(index, searchFilter)
-        .then(results => {
-          resolve(results)
-        }).catch(err => {
-          if(isNaN(err)) {
-            if(index < this.searchPages) {
-              this.makeSearch(index + 1, fullName).then(res => {
-                resolve(res)
-              }).catch(err => {
-                reject(err)
-              })
-            } else {
-              if(!fullName) {
-                this.makeSearch(1, true).then(res => {
+          .then(results => {
+            resolve(results)
+          }).catch(err => {
+            if (isNaN(err)) {
+              if (index < this.searchPages) {
+                this.makeSearch(index + 1, fullName).then(res => {
                   resolve(res)
                 }).catch(err => {
                   reject(err)
                 })
               } else {
-                reject()
+                if (!fullName) {
+                  this.makeSearch(1, true).then(res => {
+                    resolve(res)
+                  }).catch(err => {
+                    reject(err)
+                  })
+                } else {
+                  reject(new Error())
+                }
               }
+            } else {
+              reject(new Error())
             }
-          } else {
-            reject()
-          }
-        })
+          })
       })
     }
   },
-  data: function() {
+  data: function () {
     return {
       searchPages: 3,
       imageSource: undefined,
       link: undefined
     }
   },
-  mounted: function() {
+  mounted: function () {
     let result = this.$parent.searchCache(this.$props.mod.name[0])
 
-    if(result) {
+    if (result) {
       this.imageSource = result.imageSource
       this.link = result.link
-      return;
+      return
     }
 
     this.makeSearch().then(result => {
       const attachments = result.attachments
-      
+
       let index
-      if(attachments.length > 0) {
+      if (attachments.length > 0) {
         index = Math.max(0, attachments.findIndex(att => att.isDefault))
         this.imageSource = attachments[index].thumbnailUrl
       }
