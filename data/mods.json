@@ -700,7 +700,41 @@
 			"computercraft"
 		],
 		"versions": [
+			"1.12.2",
 			"1.8.9"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Construct's Armory",
+			"conarm",
+			"constructs-armory"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"ContentTweaker",
+			"contenttweaker",
+			"contenttweaker"
+		],
+		"versions": [
+			"1.12.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Cooking for Blockheads",
+			"cookingforblockheads",
+			"cooking-for-blockheads"
+		],
+		"versions": [
+			"1.12.2"
 		],
 		"repository": "Faithful-Mods"
 	},
