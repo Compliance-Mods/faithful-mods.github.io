@@ -64,6 +64,16 @@ main {
 		-webkit-border-radius: 0.25rem !important;
 		-moz-border-radius: 0.25rem !important
 	}
+
+	#bottomButtons .btn {
+		display: block;
+		width: 100%;
+	}
+
+	#bottomButtons .btn-custom-grey {
+		margin-right: 0;
+		margin-bottom: 8px;
+	}
 }
 
 label {
@@ -126,6 +136,37 @@ input[type=radio]:checked + label {
 	color: #fff;
 	background-color: #4a0332;
 	border-color: #e83e8c
+}
+
+.btn-custom-grey {
+	color: #fff;
+	background-color: #232323;
+	border-color: #848484;
+}
+
+.btn-custom-grey.focus, .btn-custom-grey:focus, .btn-custom-grey:hover {
+	box-shadow: none;
+	background-color: #848484;
+	border-color: #848484;
+	color: #fff
+}
+
+.btn-custom-grey:not(:disabled):not(.disabled).active, .btn-custom-grey:not(:disabled):not(.disabled):active, .show>.btn-custom-grey.dropdown-toggle {
+	color: #fff;
+	background-color: #444;
+	border-color: #777
+}
+
+.btn-custom-grey.disabled, .btn-custom-grey:disabled {
+	color: #fff;
+	background-color: #232323;
+	border-color: #848484;
+}
+
+.btn-custom-grey.disabled:hover, .btn-custom-grey:disabled:hover {
+	color: #fff;
+	background-color: #232323;
+	border-color: #848484;
 }
 
 /* Make the image fully responsive (carousel) */

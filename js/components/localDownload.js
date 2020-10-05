@@ -23,7 +23,7 @@ Vue.component('local-download', {
       \
       <div id="downloadModal" class="customModal" v-show="modalOpened">\
         <div id="downloadModalContent" class="customModalContent p-3">\
-          <button type="button" :disabled="!canCloseModal" v-on:click="closeModal" class="close" aria-label="Close">\
+          <button type="button" :disabled="!canCloseModal" :title="cancelTitle" v-on:click="closeModal" class="close" aria-label="Close">\
             <span aria-hidden="true">&times;</span>\
           </button>\
           <div id="steps" class="row pr-4">\
@@ -42,6 +42,9 @@ Vue.component('local-download', {
           </div>\
           <div id="logs" ref="log">\
             <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
+          </div>\
+          <div id="bottomButtons" class="text-right mt-3">\
+            <button v-on:click="closeModal" :title="cancelTitle" :disabled="!canCloseModal" class="btn btn-custom-grey mr-2">Cancel</button><button :disabled="!finalZip" v-on:click="downloadZip" class="btn btn-custom">Download Zip</button>\
           </div>\
         </div><span class="taille"></span>\
       </div>\
@@ -81,7 +84,8 @@ Vue.component('local-download', {
       generatedPercent: -1,
       startTime: new moment(), // eslint-disable-line new-cap
       currentTime: new moment(), // eslint-disable-line new-cap
-      currentWorker: undefined
+      currentWorker: undefined,
+      finalZip: undefined
     }
   },
   methods: {
@@ -97,6 +101,8 @@ Vue.component('local-download', {
       this.confirmOpened = false
       this.logs = []
       this.generatedPercent = -1
+
+      this.finalZip = undefined
 
       this.isDownloading = true
       this.modalOpened = true
@@ -170,9 +176,10 @@ Vue.component('local-download', {
           } else if (typeof log.message === 'string') this.addLog(log.message)
         }
       } else {
-        const customName = this.$root.$refs.zipOptions.customArchiveName
-        const archiveName = customName || 'Faithful Mods Resource Pack ' + ((new Date()).getTime())
-        saveAs(log.message, archiveName + '.zip') // 2) trigger the download
+        this.finalZip = log.message
+
+        this.downloadZip()
+
         this.isDownloading = false
       }
     },
@@ -186,6 +193,13 @@ Vue.component('local-download', {
       this.modSelection = (!modSelection) ? this.$root.modSelection : modSelection
 
       this.confirmOpened = true
+    },
+    downloadZip: function () {
+      if (this.finalZip !== undefined) {
+        const customName = this.$root.$refs.zipOptions.customArchiveName
+        const archiveName = customName || 'Faithful Mods Resource Pack ' + ((new Date()).getTime())
+        saveAs(this.finalZip, archiveName + '.zip') // 2) trigger the download
+      }
     }
   },
   watch: {
@@ -246,6 +260,11 @@ Vue.component('local-download', {
       const s = durLeft.seconds()
 
       return (h > 0 ? h + 'h ' : '') + (m > 0 ? m + 'min ' : '') + s + 's'
+    },
+    cancelTitle: function () {
+      return this.navigatorSupportsWorkers ?
+        "Your browser supports Web Workers :). You can cancel this script immediatly."
+         : "Your navigator doesn't supports Web Workers :(. You can't cancel this script."
     }
   }
 })
