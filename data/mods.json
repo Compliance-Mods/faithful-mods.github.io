@@ -959,6 +959,17 @@
 	},
 	{
 		"name": [
+			"Netherite Horse Armor",
+			"netheritehorsearmor",
+			"netherite-horse-armor"
+		],
+		"versions": [
+			"1.16.3"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Not Enough Items (NEI)",
 			"nei",
 			"not-enough-items-1-8"
