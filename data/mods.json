@@ -872,6 +872,24 @@
 	},
 	{
 		"name": [
+			"Mo Glass",
+			"mo_glass",
+			"mo-glass"
+		],
+		"versions": [
+			"1.16.3",
+			"1.16.2",
+			"1.16.1",
+			"1.16",
+			"1.16-Snapshot",
+			"1.15.2",
+			"1.15.1",
+			"1.15"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Not Enough Items (NEI)",
 			"nei",
 			"not-enough-items-1-8"
