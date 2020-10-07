@@ -975,7 +975,7 @@
 			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
-	}
+	},
 	{
 		"name": [
 			"Traverse",
@@ -988,5 +988,5 @@
 			"1.14.4"
 		],
 		"repository": "Faithful-Mods"
-	},
+	}
 ]
