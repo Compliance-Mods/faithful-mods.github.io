@@ -764,6 +764,20 @@
 	},
 	{
 		"name": [
+			"Curios API",
+			"curios",
+			"curios"
+		],
+		"versions": [
+			"1.13.2",
+			"1.14.4",
+			"1.15.2",
+			"1.16.3"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Enchanting Plus",
 			"eplus",
 			"enchanting-plus"
