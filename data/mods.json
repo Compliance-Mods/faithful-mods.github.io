@@ -307,6 +307,18 @@
 	},
 	{
 		"name": [
+			"Beenfo",
+			"beenfo",
+			"beenfo"
+		],
+		"versions": [
+			"1.16.3",
+			"1.15.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Better Advancements",
 			"betteradvancements",
 			"better-advancements"
