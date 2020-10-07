@@ -47,6 +47,18 @@
 	},
 	{
 		"name": [
+			"Advancements Enlarger",
+			"advancements-enlarger",
+			"advancements-enlarger"
+		],
+		"versions": [
+			"1.16.3",
+			"1.15.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Advancement Book",
 			"advancementbook",
 			"advancement-book"
