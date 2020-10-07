@@ -249,6 +249,10 @@ p {
 	background: #ccc;
 }
 
+a {
+	color: #f72485;
+}
+
 .customModal {
 	position: fixed;
 	top: 0;
