@@ -888,6 +888,31 @@
 		],
 		"repository": "Faithful-Mods"
 	},
+		{
+		"name": [
+			"Mod Menu",
+			"modmenu",
+			"modmenu"
+		],
+		"versions": [
+			"1.16.2",
+			"1.16.1",
+			"1.15.2",
+			"1.14.4"
+		],
+		"repository": "Faithful-Mods"
+	},
+		{
+		"name": [
+			"Nether Things",
+			"netherthings",
+			"nether-things"
+		],
+		"versions": [
+			"1.14.4"
+		],
+		"repository": "Faithful-Mods"
+	},
 	{
 		"name": [
 			"Not Enough Items (NEI)",
@@ -901,31 +926,6 @@
 			"1.9.4",
 			"1.8.9",
 			"1.7.10"
-		],
-		"repository": "Faithful-Mods"
-	},
-	{
-		"name": [
-			"Nether Things",
-			"netherthings",
-			"nether-things"
-		],
-		"versions": [
-			"1.14.4"
-		],
-		"repository": "Faithful-Mods"
-	},
-	{
-		"name": [
-			"Mod Menu",
-			"modmenu",
-			"modmenu"
-		],
-		"versions": [
-			"1.16.2",
-			"1.16.1",
-			"1.15.2",
-			"1.14.4"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -953,6 +953,29 @@
 		],
 		"repository": "Faithful-Mods"
 	},
+		{
+		"name": [
+			"The Aether II",
+			"aether",
+			"the-aether-ii"
+		],
+		"versions": [
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+		{
+		"name": [
+			"The Twilight Forest",
+			"twilightforest",
+			"the-twilight-forest"
+		],
+		"versions": [
+			"1.12.2",
+			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	}
 	{
 		"name": [
 			"Traverse",
@@ -966,27 +989,4 @@
 		],
 		"repository": "Faithful-Mods"
 	},
-	{
-		"name": [
-			"The Aether II",
-			"aether",
-			"the-aether-ii"
-		],
-		"versions": [
-			"1.7.10"
-		],
-		"repository": "Faithful-Mods"
-	},
-	{
-		"name": [
-			"The Twilight Forest",
-			"twilightforest",
-			"the-twilight-forest"
-		],
-		"versions": [
-			"1.12.2",
-			"1.7.10"
-		],
-		"repository": "Faithful-Mods"
-	}
 ]
