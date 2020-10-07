@@ -353,6 +353,18 @@
 	},
 	{
 		"name": [
+			"Better Enchanted Books",
+			"bebooks",
+			"better-enchanted-books"
+		],
+		"versions": [
+			"1.16.3",
+			"1.15.2"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
 			"Better Nether",
 			"betternether",
 			"betternether"
