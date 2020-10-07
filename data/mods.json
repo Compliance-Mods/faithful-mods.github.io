@@ -872,17 +872,33 @@
 	},
 	{
 		"name": [
-			"Not Enough Items (NEI)",
-			"nei",
-			"not-enough-items-1-8"
+			"Mo Glass",
+			"mo_glass",
+			"mo-glass"
 		],
 		"versions": [
-			"1.12.2",
-			"1.11.2",
-			"1.10.2",
-			"1.9.4",
-			"1.8.9",
-			"1.7.10"
+			"1.16.3",
+			"1.16.2",
+			"1.16.1",
+			"1.16",
+			"1.16-Snapshot",
+			"1.15.2",
+			"1.15.1",
+			"1.15"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Mod Menu",
+			"modmenu",
+			"modmenu"
+		],
+		"versions": [
+			"1.16.2",
+			"1.16.1",
+			"1.15.2",
+			"1.14.4"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -899,15 +915,17 @@
 	},
 	{
 		"name": [
-			"Mod Menu",
-			"modmenu",
-			"modmenu"
+			"Not Enough Items (NEI)",
+			"nei",
+			"not-enough-items-1-8"
 		],
 		"versions": [
-			"1.16.2",
-			"1.16.1",
-			"1.15.2",
-			"1.14.4"
+			"1.12.2",
+			"1.11.2",
+			"1.10.2",
+			"1.9.4",
+			"1.8.9",
+			"1.7.10"
 		],
 		"repository": "Faithful-Mods"
 	},
@@ -937,19 +955,6 @@
 	},
 	{
 		"name": [
-			"Traverse",
-			"traverse",
-			"traverse"
-		],
-		"versions": [
-			"1.16.1",
-			"1.15.2",
-			"1.14.4"
-		],
-		"repository": "Faithful-Mods"
-	},
-	{
-		"name": [
 			"The Aether II",
 			"aether",
 			"the-aether-ii"
@@ -968,6 +973,19 @@
 		"versions": [
 			"1.12.2",
 			"1.7.10"
+		],
+		"repository": "Faithful-Mods"
+	},
+	{
+		"name": [
+			"Traverse",
+			"traverse",
+			"traverse"
+		],
+		"versions": [
+			"1.16.1",
+			"1.15.2",
+			"1.14.4"
 		],
 		"repository": "Faithful-Mods"
 	}
