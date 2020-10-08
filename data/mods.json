@@ -1,13 +1,1 @@
-[
-  {
-    "name": [
-      "Cosmetic Armor Reworked",
-      "cosmeticarmorreworked",
-      "cosmetic-armor-reworked"
-    ],
-    "versions": [
-      "1.12.2"
-    ],
-    "repository": "Faithful-Mods"
-  }
-]
+[{"name": ["Additional-Buildcraft-Objects", "additional-buildcraft-objects", "additional-buildcraft-objects"], "versions": ["1.7.10"], "repository": "Faithful-Mods"}, {"name": ["Cosmetic Armor Reworked", "cosmeticarmorreworked", "cosmetic-armor-reworked"], "versions": ["1.12.2"], "repository": "Faithful-Mods"}]
