@@ -1,13 +1,17 @@
 /* global Vue, axios */
 /* eslint no-multi-str: 0 */
 
+const _MOD_NOT_FOUND_MESSAGE = 'Found no thumbnail for this mod'
+const _NO_LINK = undefined
+const _NO_ATTACHMENTS = -1
+
 Vue.component('minecraft-mod', {
   props: {
     mod: Object
   },
   template:
     '<li class="w3-bar">\
-      <div v-if="!!imageSource" :style="{ \'background-image\': \'url(\' + imageSource + \')\' }" class="w3-bar-item w3-hide-small mod-img"></div>\
+      <div v-if="!!imageSource" :style="{ \'background-image\': \'url(\' + imageSource + \')\', opacity: !link ? 0.3 : 1 }" class="w3-bar-item w3-hide-small mod-img"></div>\
       <div class="w3-bar-item">\
         <input :id="mod.name[1]" type="checkbox" v-model="mod.selected">\
         <label class="w3-large" :for="mod.name[1]">{{ mod.name[0] }}</label>\
@@ -25,7 +29,7 @@ Vue.component('minecraft-mod', {
     modId: function (mod, version) {
       return String(mod.name[1] + '-' + version.replace(/\./g, ''))
     },
-    search (index, searchFilter, fullName = false) {
+    search (index, searchFilter, _fullName = false) {
       return new Promise((resolve, reject) => {
         const size = index * 25
         const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://addons-ecs.forgesvc.net/api/v2/addon/search?gameId=432&pageSize=${size}&sectionId=6&searchFilter=${searchFilter}`)}`
@@ -74,11 +78,13 @@ Vue.component('minecraft-mod', {
                     reject(err)
                   })
                 } else {
-                  reject(new Error())
+                  // no mod was found
+                  reject(new Error(_MOD_NOT_FOUND_MESSAGE))
                 }
               }
             } else {
-              reject(new Error())
+              // Axios error
+              reject(new Error(err))
             }
           })
       })
@@ -88,7 +94,7 @@ Vue.component('minecraft-mod', {
     return {
       searchPages: 3,
       imageSource: undefined,
-      link: undefined
+      link: _NO_LINK
     }
   },
   mounted: function () {
@@ -103,23 +109,37 @@ Vue.component('minecraft-mod', {
     this.makeSearch().then(result => {
       const attachments = result.attachments
 
-      let index
+      // set icon with default attachment
+      let index = _NO_ATTACHMENTS
       if (attachments.length > 0) {
         index = Math.max(0, attachments.findIndex(att => att.isDefault))
         this.imageSource = attachments[index].thumbnailUrl
       }
 
+      // set link
+      this.link = result.websiteUrl
+
       // add image to cache
       this.$parent.thumbnailCache.push({
         modName: this.$props.mod.name[0],
-        imageSource: attachments[index].thumbnailUrl,
-        link: result.websiteUrl
+        imageSource: this.imageSource,
+        link: this.link
       })
 
-      this.link = result.websiteUrl
     }).catch(err => {
-      console.error(err)
-      console.error(this.$props.mod.name[2] || this.$props.mod.name[0])
+      if (err.message !== _MOD_NOT_FOUND_MESSAGE) {
+        console.error(err)
+        console.error(this.$props.mod.name[2] || this.$props.mod.name[0])
+      } else {
+        // set default faithful mods image
+
+        this.imageSource = '/image/icon/faithful_mods.png'
+        this.$parent.thumbnailCache.push({
+          modName: this.$props.mod.name[0],
+          imageSource: this.imageSource,
+          link: _NO_LINK
+        })
+      }
     })
   }
 })
