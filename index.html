@@ -10,10 +10,14 @@ title: Mods List
   <minecraft-versions :versions="minecraftVersions" :title="sentences.downloadVersion" :breakpoints="breakpoints"></minecraft-versions>
 
   <zip-options></zip-options>
-
-  <!-- <button id="ResultBtn" v-on:click="download" :disabled="!canPackMods || this.isLoadingDownload" class="btn btn-block btn-custom" v-html="downloadButtonText"></button><br> -->
   
   <local-download ref="localDownload" :canpack="canPackMods"></local-download>
+
+  <template v-if="isMounted">
+    <button id="DownloadLocally" :disabled="$refs.localDownload.canDownloadLocally" class="btn btn-block btn-custom" v-on:click="$refs.localDownload.openConfirmModal(undefined)">Download Resource Pack</button>
+    <div v-if="modSelection.length != 0 && $refs.localDownload.canDownloadLocally" class="advice text-center">Error: {{ $refs.localDownload.reasonCantDownload }}</div>
+  </template>
+  
   <br>
 
   <div>

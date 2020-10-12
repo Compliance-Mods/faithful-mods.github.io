@@ -7,9 +7,6 @@ Vue.component('local-download', {
   },
   template:
     '<div>\
-      <button id="DownloadLocally" :disabled="canDownloadLocally" class="btn btn-block btn-custom" v-on:click="openConfirmModal(undefined)">Download Resource Pack</button>\
-      <div v-if="this.$root.modSelection.length != 0 && canDownloadLocally" class="advice text-center">Error: {{ reasonCantDownload }}</div>\
-      \
       <div id="cacheClear" class="customModal" v-show="confirmOpened">\
         <div id="cacheClearContent" class="customModalContent p-3">\
           <h3>Some mods resource packs may already be downloaded. Do you want to use the last cached versions ?</h3>\

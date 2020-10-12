@@ -8,6 +8,7 @@ const v = new Vue({ // eslint-disable-line no-unused-vars
       search: '',
       minSearchLetters: 3
     },
+    isMounted: false,
     isLoadingDownload: false,
     loading: true,
     loadingVersions: true,
@@ -206,6 +207,8 @@ const v = new Vue({ // eslint-disable-line no-unused-vars
     }
   },
   mounted: function () {
+    this.isMounted = true
+
     getJSON('data/mods.json', (err, json) => {
       if (err) {
         console.error(err)
