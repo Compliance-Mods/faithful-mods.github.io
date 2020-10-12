@@ -2853,7 +2853,6 @@
    "modmenu"
   ],
   "versions": [
-   "11",
    "1.16.3",
    "1.16.1",
    "1.15.2",
@@ -4225,7 +4224,7 @@
   "name": [
    "The Barrels Mod",
    "barrels",
-   "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/1287951-the-barrels-mod"
+   "none"
   ],
   "versions": [
    "1.11.2",
