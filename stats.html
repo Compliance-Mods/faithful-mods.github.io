@@ -1,0 +1,22 @@
+---
+layout: default
+title: Statistics
+---
+
+<div id="stats" class="text-center">
+  <h2>Faithful Mods statistics</h2>
+
+  <div v-html="loadingMessage"></div>
+
+  <div class="row">
+    <div v-for="(mKey, index) in keys" :key="index" class="col-sm">
+      <h3 v-text="messages[mKey]"></h3>
+      <p><span class="btn btn-custom h1"><b v-text="$data[mKey]"></b></span></p>
+    </div>
+  </div>
+</div>
+
+<script src="/js/ajax.js"></script>
+<script src="/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="/js/stats.js"></script>
