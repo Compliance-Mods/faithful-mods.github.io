@@ -1,20 +1,6 @@
 [
  {
   "name": [
-   "Curios API",
-   "curios",
-   "curios"
-  ],
-  "versions": [
-   "1.16.3",
-   "1.15.2",
-   "1.14.4",
-   "1.13.2"
-  ],
-  "repository": "Faithful-Mods"
- },
- {
-  "name": [
    "/dank/null",
    "danknull",
    "dank-null"
@@ -1222,6 +1208,20 @@
   "versions": [
    "1.12.2",
    "1.7.10"
+  ],
+  "repository": "Faithful-Mods"
+ },
+ {
+  "name": [
+   "Curios API",
+   "curios",
+   "curios"
+  ],
+  "versions": [
+   "1.16.3",
+   "1.15.2",
+   "1.14.4",
+   "1.13.2"
   ],
   "repository": "Faithful-Mods"
  },
@@ -3133,6 +3133,17 @@
   ],
   "versions": [
    "1.12.2"
+  ],
+  "repository": "Faithful-Mods"
+ },
+ {
+  "name": [
+   "Netherite Horse Armor Mod",
+   "netheritehorsearmor",
+   "netherite-horse-armor-mod"
+  ],
+  "versions": [
+   "1.16.3"
   ],
   "repository": "Faithful-Mods"
  },
