@@ -3,6 +3,10 @@ layout: default
 title: Help us!
 ---
 
+<!-- Code block CSS -->
+<link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
+<script src="{{ site.baseurl }}/js/prism.js"></script>
+
 <h2 href="#Prerequisites">Prerequisites:</h2>
 <blockquote>
 	<p>
@@ -43,14 +47,14 @@ title: Help us!
 		<p>Upload your textures, use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
 
 		<pre>
-			<code class="language-json">
-			{
-				"pack":{
-				"pack_format": 3,
-				"description": "Faithful Mods"
-				}
-			}
-			</code>
+<code class="language-json">
+{
+	"pack":{
+		"pack_format": 3,
+		"description": "Faithful Mods"
+	}
+}
+</code>
 		</pre>
 		
 		<blockquote>
@@ -67,31 +71,31 @@ title: Help us!
 	<li>
 		<p>Then make a pull request on the website repository modifying <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">this file</a> following this setup:</p>
 		<pre>
-			<code class="language-json">
-			[
-				{
-					... another mod ...
-				},
-				{
-					"name": [
-						"Example Mod",     // Name with capital & spaces
-						"examplemod",      // Name from the `assets` file
-						"example-mod"      // Name from the CurseForge URL: https://www.curseforge.com/minecraft/mc-mods/example-mod
-															 // Set it to 'none' if there is not a CurseForge page
-					],
-					"versions": [        // Add supported versions
-						"1.12.2",
-						"1.10.2"
-					],
-					// Get the repository owner, can be your username or the organization name
-					// You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
-					"repository": "Faithful-Mods"
-				},
-				{
-					... another mod ...
-				}
-			]
-			</code>
+<code class="language-json">
+[
+	{
+		... another mod ...
+	},
+	{
+		"name": [
+			"Example Mod",     // Name with capital & spaces
+			"examplemod",      // Name from the `assets` file
+			"example-mod"      // Name from the CurseForge URL: https://www.curseforge.com/minecraft/mc-mods/example-mod
+												 // Set it to 'none' if there is not a CurseForge page
+		],
+		"versions": [        // Add supported versions
+			"1.12.2",
+			"1.10.2"
+		],
+			// Get the repository owner, can be your username or the organization name
+			// You can find it in the url of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
+		"repository": "Faithful-Mods"
+	},
+	{
+		... another mod ...
+	}
+]
+</code>
 		</pre>
 		<blockquote>
 			<p><strong>Please add the following in an alphabetical order</strong></p>
