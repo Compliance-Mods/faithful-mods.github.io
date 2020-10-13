@@ -7,44 +7,37 @@ Vue.component('local-download', {
   },
   template:
     '<div>\
-      <div id="cacheClear" class="customModal" v-show="confirmOpened">\
-        <div id="cacheClearContent" class="customModalContent p-3">\
-          <h3>Some mods resource packs may already be downloaded. Do you want to use the last cached versions ?</h3>\
-          <p class="mb-2">If you choose "yes", only the not downloaded packs will be downloaded. You can choose "no" and re-download them is you want.</p>\
-          <div class="text-center row px-2">\
-            <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(true)">NO</button>\
-            <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(false)">YES</button>\
-          </div>\
-        </div><span class="taille">\
-      </div>\
+      <custom-modal contentId="cacheClear" :modalOpened="confirmOpened" noCloseIcon> \
+        <h3>Some mods resource packs may already be downloaded. Do you want to use the last cached versions ?</h3>\
+        <p class="mb-2">If you choose "yes", only the not downloaded packs will be downloaded. You can choose "no" and re-download them is you want.</p>\
+        <div class="text-center row px-2">\
+          <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(true)">NO</button>\
+          <button type="button" class="btn btn-custom mx-1 mt-2 col-sm" v-on:click="downloadLocally(false)">YES</button>\
+        </div>\
+      </custom-modal>\
       \
-      <div id="downloadModal" class="customModal" v-show="modalOpened">\
-        <div id="downloadModalContent" class="customModalContent p-3">\
-          <button type="button" :disabled="!canCloseModal" :title="cancelTitle" v-on:click="closeModal" class="close" aria-label="Close">\
-            <span aria-hidden="true">&times;</span>\
-          </button>\
-          <div id="steps" class="row pr-4">\
-            <template v-for="(step, index) in steps" :key="step.name" >\
-              <div class="col-auto text-center">\
-                <button :disabled="index != currentStep" class="mx-auto px-0 btn btn-custom">{{ index+1 }}</button>\
-              </div>\
-              <div v-if="index < steps.length -1" class="line col"></div>\
-            </template>\
-          </div>\
-          <h3 class="mt-3 mb-1">{{ "Step " + (currentStep+1) + ": " + steps[currentStep].name }}</h3>\
-          <p v-if="currentStep < 2">{{ latestLog }}</p>\
-          <p v-else>{{ steps[currentStep].content }}<span v-if="isGenerating">{{ timeLeft }}</span></p>\
-          <div id="zipProgressBar" v-if="isGenerating" class="progress my-3">\
-            <div :class="{ \'progress-bar\': true, \'progress-bar-striped\': parseInt(generatedPercent) < 100, \'progress-bar-animated\': parseInt(generatedPercent) < 100 }" role="progressbar" :style="{ width: generatedPercent + \'%\' }" :aria-valuenow="generatedPercent" aria-valuemin="0" aria-valuemax="100">{{ generatedPercent + "%" }}</div>\
-          </div>\
-          <div id="logs" ref="log">\
-            <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
-          </div>\
-          <div id="bottomButtons" class="text-right mt-3">\
-            <button v-on:click="closeModal" :title="cancelTitle" :disabled="!canCloseModal" class="btn btn-custom-grey mr-2">Cancel</button><button :disabled="!finalZip" v-on:click="downloadZip" class="btn btn-custom">Download Zip</button>\
-          </div>\
-        </div><span class="taille"></span>\
-      </div>\
+      <custom-modal id="downloadModal" contentId="downloadModalContent" :modalOpened="modalOpened" :closeIconEnabled="canCloseModal" :closeOnClick="closeModal" :closeIconTitle="cancelTitle">\
+        <div id="steps" class="row pr-4">\
+          <template v-for="(step, index) in steps" :key="step.name" >\
+            <div class="col-auto text-center">\
+              <button :disabled="index != currentStep" class="mx-auto px-0 btn btn-custom">{{ index+1 }}</button>\
+            </div>\
+            <div v-if="index < steps.length -1" class="line col"></div>\
+          </template>\
+        </div>\
+        <h3 class="mt-3 mb-1">{{ "Step " + (currentStep+1) + ": " + steps[currentStep].name }}</h3>\
+        <p v-if="currentStep < 2">{{ latestLog }}</p>\
+        <p v-else>{{ steps[currentStep].content }}<span v-if="isGenerating">{{ timeLeft }}</span></p>\
+        <div id="zipProgressBar" v-if="isGenerating" class="progress my-3">\
+          <div :class="{ \'progress-bar\': true, \'progress-bar-striped\': parseInt(generatedPercent) < 100, \'progress-bar-animated\': parseInt(generatedPercent) < 100 }" role="progressbar" :style="{ width: generatedPercent + \'%\' }" :aria-valuenow="generatedPercent" aria-valuemin="0" aria-valuemax="100">{{ generatedPercent + "%" }}</div>\
+        </div>\
+        <div id="logs" ref="log">\
+          <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
+        </div>\
+        <div id="bottomButtons" class="text-right mt-3">\
+          <button v-on:click="closeModal" :title="cancelTitle" :disabled="!canCloseModal" class="btn btn-custom-grey mr-2">Cancel</button><button :disabled="!finalZip" v-on:click="downloadZip" class="btn btn-custom">Download Zip</button>\
+        </div>\
+      </custom-modal>\
     </div>',
   data () {
     return {
