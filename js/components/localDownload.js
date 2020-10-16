@@ -5,7 +5,7 @@ Vue.component('local-download', {
   props: ['canpack', 'versions'],
   template:
     '<div>\
-      <custom-modal contentId="cacheClear" :modalOpened="confirmOpened" noCloseIcon> \
+      <custom-modal contentId="cacheClear" :modalOpened="confirmOpened" :closeOnClick="function() { confirmOpened = false }"> \
         <h3>Some mods resource packs may already be downloaded. Do you want to use the last cached versions ?</h3>\
         <p class="mb-2">If you choose "yes", only the not downloaded packs will be downloaded. You can choose "no" and re-download them is you want.</p>\
         <div class="text-center row px-2">\
@@ -33,7 +33,7 @@ Vue.component('local-download', {
           <div v-for="(log, index) in logs" :key="index" :class="{ log: true, error: log.type === \'error\' }" :title="log.value">{{ log.value }}</div>\
         </div>\
         <div id="bottomButtons" class="text-right mt-3">\
-          <button v-on:click="closeModal" :title="cancelTitle" :disabled="!canCloseModal" class="btn btn-custom-grey mr-2">Cancel</button><button :disabled="!finalZip" v-on:click="downloadZip" class="btn btn-custom">Download Zip</button>\
+        <button :disabled="!finalZip" v-on:click="downloadZip" class="btn btn-custom">Download Zip</button><button v-on:click="closeModal" :title="cancelTitle" :disabled="!canCloseModal" class="btn btn-custom-grey mr-2">Cancel</button>\
         </div>\
       </custom-modal>\
     </div>',
@@ -185,7 +185,7 @@ Vue.component('local-download', {
         version: mod.versionSelected || version
       }
     },
-    openConfirmModal: function (modSelection) {
+    openConfirmModal: function (modSelection = undefined) {
       this.modSelection = (!modSelection) ? this.$root.modSelection : modSelection
 
       this.confirmOpened = true
@@ -258,9 +258,9 @@ Vue.component('local-download', {
       return (h > 0 ? h + 'h ' : '') + (m > 0 ? m + 'min ' : '') + s + 's'
     },
     cancelTitle: function () {
-      return this.navigatorSupportsWorkers ?
-        "Your browser supports Web Workers :). You can cancel this script immediatly."
-         : "Your navigator doesn't supports Web Workers :(. You can't cancel this script."
+      return this.navigatorSupportsWorkers
+        ? 'Your browser supports Web Workers :). You can cancel this script immediatly.'
+        : "Your navigator doesn't supports Web Workers :(. You can't cancel this script."
     }
   }
 })
