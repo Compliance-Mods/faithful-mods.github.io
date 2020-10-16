@@ -452,6 +452,28 @@ blockquote {
 	-webkit-border-radius: .25rem;
 	-moz-border-radius: .25rem
 }
+
+/** MODPACKS **\
+\**          **/
+
+#modpacks #modpackModal {
+	z-index: 1200;
+}
+
+#modpacks #modpackModal #modList {
+	max-height: 400px;
+	overflow: auto;
+	background: rgba(0,0,0,.35);
+}
+
+#modpacks #modpackModal #modList ul {
+	font-size: .8em;
+	list-style-type: none;
+	padding-left: 0;
+	padding-right: 0;
+	margin-bottom: 0;
+}
+
 @media (min-width: 992px) {
 	.links-image, .links-content {
 		display: inline-block

@@ -2,9 +2,7 @@
 /* eslint no-multi-str: 0 */
 
 Vue.component('local-download', {
-  props: {
-    canpack: Boolean
-  },
+  props: ['canpack', 'versions'],
   template:
     '<div>\
       <custom-modal contentId="cacheClear" :modalOpened="confirmOpened" noCloseIcon> \
@@ -140,7 +138,7 @@ Vue.component('local-download', {
       // open database
       this.currentWorker.postMessage({
         channel: 'fillPackVersions',
-        data: this.$root.versions
+        data: this.$root.versions || this.$props.versions
       })
 
       // finally create pack
@@ -178,6 +176,14 @@ Vue.component('local-download', {
         type: isError ? 'error' : 'log',
         value: '' + value
       })
+    },
+    modToSelection: function (mod, version = undefined) {
+      return {
+        name: mod.name[1],
+        displayName: mod.name[0],
+        repository: mod.repository,
+        version: mod.versionSelected || version
+      }
     },
     openConfirmModal: function (modSelection) {
       this.modSelection = (!modSelection) ? this.$root.modSelection : modSelection
