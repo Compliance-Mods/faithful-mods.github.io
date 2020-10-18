@@ -1,5 +1,7 @@
 /* global Vue, getJSON */
 
+const regex = /\s\(by\s.*\)/
+
 const v = new Vue({ // eslint-disable-line no-unused-vars
   el: '#modpacks',
   data: {
@@ -36,7 +38,53 @@ const v = new Vue({ // eslint-disable-line no-unused-vars
       this.currentModpackIndex = index
       this.modpackModalOpened = true
     },
-    downloadModpackList: function (src, modpackIndex) {
+    downloadModpackFromModlist: function (relativePath, displayName, modpackVersion, minecraftVersion) {
+      const that = this
+      getRequest('/data/modpack/' + relativePath + '/modlist.html', {}, function(html, err) {
+        if (err) {
+          console.error(err)
+          return
+        }
+
+        // filling list with html content
+        const modNamesList = document.createElement( 'ul' )
+        modNamesList.innerHTML = html
+
+        // extracting mod names from list
+        const modNamesElements = [ ...modNamesList.getElementsByTagName('li')]
+
+        const modNames = modNamesElements.map(mod => mod.textContent.replace(regex, '')).sort()
+
+        console.log(modNames)
+
+        // pushing mods
+        that.modpacks.push({
+          modpackName: displayName,
+          modpackVersion: modpackVersion,
+          minecraftVersion: minecraftVersion,
+          coverSource: 'data/modpack/' + relativePath + '/../pack.png',
+          modList: modNames
+        })
+      })
+    },
+    downloadAllModpacks: function() {
+      const that = this
+      getJSON('/data/modpack/modpackList.json', function(err, list) {
+        if (err) {
+          console.error(error)
+          return
+        }
+
+        list.forEach(modpack => {
+          Object.keys(modpack.versions).forEach(minecraftVersion => {
+            modpack.versions[minecraftVersion].forEach(modpackVersion => {
+              that.downloadModpackFromModlist(modpack.codeName + '/' + modpackVersion, modpack.displayName, modpackVersion, minecraftVersion)
+            })
+          })
+        })
+      })
+    },
+    downloadModpackList: function (src, modpackIndex = undefined) {
       const that = this
       getJSON(src, function (err, json) {
         if (err) {
@@ -114,5 +162,7 @@ const v = new Vue({ // eslint-disable-line no-unused-vars
 
       this.versions = json
     })
+
+    this.downloadAllModpacks()
   }
 })
