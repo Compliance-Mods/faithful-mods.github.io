@@ -5,7 +5,8 @@ Vue.component('modpack-card', {
   props: ['modpack', 'cantDownload', 'onbuttonclick'],
   template:
     '<div class="card bg-dark">\
-      <img class="card-img-top" :src="modpack.coverSource" alt="Card image" style="width:100%">\
+      <div class="card-image embed-responsive embed-responsive-1by1" :style="{\'background-image\': \'url(\' + modpack.coverSource + \')\' }">\
+      </div>\
       <div class="card-body">\
         <h4 class="card-title">{{ modpack.modpackName }}</h4>\
         <div class="card-text">\

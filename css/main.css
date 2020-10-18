@@ -456,6 +456,16 @@ blockquote {
 /** MODPACKS **\
 \**          **/
 
+#modpacks .card .card-image {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#modpacks .card .card-title {
+	min-height: 48px;
+}
+
 #modpacks #modpackModal {
 	z-index: 1200;
 }
@@ -506,120 +516,121 @@ blockquote {
 	}
 	.custom-navbar {
 		display: inline-flex
-}
-
-/* Header images*/
-.header-image {
-	display: block;
-	max-width: 100%;
-	margin: 0 auto 1rem;
-	border-radius: .25rem;
-	-webkit-border-radius: .25rem;
-	-moz-border-radius: .25rem;
-}
-@media (min-width: 768px) {
-	.header-image {
-		max-width: 75%
 	}
-}
+
+	/* Header images*/
+	.header-image {
+		display: block;
+		max-width: 100%;
+		margin: 0 auto 1rem;
+		border-radius: .25rem;
+		-webkit-border-radius: .25rem;
+		-moz-border-radius: .25rem;
+	}
+	@media (min-width: 768px) {
+		.header-image {
+			max-width: 75%
+		}
+	}
 
 /* Custom carousel */
-.custom.carousel {
-	margin-bottom: 45px
-}
-.custom.carousel-item-prev, .custom.carousel-item.active, .custom.carousel-item-next {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column
-}
-.custom.carousel-indicators {
-	bottom: -45px
-}
-.custom.carousel-item > .card {
-	cursor: pointer;
-	transition-duration:.3s;
-	margin: 15px auto
-}
-.custom img {
-	height: auto
-}
-.custom.carousel-item > .card:hover {
-	box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.5)
-}
-@media (min-width: 624px) {
-	.custom.carousel-item > .card {
-		flex: 0 0 34%
+	.custom.carousel {
+		margin-bottom: 45px
 	}
 	.custom.carousel-item-prev, .custom.carousel-item.active, .custom.carousel-item-next {
-		flex-wrap: wrap;
-		flex-direction: row
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: column
 	}
-	.custom.carousel-control-prev {
-		left: -50px
+	.custom.carousel-indicators {
+		bottom: -45px
 	}
-	.custom.carousel-control-next {
-		right: -50px
-	}
-}
-@media (min-width: 992px) {
 	.custom.carousel-item > .card {
-		flex: initial
+		cursor: pointer;
+		transition-duration:.3s;
+		margin: 15px auto
 	}
-	.custom.carousel-control-prev {
-		left: -100px
+	.custom img {
+		height: auto
 	}
-	.custom.carousel-control-next {
-		right: -100px
+	.custom.carousel-item > .card:hover {
+		box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.5)
 	}
-}
+	@media (min-width: 624px) {
+		.custom.carousel-item > .card {
+			flex: 0 0 34%
+		}
+		.custom.carousel-item-prev, .custom.carousel-item.active, .custom.carousel-item-next {
+			flex-wrap: wrap;
+			flex-direction: row
+		}
+		.custom.carousel-control-prev {
+			left: -50px
+		}
+		.custom.carousel-control-next {
+			right: -50px
+		}
+	}
+	@media (min-width: 992px) {
+		.custom.carousel-item > .card {
+			flex: initial
+		}
+		.custom.carousel-control-prev {
+			left: -100px
+		}
+		.custom.carousel-control-next {
+			right: -100px
+		}
+	}
 
-.card-img-top {
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-	cursor: pointer;
-	transition: 0.3s;
-	color: #000
-}
+	.card-img-top {
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		cursor: pointer;
+		transition: 0.3s;
+		color: #000
+	}
 
-.nav-link {
-	transition: all .1s ease-out;
-	-webkit-transition: all .1s ease-out;
-	-moz-transition: all .1s ease-out;
-	-ms-transition: all .1s ease-out;
-	-o-transition: all .1s ease-out
-}
+	.nav-link {
+		transition: all .1s ease-out;
+		-webkit-transition: all .1s ease-out;
+		-moz-transition: all .1s ease-out;
+		-ms-transition: all .1s ease-out;
+		-o-transition: all .1s ease-out
+	}
 
-.nav-link:hover {
-	transform: scale(0.95);
-	-webkit-transform: scale(0.95);
-	-moz-transform: scale(0.95);
-	-ms-transform: scale(0.95);
-	-o-transform: scale(0.95)
-}
+	.nav-link:hover {
+		transform: scale(0.95);
+		-webkit-transform: scale(0.95);
+		-moz-transform: scale(0.95);
+		-ms-transform: scale(0.95);
+		-o-transform: scale(0.95)
+	}
 
-img {
-	border: 0 solid #000
-}
+	img {
+		border: 0 solid #000
+	}
 
-/* make images not draggable and rendering pixelated */
-img[src$=".png"] {
-	image-rendering: pixelated;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: -o-crisp-edges;
-	-ms-interpolation-mode: nearest-neighbor;
-	-webkit-user-drag: none;
-	-moz-user-drag: none;
-	-o-user-drag: none;
-	user-drag: none
-}
+	/* make images not draggable and rendering pixelated */
+	img[src$=".png"] {
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -o-crisp-edges;
+		-ms-interpolation-mode: nearest-neighbor;
+		-webkit-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none
+	}
 
-.item a img.img-fluid {
-	transition: all .5s ease
-}
+	.item a img.img-fluid {
+		transition: all .5s ease
+	}
 
-.item a img.img-fluid:hover {
-	transform: scale(1.1)
+	.item a img.img-fluid:hover {
+		transform: scale(1.1)
+	}
 }
 
 .noselect {
