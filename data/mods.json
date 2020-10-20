@@ -440,7 +440,7 @@
  },
  {
   "name": [
-   "Avaritia",
+   "Avaritia 1.1x",
    "avaritia",
    "avaritia"
   ],
@@ -989,7 +989,7 @@
  },
  {
   "name": [
-   "ChickenChunks",
+   "Chicken Chunks 1.8.+",
    "chickenchunks",
    "chickenchunks"
   ],
@@ -1515,7 +1515,7 @@
  },
  {
   "name": [
-   "Ender Storage",
+   "Ender Storage 1.8.+",
    "enderstorage",
    "ender-storage-1-8"
   ],
@@ -1838,9 +1838,9 @@
  },
  {
   "name": [
-   "Extreme/Big Reactors",
+   "Extreme Reactors",
    "bigreactors",
-   "big-reactors"
+   "extreme-reactors"
   ],
   "versions": [
    "1.12.2",
@@ -2259,7 +2259,7 @@
  },
  {
   "name": [
-   "Immersive Petrolum",
+   "Immersive Petroleum",
    "immersivepetroleum",
    "immersive-petroleum"
   ],
@@ -3376,9 +3376,9 @@
  },
  {
   "name": [
-   "PneumaticCraft",
+   "PneumaticCraft: Repressurized",
    "pneumaticcraft",
-   "pneumaticcraft"
+   "pneumaticcraft-repressurized"
   ],
   "versions": [
    "1.12.2",
@@ -3850,7 +3850,7 @@
  },
  {
   "name": [
-   "Simply Jetpacks",
+   "Simply Jetpacks 2",
    "simplyjetpacks",
    "simply-jetpacks"
   ],
@@ -4438,7 +4438,7 @@
  },
  {
   "name": [
-   "Tinkers' Construct",
+   "Tinkers Construct",
    "tinker",
    "tinkers-construct"
   ],
@@ -4450,7 +4450,7 @@
  },
  {
   "name": [
-   "Tinkers' Construct",
+   "Tinkers Construct",
    "tconstruct",
    "tinkers-construct"
   ],
