@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Faithful Mods - {{ page.title }}</title>
-	<meta name="description" content="Faithful Mods for Java Edition" />
+	<meta name="description" content="Faithful 32x textures for various Minecraft mods (Java Edition)" />
 	<meta name="keywords" content="Minecraft Mods, Faithful, Resource Pack, Mod">
 	<meta name="theme-color" content="#00ccaf">
 
@@ -14,8 +14,8 @@
 	<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico" />
 	<link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png" />
-	<meta property="og:image" content="{{ site.baseurl }}/image/icon/og.jpg" />
-	<meta property="twitter:image" content="{{ site.baseurl }}/image/icon/og.jpg" />
+	<meta property="og:image" content="{{ site.baseurl }}/image/icon/faithful_mods.png" />
+	<meta property="twitter:image" content="{{ site.baseurl }}/image/icon/faithful_mods.png" />
 	<meta name="twitter:card" content="summary_large_image">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,10 +23,10 @@
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/owl.carousel.css">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
 
-	<!-- Font is awesome icons -->
+	<!-- Font awesome icons -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 
@@ -86,13 +86,13 @@
 						<a class="nav-link" href="{{ site.baseurl }}/help-us"><i style="margin-right: 5px" class="fas fa-hands-helping"></i>Help us!</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="{{ site.baseurl }}/stats"><i style="margin-right: 5px" class="far fa-chart-bar"></i>Stats</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="https://discord.gg/QF2CAX7"><i style="margin-right: 5px" class="fab fa-discord"></i>Discord</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="https://github.com/Faithful-Mods"><i style="margin-right: 5px" class="fab fa-github"></i>GitHub</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ site.baseurl }}/stats"><i style="margin-right: 5px" class="far fa-chart-bar"></i>Stats</a>
 					</li>
 				</ul>
 			</div>  
@@ -103,59 +103,62 @@
 		{{ content }}
 	</main>
 
-  <div class="footer-clean">
-    <footer>
-        <div class="container">
-            <div class="row justify-content-center" align="justify">
-                <div class="col-sm-3 item">
-                    <h3>Pages</h3>
-                    <ul>
-                        <li>
-                        	<a href="{{ site.baseurl }}/"><i style="margin-right: 5px" class="fas fa-wrench"></i>Mods</a>
-                        </li>
-                        <li>
-                        	<a href="{{ site.baseurl }}/modpack"><i style="margin-right: 5px" class="fas fa-cube"></i>Modpacks</a>
-                        </li>
-                        <li>
-                        	<a href="{{ site.baseurl }}/mod-addons"><i style="margin-right: 5px" class="far fa-plus-square"></i>Mod Addons</a>
-                        </li>
-                        <li>
-                        	<a href="{{ site.baseurl }}/help-us"><i style="margin-right: 5px" class="fas fa-hands-helping"></i>Help us!</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 item">
-                    <h3>Related</h3>
-                    <ul>
-                        <li>
-                        	<img src="{{ site.baseurl }}/image/icon/faithful.png" alt="Faithful Team" style="width: 20px;">
-                        	<a href="https://faithful.team/" target="_blank" rel="noopener">Faithful Team</a>
-                        </li>
-                        <li>
-                        	<img src="{{ site.baseurl }}/image/icon/faithful_64x.png" alt="Faithful 64x" style="width: 20px;">
-                        	<a href="https://discord.com/invite/Tqtwtgh" target="_blank" rel="noopener">Faithful 64x</a>
-                        </li>
-			<li>
-                        	<img src="{{ site.baseurl }}/image/icon/faithful_addons.png" alt="Faithful Addons" style="width: 20px;">
-				<a href="https://faithful.team/tag/faithful-addons/" target="_blank" rel="noopener">Faithful Addons</a>
-			</li>
-			<li>
-                        	<img src="{{ site.baseurl }}/image/icon/faithful_dungeons.png" alt="Faithful Dungeons" style="width: 20px;">
-				<a href="https://faithful-dungeons.github.io/Website/" target="_blank" rel="noopener">Faithful Dungeons</a>
-			</li>
-                        <li>
-                        	<img src="{{ site.baseurl }}/image/icon/faithful_tweaks.png" alt="Faithful Tweaks" style="width: 20px;">
-                        	<a href="https://faithfultweaks.com/" target="_blank" rel="noopener">Faithful Tweaks</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 item">
-                    <p class="copyright" style="font-size: 19px;">© 2020 Faithful Mods</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-  </div>
+	<div class="footer-clean">
+		<footer>
+			<div class="container">
+				<div class="row justify-content-center" align="justify">
+					<div class="col-sm-3 item">
+						<h3>Pages</h3>
+						<ul>
+							<li>
+								<a href="{{ site.baseurl }}/"><i style="margin-right: 5px" class="fas fa-wrench"></i>Mods</a>
+							</li>
+							<li>
+								<a href="{{ site.baseurl }}/modpack"><i style="margin-right: 5px" class="fas fa-cube"></i>Modpacks</a>
+							</li>
+							<li>
+								<a href="{{ site.baseurl }}/mod-addons"><i style="margin-right: 5px" class="far fa-plus-square"></i>Mod Addons</a>
+							</li>
+							<li>
+								<a href="{{ site.baseurl }}/help-us"><i style="margin-right: 5px" class="fas fa-hands-helping"></i>Help us!</a>
+							</li>
+							<li>
+								<a href="{{ site.baseurl }}/stats"><i style="margin-right: 5px" class="far fa-chart-bar"></i>Stats</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-3 item">
+						<h3>Related</h3>
+						<ul>
+							<li>
+								<img src="{{ site.baseurl }}/image/icon/faithful.png" alt="Faithful Team" style="width: 20px;">
+								<a href="https://faithful.team/" target="_blank" rel="noopener">Faithful Team</a>
+							</li>
+							<li>
+								<img src="{{ site.baseurl }}/image/icon/faithful_64x.png" alt="Faithful 64x" style="width: 20px;">
+								<a href="https://discord.com/invite/Tqtwtgh" target="_blank" rel="noopener">Faithful 64x</a>
+							</li>
+							<li>
+								<img src="{{ site.baseurl }}/image/icon/faithful_addons.png" alt="Faithful Addons" style="width: 20px;">
+								<a href="https://faithful.team/tag/faithful-addons/" target="_blank" rel="noopener">Faithful Addons</a>
+							</li>
+							<li>
+								<img src="{{ site.baseurl }}/image/icon/faithful_dungeons.png" alt="Faithful Dungeons" style="width: 20px;">
+								<a href="https://faithful-dungeons.github.io/Website/" target="_blank" rel="noopener">Faithful Dungeons</a>
+							</li>
+							<li>
+								<img src="{{ site.baseurl }}/image/icon/faithful_tweaks.png" alt="Faithful Tweaks" style="width: 20px;">
+								<a href="https://faithfultweaks.com/" target="_blank" rel="noopener">Faithful Tweaks</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-3 item">
+						<p class="copyright" style="font-size: 19px;">© 2020 Faithful Mods</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
