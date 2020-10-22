@@ -23,14 +23,42 @@ title: 'Help us: Add a new MC version!'
 		<p>
 			Type the Minecraft version you want add support for, then click on <code>Create a branch</code>.
 		</p>
-		<img src="https://imgur.com/KpRCljE" class="img-fluid center" alt="github add branch">
+		<img src="https://i.imgur.com/KpRCljE" class="img-fluid center" alt="github add branch">
 		<h4>GitHub Desktop:</h4>
 		<p>
 			Click on the <code>current branch</code> button, then <code>New branch</code>, then type the Minecraft version you want add support for, if <code>main</code> is not selected, click on it, then <code>create a new branch</code>.
 		</p>
 		<div class="img-fluid center">
-			<img src="https://imgur.com/Gow5arC" alt="github desktop add branch 1st step">
-			<img src="https://imgur.com/PJtANzD" alt="github desktop add branch 2nd step">
+			<img src="https://i.imgur.com/Gow5arC" alt="github desktop add branch 1st step">
+			<img src="https://i.imgur.com/PJtANzD" alt="github desktop add branch 2nd step">
 		</div>
+	</li>
+	<li>
+		<p>Add those files to your new branch:</p>
+		<ul>
+			<li>
+				<p><code>pack.png</code></p>
+				<img src="https://raw.githubusercontent.com/Faithful-Mods/faithful-mods.github.io/master/image/icon/faithful_mods.png" alt="pack.png">
+			</li>
+			<li>
+				<p><code>pack.mcmeta</code> with this inside:</p>
+<pre>
+<code class="language-json">
+{
+	"pack":{
+		"pack_format": 3,
+		"description": "Faithful Mods"
+	}
+}
+</code>
+</pre>
+				<blockquote>
+				<p>The <code>&quot;pack_format&quot;</code> can be found <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
+				</blockquote>
+			</li>
+			<li>
+				<p>An <code>assets</code> folder with mods textures insides, following this path: <code>assets/< modassetname >/textures/...</code></p>
+			</li>
+		</ul>	
 	</li>
 </ol>
