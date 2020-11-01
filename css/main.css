@@ -319,9 +319,15 @@ a {
 	overflow-y: scroll
 }
 
+.progress {
+	background-color: #232323;
+}
+.progress-bar,
+#downloadModalContent #zipProgressBar > * {
+	background-color: rgb(123, 0, 82);
+}
 #downloadModalContent #zipProgressBar > * {
 	transition: unset;
-	background-color: rgb(123, 0, 82);
 }
 
 #logs .log {
