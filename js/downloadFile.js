@@ -1,10 +1,12 @@
+const NAME = 'Compliance Mods'
+
 function downloadFile(url) {
   return new Promise((resolve, reject) => {
     var req = new XMLHttpRequest()
     req.open('GET', url, true)
     req.responseType = 'blob'
 
-    const FINAL_NAME = 'Faithful Mods Resource Pack'
+    const FINAL_NAME = NAME + ' Resource Pack'
 
     req.onload = function(_event) {
       if (req.status !== 200) {

@@ -1,6 +1,8 @@
 /* global Vue, saveAs, ResourcePackCreator, moment */
 /* eslint no-multi-str: 0 */
 
+const NAME = 'Compliance Mods'
+
 Vue.component('local-download', {
   props: ['canpack', 'versions'],
   template:
@@ -39,7 +41,7 @@ Vue.component('local-download', {
     </div>',
   data () {
     return {
-      dbName: 'faithful',
+      dbName: 'mods',
       dbVersion: 4,
       database: null,
       isDownloading: false,
@@ -193,7 +195,7 @@ Vue.component('local-download', {
     downloadZip: function () {
       if (this.finalZip !== undefined) {
         const customName = this.$root.$refs.zipOptions.customArchiveName
-        const archiveName = customName || 'Faithful Mods Resource Pack ' + ((new Date()).getTime())
+        const archiveName = customName || NAME + ' Resource Pack ' + ((new Date()).getTime())
         saveAs(this.finalZip, archiveName + '.zip') // 2) trigger the download
       }
     }

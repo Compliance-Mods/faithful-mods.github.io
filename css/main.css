@@ -364,7 +364,7 @@ h2, h3, h4, h5 {
 }
 
 #SearchBar {
-	background-image: url(https://raw.githubusercontent.com/Faithful-Mods/Faithful-Mods.github.io/master/image/css/searchicon.png);
+	background-image: url(/image/css/searchicon.png);
 	background-position: 10px 12px;
 	background-repeat: no-repeat;
 	width: 100%;

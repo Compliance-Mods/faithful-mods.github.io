@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://faithful-mods.github.io/" target="_blank">
-    <img src="./image/icon/faithful_mods.png" alt="logo">
+    <img src="./image/icon/organization_icon.png" alt="logo">
   </a>
-  <h1 align="center">Faithful Mods - Website</h1>
+  <h1 align="center">Compliance Mods - Website</h1>
 
   <p align="center"><i>A massively improved version of the <a href="http://f32.me">http://f32.me</a> website.</i></p>
 

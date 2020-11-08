@@ -2,6 +2,10 @@
 layout: default
 title: 'Help us: Add a new MC version!'
 ---
+{% assign organization_name = 'Faithful-Mods' %}
+{% assign github_organization_url = 'https://github.com/' | append: organization_name | append: '/' %}
+{% assign organization_website_repo_name = 'faithful-mods.github.io' %}
+{% assign organization_website_repo_url = github_organization_url | append: organization_website_repo_name %}
 
 <!-- Code block CSS -->
 <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
@@ -46,7 +50,7 @@ title: 'Help us: Add a new MC version!'
 		<ul>
 			<li>
 				<p><code>pack.png</code></p>
-				<img class="img-fluid" src="https://raw.githubusercontent.com/Faithful-Mods/faithful-mods.github.io/master/image/icon/faithful_mods.png" alt="pack.png">
+				<img class="img-fluid" src="/image/icon/organization_icon.png" alt="pack.png">
 			</li>
 			<li>
 				<p><code>pack.mcmeta</code> with this inside:</p>
@@ -55,13 +59,13 @@ title: 'Help us: Add a new MC version!'
 {
 	"pack":{
 		"pack_format": 3,
-		"description": "Faithful Mods"
+		"description": "Compliance Mods"
 	}
 }
 </code>
 </pre>
 				<blockquote>
-				<p>The <code>&quot;pack_format&quot;</code> can be found <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
+				<p>The <code>&quot;pack_format&quot;</code> can be found <a href="{{ organization_website_repo_url }}/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
 				</blockquote>
 			</li>
 			<li>

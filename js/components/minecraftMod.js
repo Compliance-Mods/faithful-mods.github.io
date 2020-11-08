@@ -131,9 +131,9 @@ Vue.component('minecraft-mod', {
         console.error(err)
         console.error(this.$props.mod.name[2] || this.$props.mod.name[0])
       } else {
-        // set default faithful mods image
+        // set default organization image
 
-        this.imageSource = '/image/icon/faithful_mods.png'
+        this.imageSource = '/image/icon/organization_icon.png'
         this.$parent.thumbnailCache.push({
           modName: this.$props.mod.name[0],
           imageSource: this.imageSource,

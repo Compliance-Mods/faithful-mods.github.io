@@ -2,6 +2,11 @@
 layout: default
 title: 'Help us: Add a new Mod!'
 ---
+{% assign organization_name = 'Faithful-Mods' %}
+{% assign github_organization_url = 'https://github.com/' | append: organization_name | append: '/' %}
+{% assign organization_website_repo_name = 'faithful-mods.github.io' %}
+{% assign organization_website_repo_url = github_organization_url | append: organization_website_repo_name %}
+{% assign project_name = 'Compliance Mods' %}
 
 <!-- Code block CSS -->
 <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
@@ -21,7 +26,7 @@ title: 'Help us: Add a new Mod!'
 <ol>
 	<li>
 		<p>
-			If you wanna add a new mod to our project, firstly check the <a href="{{ site.baseurl }}/">mod list</a> in our <a href="https://github.com/Faithful-Mods">GitHub</a> by typing the name of the mod or its assets folder name.
+			If you wanna add a new mod to our project, firstly check the <a href="{{ site.baseurl }}/">mod list</a> in our <a href="{{ github_organization_url }}">GitHub</a> by typing the name of the mod or its assets folder name.
 		</p>
 		<img src="https://i.imgur.com/GR1a4Uo.png" class="img-fluid center" alt="github research">
 	</li>
@@ -47,21 +52,21 @@ title: 'Help us: Add a new Mod!'
 		</blockquote>
 	</li>
 	<li>
-		<p>Upload your textures in each branch (see how <a href="https://faithful-mods.github.io/help-us/add-new-version">here</a>), use the same <code>pack.png</code> as the Faithful Mods Logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
+		<p>Upload your textures in each branch (see how <a href="/help-us/add-new-version">here</a>), use the same <code>pack.png</code> as the {{ project_name }} logo. You also need to add a <code>pack.mcmeta</code> following this setup:</p>
 
 		<pre>
 <code class="language-json">
 {
 	"pack":{
 		"pack_format": 3,
-		"description": "Faithful Mods"
+		"description": "{{ project_name }}"
 	}
 }
 </code>
 		</pre>
 		
 		<blockquote>
-			<p>The <code>&quot;pack_format&quot;</code> can be found <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
+			<p>The <code>&quot;pack_format&quot;</code> can be found <a href="{{ github_organization_url }}{{ organization_website_repo_name }}/blob/master/data/versions.json">here</a> (make a pull request if outdated).</p>
 		</blockquote>
 	</li>
 	<li>
@@ -72,7 +77,7 @@ title: 'Help us: Add a new Mod!'
 		</blockquote>
 	</li>
 	<li>
-		<p>Then make a pull request on the website repository modifying <a href="https://github.com/Faithful-Mods/faithful-mods.github.io/blob/master/data/mods.json">this file</a> following this setup:</p>
+		<p>Then make a pull request on the website repository modifying <a href="{{ organization_website_repo_url }}/blob/master/data/mods.json">this file</a> following this setup:</p>
 		<pre>
 <code class="language-json">
 [
@@ -91,8 +96,8 @@ title: 'Help us: Add a new Mod!'
 			"1.10.2"
 		],
 		// Get the repository owner, can be your username or the organization name
-		// You can find it in the URL of your repository: https://github.com/Faithful-Mods/actuallyadditions basically your organization or username
-		"repository": "Faithful-Mods"
+		// You can find it in the URL of your repository: {{ github_organization_url }}/actuallyadditions basically your organization or username
+		"repository": "{{ organization_name }}"
 	},
 	{
 		... another mod ...
@@ -105,6 +110,10 @@ title: 'Help us: Add a new Mod!'
 		</blockquote>
 	</li>
 	<li>
-		<p align="justify"><strong>Final step:</strong> if your pull request is merged, you will receive an invitation to be a member of the Faithful Mods Organization. From there, you will be able to move your repository inside our Organization (don&#39;t forget to modify the <code>mods.json</code> file with the new repository owner: replace your username with <code>Faithful-Mods</code>).</p>
+		<p align="justify">
+			<strong>Final step:</strong> if your pull request is merged, you will receive an invitation to be a member of the {{ project_name }}
+			organization. From there, you will be able to move your repository inside our organization (don&#39;t forget to modify the 
+			<code>mods.json</code> file with the new repository owner: replace your username with <code>{{ organization_name }}</code>).
+		</p>
 	</li>
 </ol>

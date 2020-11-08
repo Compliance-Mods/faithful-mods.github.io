@@ -1,11 +1,15 @@
+{% assign organization_name = 'Faithful-Mods' %}
+{% assign github_organization_url = 'https://github.com/' | append: organization_name | append: '/' %}
+{% assign project_name = 'Compliance Mods' %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="utf-8">
-	<title>Faithful Mods - {{ page.title }}</title>
-	<meta name="description" content="Faithful 32x textures for various Minecraft mods (Java Edition)" />
-	<meta name="keywords" content="Minecraft Mods, Faithful, Resource Pack, Mod">
+	<title>{{ project_name }} - {{ page.title }}</title>
+	<meta name="description" content="32x textures for various Minecraft mods (Java Edition)" />
+	<meta name="keywords" content="Minecraft Mods, Resource Pack, Mod">
 	<meta name="theme-color" content="#00ccaf">
 
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -14,8 +18,8 @@
 	<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico" />
 	<link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png" />
-	<meta property="og:image" content="{{ site.baseurl }}/image/icon/faithful_mods.png" />
-	<meta property="twitter:image" content="{{ site.baseurl }}/image/icon/faithful_mods.png" />
+	<meta property="og:image" content="{{ site.baseurl }}/image/icon/organization_icon.png" />
+	<meta property="twitter:image" content="{{ site.baseurl }}/image/icon/organization_icon.png" />
 	<meta name="twitter:card" content="summary_large_image">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,8 +38,8 @@
 	<header>
 		<div class="owl-carousel owl-theme">
 			<div class="item">
-				<a href="https://faithful-mods.github.io/" rel="noopener">
-					<img src="{{ site.baseurl }}/image/icon/faithful_mods.png" style="width: 128px; height: 128px;" class="img-fluid" alt="Faithful Mods">	
+				<a href="/" rel="noopener">
+					<img src="{{ site.baseurl }}/image/icon/organization_icon.png" style="width: 128px; height: 128px;" class="img-fluid" alt="{{ project_name }}">	
 				</a>
 			</div>
 			<div class="item">
@@ -92,7 +96,7 @@
 						<a class="nav-link" href="https://discord.gg/QF2CAX7"><i style="margin-right: 5px" class="fab fa-discord"></i>Discord</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="https://github.com/Faithful-Mods"><i style="margin-right: 5px" class="fab fa-github"></i>GitHub</a>
+						<a class="nav-link" href="{{ github_organization_url }}"><i style="margin-right: 5px" class="fab fa-github"></i>GitHub</a>
 					</li>
 				</ul>
 			</div>  
@@ -111,7 +115,7 @@
 				 */
 
 				var disqus_config = function () {
-				this.page.url = 'https://faithful-mods.github.io/{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
+				this.page.url = document.location.protocol + "//" + document.location.host + '/{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
 				this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 				};
 
@@ -178,7 +182,7 @@
 						</ul>
 					</div>
 					<div class="col-sm-3 item">
-						<p class="copyright" style="font-size: 19px;">© 2020 Faithful Mods</p>
+						<p class="copyright" style="font-size: 19px;">© 2020 {{ project_name }}</p>
 					</div>
 				</div>
 			</div>
