@@ -1,7 +1,10 @@
 /* global Vue, saveAs, ResourcePackCreator, moment */
 /* eslint no-multi-str: 0 */
 
-const NAME = 'Compliance Mods'
+try {
+  let NAME;
+} catch(_e) {}
+NAME = 'Compliance Mods';
 
 Vue.component('local-download', {
   props: ['canpack', 'versions'],

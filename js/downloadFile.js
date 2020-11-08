@@ -1,4 +1,7 @@
-const NAME = 'Compliance Mods'
+try {
+  let NAME;
+} catch(_e) {}
+NAME = 'Compliance Mods';
 
 function downloadFile(url) {
   return new Promise((resolve, reject) => {

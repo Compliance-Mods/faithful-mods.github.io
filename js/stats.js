@@ -1,6 +1,9 @@
 /* global Vue, getJSON */
 
-const NAME = 'Compliance Mods'
+try {
+  let NAME;
+} catch(_e) {}
+NAME = 'Compliance Mods';
 
 const v = new Vue({ // eslint-disable-line no-unused-vars
   el: '#stats',
